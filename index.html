@@ -1,548 +1,241 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Solli Solomon</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Solli Solomon — produttore italiano di musica elettronica, techno e ricerca sonora. Ascolta la sua musica su Bandcamp."/>
+  <meta name="keywords" content="Solli Solomon, produttore italiano, elettronica, techno, musica spirituale, bandcamp"/>
+  <meta property="og:title" content="Solli Solomon — Produttore Elettronico"/>
+  <meta property="og:description" content="Musica elettronica, spiritualità e ricerca sonora. Ascolta su Bandcamp."/>
+  <meta property="og:image" content="solli-banner.png"/>
+  <meta property="og:type" content="website"/>
+  <title>Solli Solomon — Produttore Elettronico</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet"/>
   <style>
-    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
     :root {
-      --bg: #0a0a0a;
-      --surface: #111111;
-      --border: #1e1e1e;
-      --text: #e8e4dc;
-      --muted: #555;
-      --accent: #c8b87a;
-      --accent-dim: rgba(200,184,122,0.12);
+      --bg: #07090b;
+      --surface: #0c0f12;
+      --border: #181f24;
+      --text: #e2e8e4;
+      --muted: #485560;
+      --accent: #00c8b4;
+      --accent-dim: rgba(0,200,180,0.09);
+      --warm: #d4874a;
     }
-
-    html { scroll-behavior: smooth; }
-
+    html { scroll-behavior:smooth; }
     body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'DM Mono', monospace;
-      font-weight: 300;
-      font-size: 13px;
-      line-height: 1.8;
-      cursor: none;
+      background:var(--bg);
+      color:var(--text);
+      font-family:'DM Mono',monospace;
+      font-weight:300;
+      font-size:13px;
+      line-height:1.8;
+      cursor:none;
     }
-
-    /* Custom cursor */
-    .cursor {
-      position: fixed;
-      width: 6px; height: 6px;
-      background: var(--accent);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      transition: transform 0.15s ease, opacity 0.3s;
-      transform: translate(-50%, -50%);
-    }
-    .cursor-ring {
-      position: fixed;
-      width: 32px; height: 32px;
-      border: 1px solid rgba(200,184,122,0.4);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9998;
-      transform: translate(-50%, -50%);
-      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), width 0.3s, height 0.3s, opacity 0.3s;
-    }
-
-    /* Noise overlay */
     body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 9000;
-      opacity: 0.5;
+      content:''; position:fixed; inset:0; pointer-events:none; z-index:9000; opacity:0.45;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
     }
 
-    /* ── HEADER ── */
+    /* CURSORE: cerchio piccolo */
+    .cursor {
+      position:fixed;
+      width:8px; height:8px;
+      background:var(--accent);
+      border-radius:50%;
+      pointer-events:none;
+      z-index:9999;
+      transform:translate(-50%,-50%);
+      transition:transform 0.15s ease, background 0.2s;
+    }
+    .cursor.on-button { background:#ffffff; transform:translate(-50%,-50%) scale(1.4); }
+    .cursor.clicking { background:#ffffff; transform:translate(-50%,-50%) scale(0.7); }
+
+    /* CURSORE INSEGUITORE: croce cristiana SVG */
+    .cursor-ring {
+      position:fixed;
+      width:36px; height:44px;
+      pointer-events:none;
+      z-index:9998;
+      transform:translate(-50%,-50%);
+      transition:transform 0.2s, opacity 0.2s;
+    }
+    .cursor-ring svg .cross-shape {
+      fill: var(--accent);
+      transition: fill 0.2s;
+    }
+    .cursor-ring.on-button svg .cross-shape { fill: #ffffff; }
+    .cursor-ring.clicking svg .cross-shape { fill: #ffffff; }
+
+    /* HEADER */
     header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 28px 48px;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.4s, background 0.4s;
+      position:fixed; top:0; left:0; right:0; z-index:100;
+      display:flex; justify-content:space-between; align-items:center;
+      padding:24px 52px;
+      border-bottom:1px solid transparent;
+      transition:background 0.5s, border-color 0.5s;
     }
-    header.scrolled {
-      border-color: var(--border);
-      background: rgba(10,10,10,0.9);
-      backdrop-filter: blur(12px);
-    }
-    .logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 18px;
-      font-weight: 300;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--text);
-      text-decoration: none;
-    }
-    nav { display: flex; gap: 36px; }
-    nav a {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 11px;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      transition: color 0.3s;
-    }
-    nav a:hover { color: var(--accent); }
+    header.scrolled { background:rgba(7,9,11,0.93); backdrop-filter:blur(18px); border-color:var(--border); }
+    .logo { font-family:'Cormorant Garamond',serif; font-size:17px; font-weight:300; letter-spacing:0.32em; text-transform:uppercase; color:var(--text); text-decoration:none; }
+    nav { display:flex; gap:36px; }
+    nav a { color:var(--muted); text-decoration:none; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; transition:color 0.3s; }
+    nav a:hover { color:var(--accent); }
 
-    /* ── HERO ── */
+    /* HERO */
     #hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 0 48px 80px;
-      position: relative;
-      overflow: hidden;
+      min-height:100vh; position:relative;
+      display:flex; flex-direction:column; justify-content:flex-end;
+      padding:0 52px 90px; overflow:hidden;
     }
-    .hero-photo {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, #1a1510 0%, #0a0a0a 60%);
+    .hero-bg {
+      position:absolute; inset:0;
+      background-image:url('solli-banner.png');
+      background-size:cover; background-position:center 30%;
     }
-    .hero-photo-placeholder {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      padding-right: 80px;
-      opacity: 0.15;
+    .hero-bg::after {
+      content:''; position:absolute; inset:0;
+      background: linear-gradient(to bottom,
+        rgba(7,9,11,0.25) 0%,
+        rgba(7,9,11,0.15) 35%,
+        rgba(7,9,11,0.7) 70%,
+        rgba(7,9,11,0.97) 100%);
     }
-    .hero-photo-placeholder .ph-box {
-      width: 380px;
-      height: 520px;
-      border: 1px solid var(--accent);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 12px;
-      color: var(--accent);
-      font-size: 11px;
-      letter-spacing: 0.2em;
-    }
-    .hero-photo-placeholder .ph-icon { font-size: 40px; opacity: 0.5; }
+    .hero-content { position:relative; z-index:2; max-width:700px; }
+    .hero-tag { font-size:10px; letter-spacing:0.42em; text-transform:uppercase; color:var(--accent); margin-bottom:20px; opacity:0; animation:fadeUp 1s 0.3s forwards; }
+    .hero-title { font-family:'Cormorant Garamond',serif; font-size:clamp(64px,10vw,136px); font-weight:300; line-height:0.87; letter-spacing:-0.01em; margin-bottom:30px; opacity:0; animation:fadeUp 1s 0.55s forwards; }
+    .hero-title em { font-style:italic; color:var(--accent); }
+    .hero-sub { max-width:420px; color:rgba(226,232,228,0.65); font-size:12px; line-height:2.1; margin-bottom:48px; opacity:0; animation:fadeUp 1s 0.8s forwards; }
+    .hero-cta { display:flex; gap:20px; align-items:center; opacity:0; animation:fadeUp 1s 1s forwards; flex-wrap:wrap; }
+    .btn-primary { background:var(--accent); color:#07090b; text-decoration:none; padding:14px 32px; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.28em; text-transform:uppercase; transition:background 0.3s,transform 0.2s; white-space:nowrap; }
+    .btn-primary:hover { background:#00e0ca; transform:translateY(-1px); }
+    .btn-ghost { color:rgba(226,232,228,0.55); text-decoration:none; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; border-bottom:1px solid var(--border); padding-bottom:2px; transition:color 0.3s,border-color 0.3s; white-space:nowrap; }
+    .btn-ghost:hover { color:var(--text); border-color:var(--muted); }
 
-    .hero-tag {
-      font-size: 10px;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 24px;
-      opacity: 0;
-      animation: fadeUp 1s 0.3s forwards;
-    }
-    .hero-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(64px, 10vw, 130px);
-      font-weight: 300;
-      line-height: 0.9;
-      letter-spacing: -0.01em;
-      margin-bottom: 36px;
-      opacity: 0;
-      animation: fadeUp 1s 0.5s forwards;
-    }
-    .hero-title em {
-      font-style: italic;
-      color: var(--accent);
-    }
-    .hero-sub {
-      max-width: 420px;
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 2;
-      letter-spacing: 0.04em;
-      opacity: 0;
-      animation: fadeUp 1s 0.7s forwards;
-      margin-bottom: 48px;
-    }
-    .hero-cta {
-      display: flex;
-      gap: 20px;
-      align-items: center;
-      opacity: 0;
-      animation: fadeUp 1s 0.9s forwards;
-    }
-    .btn-primary {
-      background: var(--accent);
-      color: #0a0a0a;
-      text-decoration: none;
-      padding: 14px 32px;
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      transition: background 0.3s, transform 0.2s;
-    }
-    .btn-primary:hover { background: #d4c48a; transform: translateY(-1px); }
-    .btn-ghost {
-      color: var(--muted);
-      text-decoration: none;
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      border-bottom: 1px solid var(--border);
-      padding-bottom: 2px;
-      transition: color 0.3s, border-color 0.3s;
-    }
-    .btn-ghost:hover { color: var(--text); border-color: var(--muted); }
+    .scroll-indicator { position:absolute; bottom:38px; right:52px; z-index:2; display:flex; flex-direction:column; align-items:center; gap:8px; color:var(--muted); font-size:10px; letter-spacing:0.2em; text-transform:uppercase; opacity:0; animation:fadeUp 1s 1.3s forwards; }
+    .scroll-bar { width:1px; height:52px; background:linear-gradient(to bottom,var(--accent),transparent); animation:scrollPulse 2s ease-in-out infinite; }
+    @keyframes scrollPulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
 
-    .scroll-hint {
-      position: absolute;
-      bottom: 36px;
-      right: 48px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 8px;
-      color: var(--muted);
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      opacity: 0;
-      animation: fadeUp 1s 1.2s forwards;
-    }
-    .scroll-line {
-      width: 1px;
-      height: 60px;
-      background: linear-gradient(to bottom, var(--accent), transparent);
-      animation: scrollPulse 2s infinite;
-    }
+    /* SECTIONS */
+    section { padding:116px 52px; }
+    .sec-label { font-size:10px; letter-spacing:0.42em; text-transform:uppercase; color:var(--accent); margin-bottom:10px; }
+    .sec-divider { width:36px; height:1px; background:var(--border); margin-bottom:60px; }
 
-    /* ── SECTIONS ── */
-    section { padding: 120px 48px; }
-    .section-label {
-      font-size: 10px;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 16px;
-    }
-    .section-divider {
-      width: 40px;
-      height: 1px;
-      background: var(--border);
-      margin-bottom: 64px;
-    }
+    /* BIO */
+    #bio { border-top:1px solid var(--border); }
+    .bio-grid { display:grid; grid-template-columns:380px 1fr; gap:90px; align-items:center; }
+    .bio-img-wrap { position:relative; }
+    .bio-img-frame { position:absolute; top:-14px; left:-14px; right:14px; bottom:14px; border:1px solid var(--accent-dim); pointer-events:none; }
+    .bio-img { width:100%; aspect-ratio:3/4; object-fit:cover; object-position:top center; border:1px solid var(--border); display:block; filter:contrast(1.05) saturate(0.9); }
+    .bio-text h2 { font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:300; line-height:1.1; margin-bottom:28px; }
+    .bio-text h2 em { font-style:italic; color:var(--accent); }
+    .bio-text p { color:var(--muted); margin-bottom:18px; line-height:2.15; font-size:13px; }
+    .bio-text p strong { color:var(--text); font-weight:400; }
+    .bio-tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:36px; }
+    .bio-tag { border:1px solid var(--border); padding:5px 15px; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); transition:border-color 0.3s,color 0.3s; }
+    .bio-tag:hover { border-color:var(--accent); color:var(--accent); }
 
-    /* ── BIO ── */
-    #bio { border-top: 1px solid var(--border); }
-    .bio-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
-      align-items: start;
-    }
-    .bio-photo-block {
-      position: relative;
-    }
-    .bio-photo-frame {
-      width: 100%;
-      aspect-ratio: 3/4;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 12px;
-      color: var(--muted);
-      font-size: 11px;
-      letter-spacing: 0.15em;
-    }
-    .bio-photo-frame .ph-icon { font-size: 32px; opacity: 0.3; }
-    .bio-year {
-      position: absolute;
-      bottom: -20px;
-      right: -20px;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 120px;
-      font-weight: 300;
-      color: var(--border);
-      line-height: 1;
-      pointer-events: none;
-      user-select: none;
-    }
-    .bio-text h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 48px;
-      font-weight: 300;
-      line-height: 1.15;
-      margin-bottom: 32px;
-    }
-    .bio-text h2 em { font-style: italic; color: var(--accent); }
-    .bio-text p {
-      color: var(--muted);
-      margin-bottom: 20px;
-      font-size: 13px;
-      line-height: 2;
-    }
-    .bio-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 40px;
-    }
-    .bio-tag {
-      border: 1px solid var(--border);
-      padding: 6px 16px;
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-      transition: border-color 0.3s, color 0.3s;
-    }
-    .bio-tag:hover { border-color: var(--accent); color: var(--accent); }
+    /* DISCOGRAFIA */
+    #music { border-top:1px solid var(--border); background:var(--surface); }
+    .music-header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:56px; flex-wrap:wrap; gap:16px; }
+    .music-header h2 { font-family:'Cormorant Garamond',serif; font-size:44px; font-weight:300; line-height:1.1; }
+    .music-header h2 em { font-style:italic; color:var(--accent); }
+    .music-header a { color:var(--accent); text-decoration:none; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; border-bottom:1px solid var(--accent-dim); padding-bottom:2px; transition:border-color 0.3s; }
+    .music-header a:hover { border-color:var(--accent); }
 
-    /* ── MUSIC ── */
-    #music { border-top: 1px solid var(--border); background: var(--surface); }
-    .music-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-    }
+    .music-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--border); border:1px solid var(--border); }
     .music-card {
-      background: var(--surface);
-      padding: 40px 32px;
-      transition: background 0.3s;
-      position: relative;
-      overflow: hidden;
+      background:var(--surface); padding:30px 26px;
+      display:flex; flex-direction:column; gap:10px;
+      text-decoration:none; color:inherit;
+      transition:background 0.3s; position:relative; overflow:hidden;
     }
-    .music-card::after {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 2px;
-      background: var(--accent);
-      transform: scaleX(0);
-      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
-    }
-    .music-card:hover { background: var(--bg); }
-    .music-card:hover::after { transform: scaleX(1); }
-    .music-num {
-      font-size: 10px;
-      color: var(--accent);
-      letter-spacing: 0.2em;
-      margin-bottom: 24px;
-    }
-    .music-cover {
-      width: 100%;
-      aspect-ratio: 1;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 24px;
-      color: var(--muted);
-      font-size: 10px;
-      letter-spacing: 0.15em;
-      flex-direction: column;
-      gap: 8px;
-    }
-    .music-cover .ph-icon { font-size: 24px; opacity: 0.2; }
-    .music-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
-      font-weight: 300;
-      margin-bottom: 8px;
-    }
-    .music-meta {
-      font-size: 10px;
-      color: var(--muted);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 24px;
-    }
-    .music-link {
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--accent);
-      text-decoration: none;
-      border-bottom: 1px solid var(--accent-dim);
-      padding-bottom: 2px;
-      transition: border-color 0.3s;
-    }
-    .music-link:hover { border-color: var(--accent); }
+    .music-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:var(--accent); transform:scaleX(0); transition:transform 0.4s cubic-bezier(0.16,1,0.3,1); }
+    .music-card:hover { background:var(--bg); }
+    .music-card:hover::after { transform:scaleX(1); }
+    .music-card.collab::after { background:var(--warm); }
+    .music-num { font-size:9px; color:var(--accent); letter-spacing:0.28em; }
+    .music-card.collab .music-num { color:var(--warm); }
+    .music-title { font-family:'Cormorant Garamond',serif; font-size:21px; font-weight:300; line-height:1.2; }
+    .music-collab { font-size:10px; color:var(--muted); letter-spacing:0.08em; }
+    .music-arrow { margin-top:auto; font-size:15px; color:var(--muted); transition:color 0.3s,transform 0.3s; align-self:flex-end; }
+    .music-card:hover .music-arrow { color:var(--accent); transform:translate(3px,-3px); }
+    .music-card.collab:hover .music-arrow { color:var(--warm); }
 
-    /* ── SOCIAL ── */
-    #social { border-top: 1px solid var(--border); }
-    .social-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 40px;
-    }
-    .social-heading {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 48px;
-      font-weight: 300;
-      line-height: 1.15;
-      max-width: 480px;
-    }
-    .social-heading em { font-style: italic; color: var(--accent); }
-    .social-links {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      min-width: 220px;
-    }
-    .social-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 18px 0;
-      border-bottom: 1px solid var(--border);
-      text-decoration: none;
-      color: var(--text);
-      transition: color 0.3s;
-      gap: 20px;
-    }
-    .social-item:first-child { border-top: 1px solid var(--border); }
-    .social-item:hover { color: var(--accent); }
-    .social-name {
-      font-size: 11px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-    }
-    .social-arrow { color: var(--muted); font-size: 16px; transition: transform 0.3s; }
-    .social-item:hover .social-arrow { transform: translate(4px, -4px); color: var(--accent); }
+    /* SOCIAL */
+    #social { border-top:1px solid var(--border); }
+    .social-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+    .social-left h2 { font-family:'Cormorant Garamond',serif; font-size:46px; font-weight:300; line-height:1.12; }
+    .social-left h2 em { font-style:italic; color:var(--accent); }
+    .social-left p { color:var(--muted); margin-top:20px; font-size:12px; line-height:2.1; max-width:400px; }
+    .social-links { display:flex; flex-direction:column; }
+    .social-item { display:flex; align-items:center; justify-content:space-between; padding:18px 0; border-bottom:1px solid var(--border); text-decoration:none; color:var(--text); transition:color 0.3s; }
+    .social-item:first-child { border-top:1px solid var(--border); }
+    .social-item:hover { color:var(--accent); }
+    .social-name { font-size:11px; letter-spacing:0.22em; text-transform:uppercase; }
+    .social-arrow { color:var(--muted); font-size:16px; transition:transform 0.3s,color 0.3s; }
+    .social-item:hover .social-arrow { transform:translate(4px,-4px); color:var(--accent); }
 
-    /* ── CONTACT ── */
-    #contact { border-top: 1px solid var(--border); background: var(--surface); }
-    .contact-inner {
-      max-width: 640px;
-    }
-    .contact-inner h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 48px;
-      font-weight: 300;
-      line-height: 1.15;
-      margin-bottom: 16px;
-    }
-    .contact-inner h2 em { font-style: italic; color: var(--accent); }
-    .contact-inner p {
-      color: var(--muted);
-      margin-bottom: 48px;
-      font-size: 13px;
-      line-height: 2;
-    }
-    .contact-fields { display: flex; flex-direction: column; gap: 0; }
-    .field-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-    }
-    .field {
-      border: 1px solid var(--border);
-      border-collapse: collapse;
-      padding: 18px 20px;
-      background: transparent;
-      color: var(--text);
-      font-family: 'DM Mono', monospace;
-      font-size: 12px;
-      letter-spacing: 0.05em;
-      outline: none;
-      transition: border-color 0.3s, background 0.3s;
-      margin: -1px;
-    }
-    .field::placeholder { color: var(--muted); }
-    .field:focus { border-color: var(--accent); background: var(--accent-dim); z-index: 1; position: relative; }
-    textarea.field { resize: none; height: 140px; }
-    .btn-send {
-      width: 100%;
-      background: transparent;
-      border: 1px solid var(--accent);
-      color: var(--accent);
-      padding: 18px;
-      font-family: 'DM Mono', monospace;
-      font-size: 11px;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      cursor: none;
-      transition: background 0.3s, color 0.3s;
-      margin-top: -1px;
-    }
-    .btn-send:hover { background: var(--accent); color: #0a0a0a; }
+    /* CONTACT */
+    #contact { border-top:1px solid var(--border); background:var(--surface); }
+    .contact-wrap { max-width:620px; }
+    .contact-wrap h2 { font-family:'Cormorant Garamond',serif; font-size:46px; font-weight:300; line-height:1.1; margin-bottom:14px; }
+    .contact-wrap h2 em { font-style:italic; color:var(--accent); }
+    .contact-wrap > p { color:var(--muted); margin-bottom:44px; line-height:2.1; }
+    .field-row { display:grid; grid-template-columns:1fr 1fr; }
+    .field { border:1px solid var(--border); margin:-1px; padding:16px 18px; background:transparent; color:var(--text); font-family:'DM Mono',monospace; font-size:12px; outline:none; transition:border-color 0.3s,background 0.3s; width:100%; }
+    .field::placeholder { color:var(--muted); }
+    .field:focus { border-color:var(--accent); background:var(--accent-dim); z-index:1; position:relative; }
+    textarea.field { resize:none; height:130px; }
+    .btn-send { width:100%; background:transparent; border:1px solid var(--accent); color:var(--accent); padding:16px; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.32em; text-transform:uppercase; cursor:none; transition:background 0.3s,color 0.3s; margin-top:-1px; display:block; }
+    .btn-send:hover { background:var(--accent); color:#07090b; }
 
-    /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 36px 48px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    footer .logo { font-size: 14px; }
-    footer p { color: var(--muted); font-size: 10px; letter-spacing: 0.15em; }
+    /* FOOTER */
+    footer { border-top:1px solid var(--border); padding:32px 52px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+    footer p { color:var(--muted); font-size:10px; letter-spacing:0.15em; }
 
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes scrollPulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
+    /* ANIMATIONS */
+    @keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+    .reveal { opacity:0; transform:translateY(26px); transition:opacity 0.85s cubic-bezier(0.16,1,0.3,1),transform 0.85s cubic-bezier(0.16,1,0.3,1); }
+    .reveal.visible { opacity:1; transform:none; }
+    .d1{transition-delay:.1s} .d2{transition-delay:.2s} .d3{transition-delay:.3s} .d4{transition-delay:.4s}
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+    /* RESPONSIVE */
+    @media(max-width:960px){
+      header{padding:18px 24px;} nav{display:none;}
+      #hero{padding:0 24px 64px;}
+      section{padding:80px 24px;}
+      .bio-grid{grid-template-columns:1fr; gap:44px;}
+      .bio-img-wrap{max-width:320px;}
+      .music-grid{grid-template-columns:repeat(2,1fr);}
+      .social-grid{grid-template-columns:1fr; gap:44px;}
+      footer{padding:28px 24px;}
     }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-
-    /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      header { padding: 20px 24px; }
-      nav { display: none; }
-      #hero { padding: 0 24px 60px; }
-      section { padding: 80px 24px; }
-      .bio-grid { grid-template-columns: 1fr; gap: 48px; }
-      .bio-year { font-size: 80px; }
-      .music-grid { grid-template-columns: 1fr; }
-      .social-inner { flex-direction: column; align-items: flex-start; }
-      .field-row { grid-template-columns: 1fr; }
-      footer { flex-direction: column; gap: 16px; text-align: center; }
-      .scroll-hint { display: none; }
+    @media(max-width:520px){
+      .music-grid{grid-template-columns:1fr;}
+      .hero-title{font-size:56px;}
+      .field-row{grid-template-columns:1fr;}
     }
   </style>
 </head>
 <body>
 
 <div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
+<div class="cursor-ring" id="cring">
+  <svg viewBox="0 0 36 44" xmlns="http://www.w3.org/2000/svg" width="36" height="44">
+    <!-- Braccio verticale più lungo, orizzontale a 1/3 dall'alto: croce cristiana -->
+    <rect class="cross-shape" x="15" y="0" width="6" height="44" rx="1"/>
+    <rect class="cross-shape" x="0" y="12" width="36" height="6" rx="1"/>
+  </svg>
+</div>
 
 <!-- HEADER -->
-<header id="header">
+<header id="hdr">
   <a href="#hero" class="logo">Solli Solomon</a>
   <nav>
     <a href="#bio">Bio</a>
-    <a href="#music">Musica</a>
+    <a href="#music">Discografia</a>
     <a href="#social">Social</a>
     <a href="#contact">Contatti</a>
   </nav>
@@ -550,119 +243,135 @@
 
 <!-- HERO -->
 <section id="hero">
-  <div class="hero-photo">
-    <div class="hero-photo-placeholder">
-      <div class="ph-box">
-        <span class="ph-icon">◻</span>
-        <span>Foto artista</span>
-      </div>
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Produttore · Italia · Musica Elettronica</div>
+    <h1 class="hero-title">Solli<br/><em>Solomon</em></h1>
+    <p class="hero-sub">Tra techno, spiritualità e ricerca sonora. Ogni frequenza è un'intenzione, ogni beat una verità.</p>
+    <div class="hero-cta">
+      <a href="https://sollisolomon.bandcamp.com" target="_blank" rel="noopener" class="btn-primary">Ascolta su Bandcamp</a>
+      <a href="#bio" class="btn-ghost">Scopri l'artista</a>
     </div>
   </div>
-  <div class="hero-tag">Produttore · Italia · Musica Elettronica</div>
-  <h1 class="hero-title">Solli<br/><em>Solomon</em></h1>
-  <p class="hero-sub">Tra techno, spiritualità e ricerca sonora. Un universo dove ogni frequenza è un'intenzione, ogni beat una verità.</p>
-  <div class="hero-cta">
-    <a href="#music" class="btn-primary">Ascolta</a>
-    <a href="#bio" class="btn-ghost">Scopri l'artista</a>
-  </div>
-  <div class="scroll-hint">
-    <div class="scroll-line"></div>
+  <div class="scroll-indicator">
+    <div class="scroll-bar"></div>
     <span>Scroll</span>
   </div>
 </section>
 
 <!-- BIO -->
 <section id="bio">
-  <div class="section-label reveal">001 — Biografia</div>
-  <div class="section-divider reveal reveal-delay-1"></div>
+  <div class="sec-label reveal">001 — Biografia</div>
+  <div class="sec-divider reveal d1"></div>
   <div class="bio-grid">
-    <div class="bio-photo-block reveal reveal-delay-1">
-      <div class="bio-photo-frame">
-        <span class="ph-icon">◻</span>
-        <span>Foto</span>
-      </div>
-      <div class="bio-year">SS</div>
+    <div class="bio-img-wrap reveal d1">
+      <div class="bio-img-frame"></div>
+      <img src="solli-artist.jpg" alt="Solli Solomon" class="bio-img"/>
     </div>
     <div class="bio-text">
       <h2 class="reveal">Suonare la <em>verità</em></h2>
-      <p class="reveal reveal-delay-1">Solli Solomon è un produttore italiano che unisce musica elettronica, spiritualità e ricerca sonora. Le sue tracce nascono da una fusione di vibrazioni profonde e atmosfere eteree, spingendosi tra techno, dance ed elettronica sperimentale.</p>
-      <p class="reveal reveal-delay-2">Ogni produzione riflette una visione precisa: creare connessioni, parlare attraverso il suono. Che sia ispirata a un passo biblico o nata dal puro impulso creativo, la musica di Solli Solomon è sempre un atto di ricerca interiore.</p>
-      <p class="reveal reveal-delay-3">Disponibile su Bandcamp e le principali piattaforme digitali.</p>
-      <div class="bio-tags reveal reveal-delay-3">
+      <p class="reveal d1">Solli Solomon è un produttore italiano che unisce musica elettronica, spiritualità e ricerca sonora. Le sue tracce spaziano tra techno, dance ed elettronica sperimentale, fondendo vibrazioni profonde e atmosfere eteree.</p>
+      <p class="reveal d2">Ogni produzione riflette una visione precisa: suonare la verità, creare connessioni, parlare attraverso il suono. Che sia ispirata a un passo biblico o nata dal puro impulso creativo, la musica è sempre un atto di ricerca interiore.</p>
+      <p class="reveal d3">Con collaborazioni al fianco di artisti come <strong>Star Bstreet</strong>, la sua discografia spazia da brani strumentali di potenza techno a tracce cariche di spiritualità e significato profondo.</p>
+      <div class="bio-tags reveal d3">
         <span class="bio-tag">Techno</span>
         <span class="bio-tag">Elettronica</span>
         <span class="bio-tag">Sperimentale</span>
         <span class="bio-tag">Dance</span>
         <span class="bio-tag">Spirituale</span>
+        <span class="bio-tag">Italia</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- MUSIC -->
+<!-- DISCOGRAFIA -->
 <section id="music">
-  <div class="section-label reveal">002 — Musica</div>
-  <div class="section-divider reveal reveal-delay-1"></div>
+  <div class="sec-label reveal">002 — Discografia</div>
+  <div class="sec-divider reveal d1"></div>
+  <div class="music-header">
+    <h2 class="reveal">Tutta la <em>musica</em></h2>
+    <a href="https://sollisolomon.bandcamp.com" target="_blank" rel="noopener" class="reveal d1">Vai su Bandcamp →</a>
+  </div>
   <div class="music-grid">
-    <div class="music-card reveal">
-      <div class="music-num">— 01</div>
-      <div class="music-cover">
-        <span class="ph-icon">◻</span>
-        <span>Cover</span>
-      </div>
-      <div class="music-title">Qoelet</div>
-      <div class="music-meta">Con Star Bstreet · 2025</div>
-      <a href="#" class="music-link">Ascolta su Bandcamp →</a>
-    </div>
-    <div class="music-card reveal reveal-delay-1">
-      <div class="music-num">— 02</div>
-      <div class="music-cover">
-        <span class="ph-icon">◻</span>
-        <span>Cover</span>
-      </div>
-      <div class="music-title">Titolo brano</div>
-      <div class="music-meta">Segnaposto · Anno</div>
-      <a href="#" class="music-link">Ascolta →</a>
-    </div>
-    <div class="music-card reveal reveal-delay-2">
-      <div class="music-num">— 03</div>
-      <div class="music-cover">
-        <span class="ph-icon">◻</span>
-        <span>Cover</span>
-      </div>
-      <div class="music-title">Titolo brano</div>
-      <div class="music-meta">Segnaposto · Anno</div>
-      <a href="#" class="music-link">Ascolta →</a>
-    </div>
+    <a href="https://sollisolomon.bandcamp.com/track/alfa-e-omega" target="_blank" rel="noopener" class="music-card reveal">
+      <div class="music-num">— 01</div><div class="music-title">Alfa e Omega</div><div class="music-arrow">↗</div>
+    </a>
+    <a href="https://sollisolomon.bandcamp.com/track/eleutheria" target="_blank" rel="noopener" class="music-card reveal d1">
+      <div class="music-num">— 02</div><div class="music-title">Eleutheria</div><div class="music-arrow">↗</div>
+    </a>
+    <a href="https://sollisolomon.bandcamp.com/track/regna" target="_blank" rel="noopener" class="music-card reveal d2">
+      <div class="music-num">— 03</div><div class="music-title">Regna</div><div class="music-arrow">↗</div>
+    </a>
+    <a href="https://sollisolomon.bandcamp.com/track/vive" target="_blank" rel="noopener" class="music-card reveal d3">
+      <div class="music-num">— 04</div><div class="music-title">Vive</div><div class="music-arrow">↗</div>
+    </a>
+    <a href="https://sollisolomon.bandcamp.com/track/apostolos-remix" target="_blank" rel="noopener" class="music-card reveal">
+      <div class="music-num">— 05</div><div class="music-title">Apostolos Remix</div><div class="music-arrow">↗</div>
+    </a>
+    <a href="https://sollisolomon.bandcamp.com/track/scoppieral-la-musica" target="_blank" rel="noopener" class="music-card reveal d1">
+      <div class="music-num">— 06</div><div class="music-title">Scoppierà la Musica</div><div class="music-collab">Solli Solomon rmx</div><div class="music-arrow">↗</div>
+    </a>
+    <a href="https://sollisolomon.bandcamp.com/track/israele" target="_blank" rel="noopener" class="music-card reveal d2">
+      <div class="music-num">— 07</div><div class="music-title">Israele</div><div class="music-arrow">↗</div>
+    </a>
+    <a href="https://sollisolomon.bandcamp.com/track/apostolos" target="_blank" rel="noopener" class="music-card reveal d3">
+      <div class="music-num">— 08</div><div class="music-title">Apostolos</div><div class="music-arrow">↗</div>
+    </a>
+    <a href="https://sollisolomon.bandcamp.com/track/gerico" target="_blank" rel="noopener" class="music-card reveal">
+      <div class="music-num">— 09</div><div class="music-title">Gerico</div><div class="music-arrow">↗</div>
+    </a>
+    <a href="https://sollisolomon.bandcamp.com/track/call-his-name" target="_blank" rel="noopener" class="music-card reveal d1">
+      <div class="music-num">— 10</div><div class="music-title">Call His Name</div><div class="music-arrow">↗</div>
+    </a>
+    <a href="https://sollisolomon.bandcamp.com/track/apoc-13" target="_blank" rel="noopener" class="music-card reveal d2">
+      <div class="music-num">— 11</div><div class="music-title">APOC 13</div><div class="music-arrow">↗</div>
+    </a>
+    <a href="https://sollisolomon.bandcamp.com/track/apocalisse" target="_blank" rel="noopener" class="music-card reveal d3">
+      <div class="music-num">— 12</div><div class="music-title">Apocalisse</div><div class="music-arrow">↗</div>
+    </a>
+    <a href="https://sollisolomon.bandcamp.com/track/tiger-balm" target="_blank" rel="noopener" class="music-card reveal">
+      <div class="music-num">— 13</div><div class="music-title">Tiger Balm</div><div class="music-arrow">↗</div>
+    </a>
+    <a href="https://sollisolomon.bandcamp.com/track/lui-e-il-re" target="_blank" rel="noopener" class="music-card collab reveal d1">
+      <div class="music-num">— 14</div><div class="music-title">Lui è il Re</div><div class="music-collab">con Star Bstreet</div><div class="music-arrow">↗</div>
+    </a>
+    <a href="https://sollisolomon.bandcamp.com/track/jss" target="_blank" rel="noopener" class="music-card collab reveal d2">
+      <div class="music-num">— 15</div><div class="music-title">Jss</div><div class="music-collab">con Star Bstreet</div><div class="music-arrow">↗</div>
+    </a>
+    <a href="https://sollisolomon.bandcamp.com/track/la-musica-cambia" target="_blank" rel="noopener" class="music-card collab reveal d3">
+      <div class="music-num">— 16</div><div class="music-title">La Musica Cambia</div><div class="music-collab">con Star Bstreet</div><div class="music-arrow">↗</div>
+    </a>
+    <a href="https://sollisolomon.bandcamp.com/track/qoelet" target="_blank" rel="noopener" class="music-card collab reveal">
+      <div class="music-num">— 17</div><div class="music-title">Qoelet</div><div class="music-collab">con Star Bstreet · 2019</div><div class="music-arrow">↗</div>
+    </a>
   </div>
 </section>
 
 <!-- SOCIAL -->
 <section id="social">
-  <div class="section-label reveal">003 — Connettiti</div>
-  <div class="section-divider reveal reveal-delay-1"></div>
-  <div class="social-inner">
-    <h2 class="social-heading reveal">Seguimi nel<br/><em>viaggio sonoro</em></h2>
-    <div class="social-links reveal reveal-delay-2">
-      <a href="#" class="social-item">
-        <span class="social-name">Bandcamp</span>
-        <span class="social-arrow">↗</span>
+  <div class="sec-label reveal">003 — Connettiti</div>
+  <div class="sec-divider reveal d1"></div>
+  <div class="social-grid">
+    <div class="social-left">
+      <h2 class="reveal">Seguimi nel<br/><em>viaggio sonoro</em></h2>
+      <p class="reveal d1">Ascolta, condividi, supporta. La musica vive quando viaggia da un'anima all'altra.</p>
+    </div>
+    <div class="social-links reveal d2">
+      <a href="https://sollisolomon.bandcamp.com" target="_blank" rel="noopener" class="social-item">
+        <span class="social-name">Bandcamp</span><span class="social-arrow">↗</span>
       </a>
-      <a href="#" class="social-item">
-        <span class="social-name">Instagram</span>
-        <span class="social-arrow">↗</span>
+      <a href="https://bio.site/Solli_Solomon" target="_blank" rel="noopener" class="social-item">
+        <span class="social-name">Bio.site</span><span class="social-arrow">↗</span>
       </a>
-      <a href="#" class="social-item">
-        <span class="social-name">Spotify</span>
-        <span class="social-arrow">↗</span>
+      <a href="https://www.instagram.com/solli_solomon" target="_blank" rel="noopener" class="social-item">
+        <span class="social-name">Instagram</span><span class="social-arrow">↗</span>
       </a>
-      <a href="#" class="social-item">
-        <span class="social-name">SoundCloud</span>
-        <span class="social-arrow">↗</span>
+      <a href="https://open.spotify.com/intl-it/artist/2x5xoFyjt2akRu1zYfcf9X" target="_blank" rel="noopener" class="social-item">
+        <span class="social-name">Spotify</span><span class="social-arrow">↗</span>
       </a>
-      <a href="#" class="social-item">
-        <span class="social-name">YouTube</span>
-        <span class="social-arrow">↗</span>
+      <a href="https://www.facebook.com/solli.solomon.777" target="_blank" rel="noopener" class="social-item">
+        <span class="social-name">Facebook</span><span class="social-arrow">↗</span>
       </a>
     </div>
   </div>
@@ -670,17 +379,17 @@
 
 <!-- CONTACT -->
 <section id="contact">
-  <div class="section-label reveal">004 — Contatti</div>
-  <div class="section-divider reveal reveal-delay-1"></div>
-  <div class="contact-inner">
+  <div class="sec-label reveal">004 — Contatti</div>
+  <div class="sec-divider reveal d1"></div>
+  <div class="contact-wrap">
     <h2 class="reveal">Parliamo di<br/><em>musica</em></h2>
-    <p class="reveal reveal-delay-1">Per collaborazioni, booking o semplicemente per entrare in contatto con l'artista.</p>
-    <div class="contact-fields reveal reveal-delay-2">
+    <p class="reveal d1">Per collaborazioni, booking o semplicemente per entrare in contatto con l'artista.</p>
+    <div class="reveal d2">
       <div class="field-row">
-        <input class="field" type="text" placeholder="Nome" />
-        <input class="field" type="email" placeholder="Email" />
+        <input class="field" type="text" placeholder="Nome"/>
+        <input class="field" type="email" placeholder="Email"/>
       </div>
-      <input class="field" type="text" placeholder="Oggetto" />
+      <input class="field" type="text" placeholder="Oggetto"/>
       <textarea class="field" placeholder="Messaggio"></textarea>
       <button class="btn-send">Invia messaggio</button>
     </div>
@@ -694,49 +403,53 @@
 </footer>
 
 <script>
-  // Custom cursor
-  const cursor = document.getElementById('cursor');
-  const ring = document.getElementById('cursorRing');
-  let mx = 0, my = 0, rx = 0, ry = 0;
+  // CURSORE A CROCE
+  const cur = document.getElementById('cursor');
+  const ring = document.getElementById('cring');
+  let mx=0, my=0, rx=0, ry=0;
 
   document.addEventListener('mousemove', e => {
     mx = e.clientX; my = e.clientY;
-    cursor.style.left = mx + 'px';
-    cursor.style.top = my + 'px';
+    cur.style.left = mx + 'px';
+    cur.style.top = my + 'px';
   });
 
-  function animateRing() {
-    rx += (mx - rx) * 0.12;
-    ry += (my - ry) * 0.12;
+  // Anello insegue il cursore con ritardo
+  (function loop() {
+    rx += (mx - rx) * 0.1;
+    ry += (my - ry) * 0.1;
     ring.style.left = rx + 'px';
     ring.style.top = ry + 'px';
-    requestAnimationFrame(animateRing);
-  }
-  animateRing();
+    requestAnimationFrame(loop);
+  })();
 
+  // Hover su elementi interattivi → croce bianca
   document.querySelectorAll('a, button, input, textarea').forEach(el => {
     el.addEventListener('mouseenter', () => {
-      cursor.style.transform = 'translate(-50%, -50%) scale(2.5)';
-      ring.style.width = '52px'; ring.style.height = '52px';
+      cur.classList.add('on-button');
+      ring.classList.add('on-button');
     });
     el.addEventListener('mouseleave', () => {
-      cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-      ring.style.width = '32px'; ring.style.height = '32px';
+      cur.classList.remove('on-button');
+      ring.classList.remove('on-button');
     });
   });
 
-  // Header on scroll
-  const header = document.getElementById('header');
-  window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 60);
-  });
+  // Click → croce bianca e ingrandita
+  document.addEventListener('mousedown', () => cur.classList.add('clicking'));
+  document.addEventListener('mouseup', () => cur.classList.remove('clicking'));
+
+  // Header scroll
+  window.addEventListener('scroll', () =>
+    document.getElementById('hdr').classList.toggle('scrolled', scrollY > 50)
+  );
 
   // Reveal on scroll
-  const reveals = document.querySelectorAll('.reveal');
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-  }, { threshold: 0.1 });
-  reveals.forEach(el => obs.observe(el));
+  const obs = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.08 }
+  );
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 </script>
 </body>
 </html>
