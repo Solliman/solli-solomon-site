@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="description" content="Solli Solomon — produttore italiano di musica elettronica, techno e ricerca sonora. Ascolta la sua musica su Bandcamp."/>
   <meta name="keywords" content="Solli Solomon, produttore italiano, elettronica, techno, musica spirituale, bandcamp"/>
+  <meta name="google-site-verification" content="0TwhKy6qlwDbH25IiIW_qXm0hIAt4563ZrJamPYdlDw" />
   <meta property="og:title" content="Solli Solomon — Produttore Elettronico"/>
   <meta property="og:description" content="Musica elettronica, spiritualità e ricerca sonora. Ascolta su Bandcamp."/>
   <meta property="og:image" content="solli-banner.png"/>
@@ -386,20 +387,13 @@
     <h2 class="reveal">Parliamo di<br/><em>musica</em></h2>
     <p class="reveal d1">Per collaborazioni, booking o semplicemente per entrare in contatto con l'artista.</p>
     <div class="reveal d2">
-      <form name="contatti" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" id="contact-form">
-        <input type="hidden" name="form-name" value="contatti"/>
-        <p style="display:none"><label>Non compilare: <input name="bot-field"/></label></p>
-        <div class="field-row">
-          <input class="field" type="text" name="nome" placeholder="Nome" required/>
-          <input class="field" type="email" name="email" placeholder="Email" required/>
-        </div>
-        <input class="field" type="text" name="oggetto" placeholder="Oggetto" required/>
-        <textarea class="field" name="messaggio" placeholder="Messaggio" required></textarea>
-        <button class="btn-send" type="submit">Invia messaggio</button>
-      </form>
-      <div id="form-success" style="display:none; border:1px solid var(--accent); padding:28px 24px; color:var(--accent); font-size:12px; letter-spacing:0.12em; line-height:2.1; margin-top:-1px;">
-        ✦ Messaggio inviato.<br/><span style="color:var(--muted)">Ti rispondo appena possibile.</span>
+      <div class="field-row">
+        <input class="field" type="text" placeholder="Nome"/>
+        <input class="field" type="email" placeholder="Email"/>
       </div>
+      <input class="field" type="text" placeholder="Oggetto"/>
+      <textarea class="field" placeholder="Messaggio"></textarea>
+      <button class="btn-send">Invia messaggio</button>
     </div>
   </div>
 </section>
@@ -451,30 +445,6 @@
   window.addEventListener('scroll', () =>
     document.getElementById('hdr').classList.toggle('scrolled', scrollY > 50)
   );
-
-  // Netlify form submit
-  const form = document.getElementById('contact-form');
-  if (form) {
-    form.addEventListener('submit', async e => {
-      e.preventDefault();
-      const btn = form.querySelector('.btn-send');
-      btn.textContent = 'Invio in corso...';
-      btn.disabled = true;
-      try {
-        const data = new URLSearchParams(new FormData(form));
-        const res = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: data });
-        if (res.ok) {
-          form.style.display = 'none';
-          document.getElementById('form-success').style.display = 'block';
-        } else { throw new Error(); }
-      } catch {
-        btn.textContent = 'Errore — riprova';
-        btn.style.borderColor = '#e05c5c';
-        btn.style.color = '#e05c5c';
-        btn.disabled = false;
-      }
-    });
-  }
 
   // Reveal on scroll
   const obs = new IntersectionObserver(
