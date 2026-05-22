@@ -196,6 +196,26 @@
     .link-card.featured .link-name { color:var(--accent); }
     .link-card.featured::before { background:var(--accent); }
 
+    /* PROSSIME USCITE */
+    #releases { border-top:1px solid var(--border); background:var(--surface); }
+    .releases-header { margin-bottom:56px; }
+    .releases-header h2 { font-family:'Cormorant Garamond',serif; font-size:44px; font-weight:300; line-height:1.1; }
+    .releases-header h2 em { font-style:italic; color:var(--accent); }
+    .releases-header p { color:var(--muted); margin-top:14px; font-size:12px; line-height:2.1; max-width:480px; }
+    .releases-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); border:1px solid var(--border); }
+    .release-card { background:var(--bg); padding:36px 32px; position:relative; overflow:hidden; }
+    .release-card.next { background:var(--accent-dim); }
+    .release-card.next::after { content:'PROSSIMA USCITA'; position:absolute; top:24px; right:24px; font-size:8px; letter-spacing:0.38em; color:var(--accent); }
+    .release-card.coming::after { content:'IN ARRIVO'; position:absolute; top:24px; right:24px; font-size:8px; letter-spacing:0.38em; color:var(--muted); }
+    .release-date { font-size:10px; letter-spacing:0.28em; color:var(--accent); margin-bottom:14px; }
+    .release-card.coming .release-date { color:var(--muted); }
+    .release-title { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; line-height:1.15; margin-bottom:8px; }
+    .release-meta { font-size:10px; color:var(--muted); letter-spacing:0.1em; line-height:1.9; margin-bottom:20px; }
+    .release-meta strong { color:var(--text); font-weight:400; }
+    .release-tags { display:flex; flex-wrap:wrap; gap:6px; }
+    .release-tag { border:1px solid var(--border); padding:4px 12px; font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); }
+    .release-card.next .release-tag { border-color:rgba(0,200,180,0.25); color:var(--accent); }
+
     /* CONTACT */
     #contact { border-top:1px solid var(--border); background:var(--surface); }
     .contact-wrap { max-width:620px; }
@@ -209,6 +229,10 @@
     textarea.field { resize:none; height:130px; }
     .btn-send { width:100%; background:transparent; border:1px solid var(--accent); color:var(--accent); padding:16px; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.32em; text-transform:uppercase; cursor:none; transition:background 0.3s,color 0.3s; margin-top:-1px; display:block; }
     .btn-send:hover { background:var(--accent); color:#07090b; }
+    .btn-send:disabled { opacity:0.45; cursor:not-allowed; }
+    .form-msg { font-size:11px; margin-top:16px; letter-spacing:0.12em; display:none; }
+    .form-msg.ok { color:var(--accent); display:block; }
+    .form-msg.err { color:#e07070; display:block; }
 
     /* FOOTER */
     footer { border-top:1px solid var(--border); padding:32px 52px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
@@ -230,12 +254,14 @@
       .music-grid{grid-template-columns:repeat(2,1fr);}
       .links-grid{grid-template-columns:repeat(2,1fr);}
       .links-grid.two-col{grid-template-columns:1fr;}
+      .releases-grid{grid-template-columns:1fr;}
       footer{padding:28px 24px;}
     }
     @media(max-width:520px){
       .music-grid{grid-template-columns:1fr;}
       .links-grid{grid-template-columns:1fr;}
       .links-grid.two-col{grid-template-columns:1fr;}
+      .releases-grid{grid-template-columns:1fr;}
       .hero-title{font-size:56px;}
       .field-row{grid-template-columns:1fr;}
     }
@@ -262,6 +288,7 @@
   <nav>
     <a href="#bio">Bio</a>
     <a href="#music">Discografia</a>
+    <a href="#releases">Uscite</a>
     <a href="#social">Social</a>
     <a href="#contact">Contatti</a>
   </nav>
@@ -298,7 +325,7 @@
       <h2 class="reveal">Suonare la <em>verità</em></h2>
       <p class="reveal d1">Solli Solomon è un produttore italiano che unisce musica elettronica, spiritualità e ricerca sonora. Le sue tracce spaziano tra techno, dance ed elettronica sperimentale, fondendo vibrazioni profonde e atmosfere eteree.</p>
       <p class="reveal d2">Ogni produzione riflette una visione precisa: suonare la verità, creare connessioni, parlare attraverso il suono. Che sia ispirata a un passo biblico o nata dal puro impulso creativo, la musica è sempre un atto di ricerca interiore.</p>
-      <p class="reveal d3">Con collaborazioni al fianco di artisti come <strong>Star Bstreet</strong>, la sua discografia spazia da brani strumentali di potenza techno a tracce cariche di spiritualità e significato profondo.</p>
+      <p class="reveal d3">Le collaborazioni hanno arricchito il percorso: con <strong>Star Bstreet</strong> — sua moglie e voce di numerosi brani — ha realizzato alcune delle tracce più spiritualmente intense della sua discografia. Ha collaborato con <strong>Francesco Fontanella</strong> per il remix di APOC 13, con <strong>Radio Gatto</strong> per un primo remix, e recentemente ha firmato un remix per l'album <em>Ethos</em> di <strong>Otus Medi</strong>.</p>
       <div class="bio-tags reveal d3">
         <span class="bio-tag">Techno</span>
         <span class="bio-tag">Elettronica</span>
@@ -376,7 +403,7 @@
 
 <!-- SOCIAL & LINKS -->
 <section id="social">
-  <div class="sec-label reveal">003 — Ascolta &amp; Seguimi</div>
+  <div class="sec-label reveal">005 — Ascolta &amp; Seguimi</div>
   <div class="sec-divider reveal d1"></div>
 
   <div class="social-intro reveal">
@@ -409,7 +436,7 @@
         </div>
         <span class="link-arrow">↗</span>
       </a>
-      <a href="https://music.amazon.it/artist/b08byzwhb4?ref=dm_sh_k7rsohn5ui3guWcJR8TGKjGjl" target="_blank" rel="noopener" class="link-card">
+      <a href="https://music.amazon.it/artists/B08BYZWHB4?ref=dm_sh_Pp1tCgMAlFouxofrRGDEqzqim" target="_blank" rel="noopener" class="link-card">
         <div class="link-card-left">
           <span class="link-icon">◁</span>
           <div class="link-info"><span class="link-name">Amazon Music</span><span class="link-sub">Ascolta su Amazon</span></div>
@@ -479,13 +506,6 @@
         </div>
         <span class="link-arrow">↗</span>
       </a>
-      <a href="https://www.tiktok.com/@solli_solomon" target="_blank" rel="noopener" class="link-card">
-        <div class="link-card-left">
-          <span class="link-icon">◈</span>
-          <div class="link-info"><span class="link-name">TikTok</span><span class="link-sub">@solli_solomon</span></div>
-        </div>
-        <span class="link-arrow">↗</span>
-      </a>
     </div>
   </div>
 
@@ -507,25 +527,72 @@
         </div>
         <span class="link-arrow">↗</span>
       </a>
+      <a href="https://www.tiktok.com/@solli_solomon" target="_blank" rel="noopener" class="link-card">
+        <div class="link-card-left">
+          <span class="link-icon">◈</span>
+          <div class="link-info"><span class="link-name">TikTok</span><span class="link-sub">@solli_solomon</span></div>
+        </div>
+        <span class="link-arrow">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- PROSSIME USCITE -->
+<section id="releases">
+  <div class="sec-label reveal">004 — Uscite</div>
+  <div class="sec-divider reveal d1"></div>
+  <div class="releases-header reveal">
+    <h2>Prossime <em>uscite</em></h2>
+    <p>Nuova musica in arrivo. Segui i canali per non perdere nessuna release.</p>
+  </div>
+  <div class="releases-grid">
+    <div class="release-card next reveal">
+      <div class="release-date">12 Giugno 2026</div>
+      <div class="release-title">Pulsing Waves</div>
+      <div class="release-meta">
+        Remix per l'album <strong>Ethos</strong> di <strong>Otus Medi</strong><br/>
+        Compilation con altri artisti
+      </div>
+      <div class="release-tags">
+        <span class="release-tag">Remix</span>
+        <span class="release-tag">Techno</span>
+        <span class="release-tag">Compilation</span>
+      </div>
+    </div>
+    <div class="release-card coming reveal d1">
+      <div class="release-date">Prossimi mesi · 2026</div>
+      <div class="release-title">3 Nuovi Brani</div>
+      <div class="release-meta">
+        Tre produzioni originali già pronte.<br/>
+        Date di uscita da definire.
+      </div>
+      <div class="release-tags">
+        <span class="release-tag">Originali</span>
+        <span class="release-tag">Elettronica</span>
+        <span class="release-tag">In arrivo</span>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
-  <div class="sec-label reveal">004 — Contatti</div>
+  <div class="sec-label reveal">006 — Contatti</div>
   <div class="sec-divider reveal d1"></div>
   <div class="contact-wrap">
     <h2 class="reveal">Parliamo di<br/><em>musica</em></h2>
     <p class="reveal d1">Per collaborazioni, booking o semplicemente per entrare in contatto con l'artista.</p>
     <div class="reveal d2">
       <div class="field-row">
-        <input class="field" type="text" placeholder="Nome"/>
-        <input class="field" type="email" placeholder="Email"/>
+        <input class="field" type="text" id="f-name" placeholder="Nome" required/>
+        <input class="field" type="email" id="f-email" placeholder="Email" required/>
       </div>
-      <input class="field" type="text" placeholder="Oggetto"/>
-      <textarea class="field" placeholder="Messaggio"></textarea>
-      <button class="btn-send">Invia messaggio</button>
+      <input class="field" type="text" id="f-subject" placeholder="Oggetto"/>
+      <textarea class="field" id="f-msg" placeholder="Messaggio" required></textarea>
+      <button class="btn-send" id="btn-send" type="button">Invia messaggio</button>
+      <p class="form-msg" id="form-ok">✓ Messaggio inviato. Ti rispondo presto.</p>
+      <p class="form-msg err" id="form-err">✕ Qualcosa non ha funzionato. Riprova o scrivimi direttamente.</p>
     </div>
   </div>
 </section>
@@ -584,6 +651,59 @@
     { threshold: 0.08 }
   );
   document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+  // FORM CONTATTI — Web3Forms (funziona su Cloudflare, Netlify, GitHub Pages, qualsiasi hosting)
+  // Registrati gratis su web3forms.com e inserisci la tua access_key qui sotto
+  const WEB3FORMS_KEY = 'INSERISCI-QUI-LA-TUA-KEY'; // ← ottieni gratis su web3forms.com
+
+  document.getElementById('btn-send').addEventListener('click', async () => {
+    const name    = document.getElementById('f-name').value.trim();
+    const email   = document.getElementById('f-email').value.trim();
+    const subject = document.getElementById('f-subject').value.trim();
+    const msg     = document.getElementById('f-msg').value.trim();
+    const okEl    = document.getElementById('form-ok');
+    const errEl   = document.getElementById('form-err');
+    const btn     = document.getElementById('btn-send');
+
+    okEl.className = 'form-msg'; errEl.className = 'form-msg err';
+
+    if (!name || !email || !msg) {
+      errEl.textContent = '✕ Compila almeno nome, email e messaggio.';
+      errEl.className = 'form-msg err';
+      return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = 'Invio in corso...';
+
+    try {
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          name, email,
+          subject: subject || 'Contatto dal sito Solli Solomon',
+          message: msg,
+          from_name: 'Sito Solli Solomon'
+        })
+      });
+      const data = await res.json();
+      if (data.success) {
+        okEl.className = 'form-msg ok';
+        ['f-name','f-email','f-subject','f-msg'].forEach(id => document.getElementById(id).value = '');
+        btn.textContent = 'Invia messaggio';
+        btn.disabled = false;
+      } else {
+        throw new Error('fail');
+      }
+    } catch {
+      errEl.textContent = '✕ Qualcosa non ha funzionato. Scrivimi su Instagram o Bandcamp.';
+      errEl.className = 'form-msg err';
+      btn.textContent = 'Invia messaggio';
+      btn.disabled = false;
+    }
+  });
 </script>
 </body>
 </html>
