@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sollisolomon.pages.dev/sitemap.xml
