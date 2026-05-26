@@ -59,6 +59,33 @@
       --warm: #d4874a;
     }
     html { scroll-behavior:smooth; }
+
+    /* BANNER ANNUNCIO */
+    .announce-bar {
+      position:fixed; top:0; left:0; right:0; z-index:200;
+      background:var(--accent); color:#07090b;
+      display:flex; align-items:center; justify-content:center;
+      gap:20px; padding:10px 52px;
+      font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.22em;
+      text-transform:uppercase;
+    }
+    .announce-bar img { width:28px; height:28px; object-fit:cover; border-radius:2px; flex-shrink:0; }
+    .announce-bar span { opacity:0.7; }
+    .announce-bar strong { font-weight:400; }
+    .announce-bar a.announce-link { color:#07090b; text-decoration:none; border-bottom:1px solid rgba(7,9,11,0.35); padding-bottom:1px; white-space:nowrap; transition:border-color 0.2s; }
+    .announce-bar a.announce-link:hover { border-color:#07090b; }
+    .announce-close { background:none; border:none; color:#07090b; font-size:16px; cursor:none; opacity:0.6; padding:0 0 0 12px; line-height:1; transition:opacity 0.2s; flex-shrink:0; }
+    .announce-close:hover { opacity:1; }
+    /* Sposta header e contenuto sotto il banner */
+    body.has-banner header { top:41px; }
+    body.has-banner #hero { padding-top:41px; }
+    @media(max-width:960px){
+      .announce-bar { padding:10px 16px; gap:10px; font-size:9px; }
+      body.has-banner header { top:38px; }
+    }
+
+    /* NOTA ESCLUSIVA BANDCAMP */
+    .music-exclusive { font-size:9px; color:var(--accent); letter-spacing:0.18em; text-transform:uppercase; margin-top:-4px; }
     body {
       background:var(--bg);
       color:var(--text);
@@ -307,6 +334,15 @@
   </svg>
 </div>
 
+<!-- BANNER ANNUNCIO -->
+<div class="announce-bar" id="announce-bar">
+  <img src="ethos-club-side.jpg" alt="Ethos Club Side"/>
+  <span>12 Giugno 2026 —</span>
+  <strong>Pulsing Waves</strong>
+  <span>· Remix per l'album Ethos di Otus Medi · Su tutti gli store</span>
+  <button class="announce-close" id="announce-close" aria-label="Chiudi">×</button>
+</div>
+
 <!-- HEADER -->
 <header id="hdr">
   <a href="#hero" class="logo">Solli Solomon</a>
@@ -394,7 +430,7 @@
       <div class="music-num">— 07</div><div class="music-title">Israele</div><div class="music-arrow">↗</div>
     </a>
     <a href="https://sollisolomon.bandcamp.com/track/apostolos" target="_blank" rel="noopener" class="music-card reveal d3">
-      <div class="music-num">— 08</div><div class="music-title">Apostolos</div><div class="music-arrow">↗</div>
+      <div class="music-num">— 08</div><div class="music-title">Apostolos</div><div class="music-exclusive">⬥ Esclusiva Bandcamp</div><div class="music-arrow">↗</div>
     </a>
     <a href="https://sollisolomon.bandcamp.com/track/gerico" target="_blank" rel="noopener" class="music-card reveal">
       <div class="music-num">— 09</div><div class="music-title">Gerico</div><div class="music-arrow">↗</div>
@@ -629,6 +665,15 @@
 </footer>
 
 <script>
+  // BANNER ANNUNCIO
+  const announceBar = document.getElementById('announce-bar');
+  const announceClose = document.getElementById('announce-close');
+  document.body.classList.add('has-banner');
+  announceClose.addEventListener('click', () => {
+    announceBar.style.display = 'none';
+    document.body.classList.remove('has-banner');
+  });
+
   // CURSORE A CROCE
   const cur = document.getElementById('cursor');
   const ring = document.getElementById('cring');
