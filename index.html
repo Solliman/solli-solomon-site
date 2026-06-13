@@ -59,33 +59,6 @@
       --warm: #d4874a;
     }
     html { scroll-behavior:smooth; }
-
-    /* BANNER ANNUNCIO */
-    .announce-bar {
-      position:fixed; top:0; left:0; right:0; z-index:200;
-      background:var(--accent); color:#07090b;
-      display:flex; align-items:center; justify-content:center;
-      gap:20px; padding:10px 52px;
-      font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.22em;
-      text-transform:uppercase;
-    }
-    .announce-bar img { width:28px; height:28px; object-fit:cover; border-radius:2px; flex-shrink:0; }
-    .announce-bar span { opacity:0.7; }
-    .announce-bar strong { font-weight:400; }
-    .announce-bar a.announce-link { color:#07090b; text-decoration:none; border-bottom:1px solid rgba(7,9,11,0.35); padding-bottom:1px; white-space:nowrap; transition:border-color 0.2s; }
-    .announce-bar a.announce-link:hover { border-color:#07090b; }
-    .announce-close { background:none; border:none; color:#07090b; font-size:16px; cursor:none; opacity:0.6; padding:0 0 0 12px; line-height:1; transition:opacity 0.2s; flex-shrink:0; }
-    .announce-close:hover { opacity:1; }
-    /* Sposta header e contenuto sotto il banner */
-    body.has-banner header { top:41px; }
-    body.has-banner #hero { padding-top:41px; }
-    @media(max-width:960px){
-      .announce-bar { padding:10px 16px; gap:10px; font-size:9px; }
-      body.has-banner header { top:38px; }
-    }
-
-    /* NOTA ESCLUSIVA BANDCAMP */
-    .music-exclusive { font-size:9px; color:var(--accent); letter-spacing:0.18em; text-transform:uppercase; margin-top:-4px; }
     body {
       background:var(--bg);
       color:var(--text);
@@ -267,6 +240,8 @@
     .release-tags { display:flex; flex-wrap:wrap; gap:6px; }
     .release-tag { border:1px solid var(--border); padding:4px 12px; font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); }
     .release-card.next .release-tag { border-color:rgba(0,200,180,0.25); color:var(--accent); }
+    .release-listen { display:inline-block; margin-top:20px; background:var(--accent); color:#07090b; text-decoration:none; padding:12px 24px; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.28em; text-transform:uppercase; transition:background 0.3s,transform 0.2s; }
+    .release-listen:hover { background:#00e0ca; transform:translateY(-1px); }
 
     /* CONTACT */
     #contact { border-top:1px solid var(--border); background:var(--surface); }
@@ -285,6 +260,22 @@
     .form-msg { font-size:11px; margin-top:16px; letter-spacing:0.12em; display:none; }
     .form-msg.ok { color:var(--accent); display:block; }
     .form-msg.err { color:#e07070; display:block; }
+
+    /* BANNER ANNUNCIO */
+    .announce-bar { position:fixed; top:0; left:0; right:0; z-index:200; background:var(--accent); color:#07090b; display:flex; align-items:center; justify-content:center; gap:16px; padding:10px 52px; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; }
+    .announce-bar img { width:26px; height:26px; object-fit:cover; border-radius:2px; flex-shrink:0; }
+    .announce-bar span { opacity:0.7; }
+    .announce-bar strong { font-weight:400; }
+    .announce-link { color:#07090b; text-decoration:none; border-bottom:1px solid rgba(7,9,11,0.4); padding-bottom:1px; white-space:nowrap; transition:border-color 0.2s; }
+    .announce-link:hover { border-color:#07090b; }
+    .announce-close { background:none; border:none; color:#07090b; font-size:18px; cursor:none; opacity:0.6; padding:0 0 0 8px; line-height:1; transition:opacity 0.2s; flex-shrink:0; }
+    .announce-close:hover { opacity:1; }
+    body.has-banner header { top:41px; }
+    body.has-banner #hero { padding-top:41px; }
+    @media(max-width:960px){ .announce-bar{ padding:10px 16px; gap:8px; font-size:9px; } body.has-banner header{ top:38px; } }
+
+    /* NOTA ESCLUSIVA */
+    .music-exclusive { font-size:9px; color:var(--accent); letter-spacing:0.18em; text-transform:uppercase; margin-top:-4px; }
 
     /* FOOTER */
     footer { border-top:1px solid var(--border); padding:32px 52px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
@@ -336,11 +327,9 @@
 
 <!-- BANNER ANNUNCIO -->
 <div class="announce-bar" id="announce-bar">
-  <img src="ethos-club-side.jpg" alt="Ethos Club Side"/>
-  <div class="release-date">⬥ Fuori ora</div>
+  <span>Fuori ora —</span>
   <strong>Pulsing Waves</strong>
-  Remix per l'album <strong>Ethos Club Side</strong> di <strong>Otus Medi</strong><br/>
-<a href="https://song.link/PulsingWavesRemix" target="_blank" rel="noopener" style="color:var(--accent); letter-spacing:0.15em; font-size:10px; text-decoration:none;">↗ Ascolta sul tuo store preferito</a>
+  <a href="https://sollisolomon.bandcamp.com/track/pulsing-waves-solli-solomon-remix" target="_blank" rel="noopener" class="announce-link">Ascolta su Bandcamp →</a>
   <button class="announce-close" id="announce-close" aria-label="Chiudi">×</button>
 </div>
 
@@ -350,7 +339,7 @@
   <nav>
     <a href="#bio">Bio</a>
     <a href="#music">Discografia</a>
-    <a href="#releases">Uscite</a>
+    <a href="#releases">Novità</a>
     <a href="#social">Social</a>
     <a href="#contact">Contatti</a>
   </nav>
@@ -459,6 +448,9 @@
     </a>
     <a href="https://sollisolomon.bandcamp.com/track/qoelet" target="_blank" rel="noopener" class="music-card collab reveal">
       <div class="music-num">— 17</div><div class="music-title">Qoelet</div><div class="music-collab">con Star Bstreet · 2019</div><div class="music-arrow">↗</div>
+    </a>
+    <a href="https://sollisolomon.bandcamp.com/track/pulsing-waves-solli-solomon-remix" target="_blank" rel="noopener" class="music-card reveal d1">
+      <div class="music-num">— 18</div><div class="music-title">Pulsing Waves</div><div class="music-collab">Remix · Otus Medi</div><div class="music-exclusive">⬥ Fuori ora</div><div class="music-arrow">↗</div>
     </a>
   </div>
 </section>
@@ -600,26 +592,28 @@
   </div>
 </section>
 
-<!-- Nuova release -->
+<!-- NOVITÀ E PROSSIME USCITE -->
 <section id="releases">
-  <div class="sec-label reveal">004 — Uscite</div>
+  <div class="sec-label reveal">004 — Novità &amp; Prossime Uscite</div>
   <div class="sec-divider reveal d1"></div>
   <div class="releases-header reveal">
-    <h2>Novità <em>e uscite</em></h2>
+    <h2>Novità e <em>prossime uscite</em></h2>
     <p>Nuova musica in arrivo. Segui i canali per non perdere nessuna release.</p>
   </div>
   <div class="releases-grid">
     <div class="release-card next reveal">
-      <div class="release-date">Fuori ora</div>
+      <div class="release-date">⬥ Fuori ora</div>
       <div class="release-title">Pulsing Waves</div>
-      <a href="https://song.link/PulsingWavesRemix" target="_blank" rel="noopener" class="announce-link">Ascolta ora →</a>
-       
+      <div class="release-meta">
+        Remix per l'album <strong>Ethos Club Side</strong> di <strong>Otus Medi</strong><br/>
+        Compilation con altri artisti
       </div>
       <div class="release-tags">
         <span class="release-tag">Remix</span>
         <span class="release-tag">Techno</span>
         <span class="release-tag">Compilation</span>
       </div>
+      <a href="https://sollisolomon.bandcamp.com/track/pulsing-waves-solli-solomon-remix" target="_blank" rel="noopener" class="release-listen">Ascolta su Bandcamp →</a>
     </div>
     <div class="release-card coming reveal d1">
       <div class="release-date">Prossimi mesi · 2026</div>
@@ -665,15 +659,6 @@
 </footer>
 
 <script>
-  // BANNER ANNUNCIO
-  const announceBar = document.getElementById('announce-bar');
-  const announceClose = document.getElementById('announce-close');
-  document.body.classList.add('has-banner');
-  announceClose.addEventListener('click', () => {
-    announceBar.style.display = 'none';
-    document.body.classList.remove('has-banner');
-  });
-
   // CURSORE A CROCE
   const cur = document.getElementById('cursor');
   const ring = document.getElementById('cring');
@@ -715,6 +700,15 @@
     document.getElementById('hdr').classList.toggle('scrolled', scrollY > 50)
   );
 
+  // BANNER ANNUNCIO
+  const announceBar = document.getElementById('announce-bar');
+  const announceClose = document.getElementById('announce-close');
+  document.body.classList.add('has-banner');
+  announceClose.addEventListener('click', () => {
+    announceBar.style.display = 'none';
+    document.body.classList.remove('has-banner');
+  });
+
   // Reveal on scroll
   const obs = new IntersectionObserver(
     entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
@@ -724,7 +718,7 @@
 
   // FORM CONTATTI — Web3Forms (funziona su Cloudflare, Netlify, GitHub Pages, qualsiasi hosting)
   // Registrati gratis su web3forms.com e inserisci la tua access_key qui sotto
-  const WEB3FORMS_KEY = '08831c13-61b0-4f7b-98fc-d667390455e7'; // ← ottieni gratis su web3forms.com
+  const WEB3FORMS_KEY = 'INSERISCI-QUI-LA-TUA-KEY'; // ← ottieni gratis su web3forms.com
 
   document.getElementById('btn-send').addEventListener('click', async () => {
     const name    = document.getElementById('f-name').value.trim();
