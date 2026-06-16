@@ -272,12 +272,14 @@ transition:background 0.5s, border-color 0.5s;
 header.scrolled { background:rgba(7,9,11,0.93); backdrop-filter:blur(18px); border-color:var(--border); }
 .logo { font-family:'Cormorant Garamond',serif; font-size:17px; font-weight:300; letter-spacing:0.32em; text-transform:uppercase; color:var(--text); text-decoration:none; }
 nav { display:flex; gap:36px; align-items: center; }
-nav a { color:var(--muted); text-decoration:none; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; transition:color 0.3s; }
+
+/* MODIFICA: Colore link menu ora è TEXT (bianco) e diventa ACCENT (cyan) al passaggio del mouse */
+nav a { color:var(--text); text-decoration:none; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; transition:color 0.3s; }
 nav a:hover { color:var(--accent); }
 
-/* TOGGLE LINGUA */
-#lang-toggle { background:none; border:none; color:var(--muted); font-size:10px; letter-spacing:0.22em; text-transform:uppercase; cursor:none; transition:color 0.3s; padding:0; outline:none; }
-#lang-toggle:hover { color:var(--accent); }
+/* MODIFICA: Pulsante lingua ora è sempre in evidenza in ACCENT (cyan) per visibilità su mobile */
+#lang-toggle { background:none; border:none; color:var(--accent); font-weight: bold; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; cursor:none; transition:color 0.3s; padding:0; outline:none; }
+#lang-toggle:hover { color:var(--text); }
 
 /* HERO */
 #hero {
@@ -541,18 +543,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="bio-text">
 <h2 class="reveal"><span class="lang-it">Suonare la <em>verità</em></span><span class="lang-en">Playing the <em>truth</em></span></h2>
 
-<!-- Testo Italiano (da Brand Content) -->
+<!-- Testo Italiano ripristinato con nomi in grassetto -->
 <div class="lang-it">
-    <p class="reveal d1">Solli Solomon è un produttore italiano in cui il suono diventa preghiera e il ritmo diventa rivelazione. La sua musica si muove tra techno, elettronica sperimentale e contemplativa — ogni uscita un viaggio verso l'interno, ogni beat una domanda su ciò che sta oltre.</p>
-    <p class="reveal d2">Radicato nella profondità spirituale e nell'intuizione creativa, costruisce paesaggi sonori che non riempiono solo uno spazio — lo aprono. Che nasca dalla Parola o dal silenzio puro, ogni produzione porta una sincerità rara in un mondo di rumore.</p>
-    <p class="reveal d3">Seguimi per non perdere nessuna nuova uscita. Il viaggio continua.</p>
+    <p class="reveal d1">Solli Solomon è un produttore italiano che unisce musica elettronica, spiritualità e ricerca sonora. Le sue tracce spaziano tra techno, dance ed elettronica sperimentale, fondendo vibrazioni profonde e atmosfere eteree.</p>
+    <p class="reveal d2">Ogni produzione riflette una visione precisa: suonare la verità, creare connessioni, parlare attraverso il suono. Che sia ispirata a un passo biblico o nata dal puro impulso creativo, la musica è sempre un atto di ricerca interiore.</p>
+    <p class="reveal d3">Le collaborazioni hanno arricchito il percorso: con <strong>Star Bstreet</strong> — sua moglie e voce di numerosi brani — ha realizzato alcune delle tracce più spiritualmente intense della sua discografia. Ha collaborato con <strong>Francesco Fontanella</strong> per il remix di APOC 13, con <strong>Radio Gatto</strong> per un primo remix, e recentemente ha firmato un remix per l'album <em>Ethos</em> di <strong>Otus Medi</strong>.</p>
 </div>
 
-<!-- Testo Inglese (da Brand Content) -->
+<!-- Testo Inglese aggiornato per riflettere la versione IT ripristinata -->
 <div class="lang-en">
-    <p class="reveal d1">Solli Solomon is an Italian producer where sound becomes prayer and rhythm becomes revelation. Moving between techno, experimental and contemplative electronics, each release is a journey inward, each beat a question about what lies beyond.</p>
-    <p class="reveal d2">Productions carry a rare sincerity: rooted in spiritual depth, they don't just fill a room, they open one. Whether born from the Word or pure silence, every production brings a rare sincerity in a world of noise.</p>
-    <p class="reveal d3">Follow for every new release. The journey is ongoing.</p>
+    <p class="reveal d1">Solli Solomon is an Italian producer combining electronic music, spirituality, and sonic research. His tracks range across techno, dance, and experimental electronics, blending deep vibrations with ethereal atmospheres.</p>
+    <p class="reveal d2">Every production reflects a precise vision: playing the truth, creating connections, speaking through sound. Whether inspired by a biblical verse or born from pure creative impulse, his music is always an act of inner exploration.</p>
+    <p class="reveal d3">Collaborations have enriched this journey: with <strong>Star Bstreet</strong> — his wife and the voice of many tracks — he has created some of the most spiritually intense works in his discography. He collaborated with <strong>Francesco Fontanella</strong> for the APOC 13 remix, with <strong>Radio Gatto</strong> for an early remix, and recently produced a remix for the album <em>Ethos</em> by <strong>Otus Medi</strong>.</p>
 </div>
 
 <div class="bio-tags reveal d3">
@@ -616,7 +618,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="music-num">— 06</div><div class="music-title">Apocalisse</div><div class="music-arrow">↗</div>
 </a>
 <a href="https://sollisolomon.bandcamp.com/track/tiger-balm" target="_blank" rel="noopener" class="music-card reveal d1">
-<div class="music-num">— 05</div><div class="music-title">Tiger Balm</div><div class="music-arrow">↗</div>
+<div class="music-num">— 05</div><div class="title">Tiger Balm</div><div class="music-arrow">↗</div>
 </a>
 <a href="https://sollisolomon.bandcamp.com/track/lui-il-re" target="_blank" rel="noopener" class="music-card collab reveal d2">
 <div class="music-num">— 04</div><div class="music-title">Lui è il Re</div><div class="music-collab"><span class="lang-it">con</span><span class="lang-en">with</span> Star Bstreet</div><div class="music-arrow">↗</div>
