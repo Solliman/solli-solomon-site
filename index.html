@@ -449,7 +449,9 @@ footer p { color:var(--muted); font-size:10px; letter-spacing:0.15em; }
 
 /* RESPONSIVE */
 @media(max-width:960px){
-header{padding:18px 24px;} nav{display:none;}
+header{padding:18px 24px;} 
+nav a {display:none;} /* Nascondiamo solo i link ma NON il pulsante sul cellulare */
+nav {gap: 0;} /* Evitiamo spazi vuoti */
 #hero{padding:0 24px 64px;}
 section{padding:80px 24px;}
 .bio-grid{grid-template-columns:1fr; gap:44px;}
