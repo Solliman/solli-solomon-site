@@ -10,6 +10,12 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<!-- SEO BILINGUE (HREFLANG) -->
+<link rel="alternate" hreflang="it" href="https://sollisolomon.pages.dev/" />
+<link rel="alternate" hreflang="en" href="https://sollisolomon.pages.dev/en.html" />
+<link rel="alternate" hreflang="x-default" href="https://sollisolomon.pages.dev/" />
+
 <meta name="description" content="Solli Solomon — produttore italiano di musica elettronica, techno cristiana e ricerca sonora. Musica per danzare, per feste in chiesa, per chi cerca libertà nel ritmo. Ascolta su Bandcamp, Spotify, Apple Music."/>
 <meta name="keywords" content="Solli Solomon, produttore italiano, elettronica, techno, musica spirituale, bandcamp, techno cristiana, christian techno, musica cristiana dance, festa in chiesa, party cristiano, church party music, christian electronic music, danza cristiana, christian dance, musica per chiesa, worship dance music, techno spirituale, spiritual techno, produttore elettronico cristiano, christian producer Italy, musica elettronica biblica, biblical electronic music, christian rave, electronic worship, techno italiana, dance cristiana, musica evangelica elettronica, gospel techno, christian edm, musica per giovani cristiani"/>
 <meta name="google-site-verification" content="0TwhKy6qlwDbH25IiIW_qXm0hIAt4563ZrJamPYdlDw" />
@@ -100,7 +106,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 "name": "Scoppierà la Musica",
 "description": "Remix di Solli Solomon.",
 "genre": ["Electronic", "Christian Dance", "Remix"],
-"url": "https://sollisolomon.bandcamp.com/track/scoppieral-la-musica",
+"url": "https://sollisolomon.bandcamp.com/track/scoppier-la-musica-solli-solomon-rmx",
 "byArtist": {"@type": "MusicGroup", "name": "Solli Solomon"}
 },
 {
@@ -226,6 +232,7 @@ body::before {
 content:''; position:fixed; inset:0; pointer-events:none; z-index:9000; opacity:0.45;
 background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
 }
+
 /* CURSORE: cerchio piccolo */
 .cursor {
 position:fixed;
@@ -239,6 +246,7 @@ transition:transform 0.15s ease, background 0.2s;
 }
 .cursor.on-button { background:#ffffff; transform:translate(-50%,-50%) scale(1.4); }
 .cursor.clicking { background:#ffffff; transform:translate(-50%,-50%) scale(0.7); }
+
 /* CURSORE INSEGUITORE: croce cristiana SVG */
 .cursor-ring {
 position:fixed;
@@ -254,6 +262,7 @@ transition: fill 0.2s;
 }
 .cursor-ring.on-button svg .cross-shape { fill: #ffffff; }
 .cursor-ring.clicking svg .cross-shape { fill: #ffffff; }
+
 /* HEADER */
 header {
 position:fixed; top:0; left:0; right:0; z-index:100;
@@ -264,9 +273,13 @@ transition:background 0.5s, border-color 0.5s;
 }
 header.scrolled { background:rgba(7,9,11,0.93); backdrop-filter:blur(18px); border-color:var(--border); }
 .logo { font-family:'Cormorant Garamond',serif; font-size:17px; font-weight:300; letter-spacing:0.32em; text-transform:uppercase; color:var(--text); text-decoration:none; }
-nav { display:flex; gap:36px; }
-nav a { color:var(--muted); text-decoration:none; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; transition:color 0.3s; }
+nav { display:flex; gap:36px; align-items: center; }
+nav a { color:var(--text); text-decoration:none; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; transition:color 0.3s; }
 nav a:hover { color:var(--accent); }
+
+#lang-toggle { text-decoration:none; background:none; border:none; color:var(--accent); font-weight: bold; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; cursor:none; transition:color 0.3s; padding:0; outline:none; }
+#lang-toggle:hover { color:var(--text); }
+
 /* HERO */
 #hero {
 min-height:100vh; position:relative;
@@ -299,10 +312,12 @@ rgba(7,9,11,0.97) 100%);
 .scroll-indicator { position:absolute; bottom:38px; right:52px; z-index:2; display:flex; flex-direction:column; align-items:center; gap:8px; color:var(--muted); font-size:10px; letter-spacing:0.2em; text-transform:uppercase; opacity:0; animation:fadeUp 1s 1.3s forwards; }
 .scroll-bar { width:1px; height:52px; background:linear-gradient(to bottom,var(--accent),transparent); animation:scrollPulse 2s ease-in-out infinite; }
 @keyframes scrollPulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
 /* SECTIONS */
 section { padding:116px 52px; }
 .sec-label { font-size:10px; letter-spacing:0.42em; text-transform:uppercase; color:var(--accent); margin-bottom:10px; }
 .sec-divider { width:36px; height:1px; background:var(--border); margin-bottom:60px; }
+
 /* BIO */
 #bio { border-top:1px solid var(--border); }
 .bio-grid { display:grid; grid-template-columns:380px 1fr; gap:90px; align-items:center; }
@@ -316,6 +331,7 @@ section { padding:116px 52px; }
 .bio-tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:36px; }
 .bio-tag { border:1px solid var(--border); padding:5px 15px; font-size:10px; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); transition:border-color 0.3s,color 0.3s; }
 .bio-tag:hover { border-color:var(--accent); color:var(--accent); }
+
 /* DISCOGRAFIA */
 #music { border-top:1px solid var(--border); background:var(--surface); }
 .music-header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:56px; flex-wrap:wrap; gap:16px; }
@@ -324,3 +340,520 @@ section { padding:116px 52px; }
 .music-header a { color:var(--accent); text-decoration:none; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; border-bottom:1px solid var(--accent-dim); padding-bottom:2px; transition:border-color 0.3s; }
 .music-header a:hover { border-color:var(--accent); }
 .music-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--border); border:1px solid var(--border); }
+.music-card { background:var(--surface); padding:30px 26px; display:flex; flex-direction:column; gap:10px; text-decoration:none; color:inherit; transition:background 0.3s; position:relative; overflow:hidden; }
+.music-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:var(--accent); transform:scaleX(0); transition:transform 0.4s cubic-bezier(0.16,1,0.3,1); }
+.music-card:hover { background:var(--bg); }
+.music-card:hover::after { transform:scaleX(1); }
+.music-card.collab::after { background:var(--warm); }
+.music-num { font-size:9px; color:var(--accent); letter-spacing:0.28em; }
+.music-card.collab .music-num { color:var(--warm); }
+.music-title { font-family:'Cormorant Garamond',serif; font-size:21px; font-weight:300; line-height:1.2; }
+.music-collab { font-size:10px; color:var(--muted); letter-spacing:0.08em; }
+.music-arrow { margin-top:auto; font-size:15px; color:var(--muted); transition:color 0.3s,transform 0.3s; align-self:flex-end; }
+.music-card:hover .music-arrow { color:var(--accent); transform:translate(3px,-3px); }
+.music-card.collab:hover .music-arrow { color:var(--warm); }
+.music-exclusive { font-size:9px; color:var(--accent); letter-spacing:0.18em; text-transform:uppercase; margin-top:-4px; }
+
+/* SOCIAL */
+#social { border-top:1px solid var(--border); }
+.social-intro { margin-bottom:72px; }
+.social-intro h2 { font-family:'Cormorant Garamond',serif; font-size:46px; font-weight:300; line-height:1.12; }
+.social-intro h2 em { font-style:italic; color:var(--accent); }
+.social-intro p { color:var(--muted); margin-top:16px; font-size:12px; line-height:2.1; max-width:500px; }
+.links-section { margin-bottom:56px; }
+.links-section-label { font-size:9px; letter-spacing:0.42em; text-transform:uppercase; color:var(--muted); margin-bottom:16px; padding-bottom:10px; border-bottom:1px solid var(--border); }
+.links-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1px; background:var(--border); border:1px solid var(--border); }
+.links-grid.two-col { grid-template-columns:repeat(2,1fr); }
+.link-card { background:var(--bg); padding:22px 24px; display:flex; align-items:center; justify-content:space-between; text-decoration:none; color:var(--text); transition:background 0.3s; position:relative; overflow:hidden; gap:12px; }
+.link-card::before { content:''; position:absolute; left:0; top:0; bottom:0; width:2px; background:var(--accent); transform:scaleY(0); transition:transform 0.35s cubic-bezier(0.16,1,0.3,1); transform-origin:bottom; }
+.link-card:hover { background:var(--surface); }
+.link-card:hover::before { transform:scaleY(1); }
+.link-card-left { display:flex; align-items:center; gap:14px; }
+.link-icon { font-size:16px; width:22px; text-align:center; flex-shrink:0; }
+.link-info { display:flex; flex-direction:column; gap:2px; }
+.link-name { font-size:11px; letter-spacing:0.18em; text-transform:uppercase; color:var(--text); }
+.link-sub { font-size:10px; color:var(--muted); letter-spacing:0.05em; }
+.link-arrow { color:var(--muted); font-size:14px; transition:transform 0.3s,color 0.3s; flex-shrink:0; }
+.link-card:hover .link-arrow { transform:translate(3px,-3px); color:var(--accent); }
+.link-card.featured .link-name { color:var(--accent); }
+.link-card.featured::before { background:var(--accent); }
+
+/* PROSSIME USCITE */
+#releases { border-top:1px solid var(--border); background:var(--surface); }
+.releases-header { margin-bottom:56px; }
+.releases-header h2 { font-family:'Cormorant Garamond',serif; font-size:44px; font-weight:300; line-height:1.1; }
+.releases-header h2 em { font-style:italic; color:var(--accent); }
+.releases-header p { color:var(--muted); margin-top:14px; font-size:12px; line-height:2.1; max-width:480px; }
+.releases-grid { display:grid; grid-template-columns:1fr 1fr; gap:1px; background:var(--border); border:1px solid var(--border); }
+.release-card { background:var(--bg); padding:36px 32px; position:relative; overflow:hidden; }
+.release-card.next { background:var(--accent-dim); }
+.release-card.next::after { content:'PROSSIMA USCITA'; position:absolute; top:24px; right:24px; font-size:8px; letter-spacing:0.38em; color:var(--accent); }
+.release-card.coming::after { content:'IN ARRIVO'; position:absolute; top:24px; right:24px; font-size:8px; letter-spacing:0.38em; color:var(--muted); }
+.release-date { font-size:10px; letter-spacing:0.28em; color:var(--accent); margin-bottom:14px; }
+.release-card.coming .release-date { color:var(--muted); }
+.release-title { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; line-height:1.15; margin-bottom:8px; }
+.release-meta { font-size:10px; color:var(--muted); letter-spacing:0.1em; line-height:1.9; margin-bottom:20px; }
+.release-meta strong { color:var(--text); font-weight:400; }
+.release-tags { display:flex; flex-wrap:wrap; gap:6px; }
+.release-tag { border:1px solid var(--border); padding:4px 12px; font-size:9px; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); }
+.release-card.next .release-tag { border-color:rgba(0,200,180,0.25); color:var(--accent); }
+.release-listen { display:inline-block; margin-top:20px; background:var(--accent); color:#07090b; text-decoration:none; padding:12px 24px; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.28em; text-transform:uppercase; transition:background 0.3s,transform 0.2s; }
+.release-listen:hover { background:#00e0ca; transform:translateY(-1px); }
+
+/* CONTACT */
+#contact { border-top:1px solid var(--border); background:var(--surface); }
+.contact-wrap { max-width:620px; }
+.contact-wrap h2 { font-family:'Cormorant Garamond',serif; font-size:46px; font-weight:300; line-height:1.1; margin-bottom:14px; }
+.contact-wrap h2 em { font-style:italic; color:var(--accent); }
+.contact-wrap > p { color:var(--muted); margin-bottom:44px; line-height:2.1; }
+.field-row { display:grid; grid-template-columns:1fr 1fr; }
+.field { border:1px solid var(--border); margin:-1px; padding:16px 18px; background:transparent; color:var(--text); font-family:'DM Mono',monospace; font-size:12px; outline:none; transition:border-color 0.3s,background 0.3s; width:100%; }
+.field::placeholder { color:var(--muted); }
+.field:focus { border-color:var(--accent); background:var(--accent-dim); z-index:1; position:relative; }
+textarea.field { resize:none; height:130px; }
+.btn-send { width:100%; background:transparent; border:1px solid var(--accent); color:var(--accent); padding:16px; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.32em; text-transform:uppercase; cursor:none; transition:background 0.3s,color 0.3s; margin-top:-1px; display:block; }
+.btn-send:hover { background:var(--accent); color:#07090b; }
+.btn-send:disabled { opacity:0.45; cursor:not-allowed; }
+.form-msg { font-size:11px; margin-top:16px; letter-spacing:0.12em; display:none; }
+.form-msg.ok { color:var(--accent); display:block; }
+.form-msg.err { color:#e07070; display:block; }
+
+/* BANNER ANNUNCIO */
+.announce-bar { position:fixed; top:0; left:0; right:0; z-index:200; background:var(--accent); color:#07090b; display:flex; align-items:center; justify-content:center; gap:16px; padding:10px 52px; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; }
+.announce-bar img { width:26px; height:26px; object-fit:cover; border-radius:2px; flex-shrink:0; }
+.announce-bar span { opacity:0.7; }
+.announce-bar strong { font-weight:400; }
+.announce-link { color:#07090b; text-decoration:none; border-bottom:1px solid rgba(7,9,11,0.4); padding-bottom:1px; white-space:nowrap; transition:border-color 0.2s; }
+.announce-link:hover { border-color:#07090b; }
+.announce-close { background:none; border:none; color:#07090b; font-size:18px; cursor:none; opacity:0.6; padding:0 0 0 8px; line-height:1; transition:opacity 0.2s; flex-shrink:0; }
+.announce-close:hover { opacity:1; }
+body.has-banner header { top:41px; }
+body.has-banner #hero { padding-top:41px; }
+
+/* FOOTER */
+footer { border-top:1px solid var(--border); padding:32px 52px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; }
+footer p { color:var(--muted); font-size:10px; letter-spacing:0.15em; }
+
+/* ANIMATIONS */
+@keyframes fadeUp { from{opacity:0;transform:translateY(22px)} to{opacity:1;transform:translateY(0)} }
+.reveal { opacity:0; transform:translateY(26px); transition:opacity 0.85s cubic-bezier(0.16,1,0.3,1),transform 0.85s cubic-bezier(0.16,1,0.3,1); }
+.reveal.visible { opacity:1; transform:none; }
+.d1{transition-delay:.1s} .d2{transition-delay:.2s} .d3{transition-delay:.3s} .d4{transition-delay:.4s}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+header{padding:18px 24px;} 
+nav a:not(#lang-toggle) {display:none;} /* Nasconde i link menu, ma lascia visibile il pulsante EN/IT */
+nav {gap: 0;}
+#hero{padding:0 24px 64px;}
+section{padding:80px 24px;}
+.bio-grid{grid-template-columns:1fr; gap:44px;}
+.bio-img-wrap{max-width:320px;}
+.music-grid{grid-template-columns:repeat(2,1fr);}
+.links-grid{grid-template-columns:repeat(2,1fr);}
+.links-grid.two-col{grid-template-columns:1fr;}
+.releases-grid{grid-template-columns:1fr;}
+footer{padding:28px 24px;}
+.announce-bar{ padding:10px 16px; gap:8px; font-size:9px; } 
+body.has-banner header{ top:38px; }
+}
+@media(max-width:520px){
+.music-grid{grid-template-columns:1fr;}
+.links-grid{grid-template-columns:1fr;}
+.links-grid.two-col{grid-template-columns:1fr;}
+.releases-grid{grid-template-columns:1fr;}
+.hero-title{font-size:56px;}
+.field-row{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TQRST493"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cring">
+<svg viewBox="0 0 36 44" xmlns="http://www.w3.org/2000/svg" width="36" height="44">
+<rect class="cross-shape" x="15" y="0" width="6" height="44" rx="1"/>
+<rect class="cross-shape" x="0" y="12" width="36" height="6" rx="1"/>
+</svg>
+</div>
+
+<!-- BANNER ANNUNCIO -->
+<div class="announce-bar" id="announce-bar">
+<img src="ethos-club-side.jpg" alt="Ethos Club Side"/>
+<span>Fuori ora —</span>
+<strong>Pulsing Waves</strong>
+<a href="https://sollisolomon.bandcamp.com/track/pulsing-waves-solli-solomon-remix" target="_blank" rel="noopener" class="announce-link">Ascolta su Bandcamp →</a>
+<button class="announce-close" id="announce-close" aria-label="Chiudi">×</button>
+</div>
+
+<!-- HEADER -->
+<header id="hdr">
+<a href="#hero" class="logo">Solli Solomon</a>
+<nav>
+<a href="#bio">Bio</a>
+<a href="#music">Discografia</a>
+<a href="#releases">Novità</a>
+<a href="#social">Social</a>
+<a href="#contact">Contatti</a>
+<a id="lang-toggle" href="en.html" aria-label="Passa all'Inglese">EN</a>
+</nav>
+</header>
+
+<!-- HERO -->
+<section id="hero">
+<div class="hero-bg"></div>
+<div class="hero-content">
+<div class="hero-tag">Produttore · Italia · Musica Elettronica</div>
+<h1 class="hero-title">Solli<br/><em>Solomon</em></h1>
+<p class="hero-sub">Tra techno, spiritualità e ricerca sonora. Ogni frequenza è un'intenzione, ogni beat una verità.</p>
+<div class="hero-cta">
+<a href="https://sollisolomon.bandcamp.com" target="_blank" rel="noopener" class="btn-primary">Ascolta su Bandcamp</a>
+<a href="#bio" class="btn-ghost">Scopri l'artista</a>
+</div>
+</div>
+<div class="scroll-indicator">
+<div class="scroll-bar"></div>
+<span>Scroll</span>
+</div>
+</section>
+
+<!-- BIO -->
+<section id="bio">
+<div class="sec-label reveal">001 — Biografia</div>
+<div class="sec-divider reveal d1"></div>
+<div class="bio-grid">
+<div class="bio-img-wrap reveal d1">
+<div class="bio-img-frame"></div>
+<img src="solli-artist.jpg" alt="Solli Solomon" class="bio-img"/>
+</div>
+<div class="bio-text">
+<h2 class="reveal">Suonare la <em>verità</em></h2>
+<p class="reveal d1">Solli Solomon è un produttore italiano che unisce musica elettronica, spiritualità e ricerca sonora. Le sue tracce spaziano tra techno, dance ed elettronica sperimentale, fondendo vibrazioni profonde e atmosfere eteree.</p>
+<p class="reveal d2">Ogni produzione riflette una visione precisa: suonare la verità, creare connessioni, parlare attraverso il suono. Che sia ispirata a un passo biblico o nata dal puro impulso creativo, la musica è sempre un atto di ricerca interiore.</p>
+<p class="reveal d3">Le collaborazioni hanno arricchito il percorso: con <strong>Star Bstreet</strong> — sua moglie e voce di numerosi brani — ha realizzato alcune delle tracce più spiritualmente intense della sua discografia. Ha collaborato con <strong>Francesco Fontanella</strong> per il remix di APOC 13, con <strong>Radio Gatto</strong> per un primo remix, e recentemente ha firmato un remix per l'album <em>Ethos</em> di <strong>Otus Medi</strong>.</p>
+<div class="bio-tags reveal d3">
+<span class="bio-tag">Techno</span>
+<span class="bio-tag">Elettronica</span>
+<span class="bio-tag">Sperimentale</span>
+<span class="bio-tag">Dance</span>
+<span class="bio-tag">Spirituale</span>
+<span class="bio-tag">Italia</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- DISCOGRAFIA -->
+<section id="music">
+<div class="sec-label reveal">002 — Discografia</div>
+<div class="sec-divider reveal d1"></div>
+<div class="music-header">
+<h2 class="reveal">Tutta la <em>musica</em></h2>
+<a href="https://sollisolomon.bandcamp.com" target="_blank" rel="noopener" class="reveal d1">Vai su Bandcamp →</a>
+</div>
+<div class="music-grid">
+<a href="https://sollisolomon.bandcamp.com/track/pulsing-waves-solli-solomon-remix" target="_blank" rel="noopener" class="music-card reveal">
+<div class="music-num">— 18</div><div class="music-title">Pulsing Waves</div><div class="music-collab">Remix · Otus Medi</div><div class="music-exclusive">⬥ Fuori ora</div><div class="music-arrow">↗</div>
+</a>
+<a href="https://sollisolomon.bandcamp.com/track/alfa-e-omega" target="_blank" rel="noopener" class="music-card reveal d1">
+<div class="music-num">— 17</div><div class="music-title">Alfa e Omega</div><div class="music-arrow">↗</div>
+</a>
+<a href="https://sollisolomon.bandcamp.com/track/eleutheria" target="_blank" rel="noopener" class="music-card reveal d2">
+<div class="music-num">— 16</div><div class="music-title">Eleutheria</div><div class="music-arrow">↗</div>
+</a>
+<a href="https://sollisolomon.bandcamp.com/track/regna" target="_blank" rel="noopener" class="music-card reveal d3">
+<div class="music-num">— 15</div><div class="music-title">Regna</div><div class="music-arrow">↗</div>
+</a>
+<a href="https://sollisolomon.bandcamp.com/track/vive" target="_blank" rel="noopener" class="music-card reveal">
+<div class="music-num">— 14</div><div class="music-title">Vive</div><div class="music-arrow">↗</div>
+</a>
+<a href="https://sollisolomon.bandcamp.com/track/apostolos-remix" target="_blank" rel="noopener" class="music-card reveal d1">
+<div class="music-num">— 13</div><div class="music-title">Apostolos Remix</div><div class="music-arrow">↗</div>
+</a>
+<a href="https://sollisolomon.bandcamp.com/track/scoppier-la-musica-solli-solomon-rmx" target="_blank" rel="noopener" class="music-card reveal d2">
+<div class="music-num">— 12</div><div class="music-title">Scoppierà la Musica</div><div class="music-collab">Solli Solomon rmx</div><div class="music-arrow">↗</div>
+</a>
+<a href="https://sollisolomon.bandcamp.com/track/israele" target="_blank" rel="noopener" class="music-card reveal d3">
+<div class="music-num">— 11</div><div class="music-title">Israele</div><div class="music-arrow">↗</div>
+</a>
+<a href="https://sollisolomon.bandcamp.com/track/apostolos" target="_blank" rel="noopener" class="music-card reveal">
+<div class="music-num">— 10</div><div class="music-title">Apostolos</div><div class="music-exclusive">⬥ Esclusiva Bandcamp</div><div class="music-arrow">↗</div>
+</a>
+<a href="https://sollisolomon.bandcamp.com/track/gerico" target="_blank" rel="noopener" class="music-card reveal d1">
+<div class="music-num">— 09</div><div class="music-title">Gerico</div><div class="music-arrow">↗</div>
+</a>
+<a href="https://sollisolomon.bandcamp.com/track/call-his-name" target="_blank" rel="noopener" class="music-card reveal d2">
+<div class="music-num">— 08</div><div class="music-title">Call His Name</div><div class="music-arrow">↗</div>
+</a>
+<a href="https://sollisolomon.bandcamp.com/track/apoc-13" target="_blank" rel="noopener" class="music-card reveal d3">
+<div class="music-num">— 07</div><div class="music-title">APOC 13</div><div class="music-arrow">↗</div>
+</a>
+<a href="https://sollisolomon.bandcamp.com/track/apocalisse" target="_blank" rel="noopener" class="music-card reveal">
+<div class="music-num">— 06</div><div class="music-title">Apocalisse</div><div class="music-arrow">↗</div>
+</a>
+<a href="https://sollisolomon.bandcamp.com/track/tiger-balm" target="_blank" rel="noopener" class="music-card reveal d1">
+<div class="music-num">— 05</div><div class="music-title">Tiger Balm</div><div class="music-arrow">↗</div>
+</a>
+<a href="https://sollisolomon.bandcamp.com/track/lui-il-re" target="_blank" rel="noopener" class="music-card collab reveal d2">
+<div class="music-num">— 04</div><div class="music-title">Lui è il Re</div><div class="music-collab">con Star Bstreet</div><div class="music-arrow">↗</div>
+</a>
+<a href="https://sollisolomon.bandcamp.com/track/jss" target="_blank" rel="noopener" class="music-card collab reveal d3">
+<div class="music-num">— 03</div><div class="music-title">Jss</div><div class="music-collab">con Star Bstreet</div><div class="music-arrow">↗</div>
+</a>
+<a href="https://sollisolomon.bandcamp.com/track/la-musica-cambia" target="_blank" rel="noopener" class="music-card collab reveal">
+<div class="music-num">— 02</div><div class="music-title">La Musica Cambia</div><div class="music-collab">con Star Bstreet</div><div class="music-arrow">↗</div>
+</a>
+<a href="https://sollisolomon.bandcamp.com/track/qoelet" target="_blank" rel="noopener" class="music-card collab reveal d1">
+<div class="music-num">— 01</div><div class="music-title">Qoelet</div><div class="music-collab">con Star Bstreet · 2019</div><div class="music-arrow">↗</div>
+</a>
+</div>
+</section>
+
+<!-- SOCIAL & LINKS -->
+<section id="social">
+<div class="sec-label reveal">003 — Ascolta &amp; Seguimi</div>
+<div class="sec-divider reveal d1"></div>
+<div class="social-intro reveal">
+<h2>Ovunque suoni<br/><em>la musica</em></h2>
+<p>Trovami su ogni piattaforma. Ascolta, condividi, supporta. La musica vive quando viaggia da un'anima all'altra.</p>
+</div>
+<div class="links-section reveal d1">
+<div class="links-section-label">Streaming &amp; Acquisto</div>
+<div class="links-grid">
+<a href="https://open.spotify.com/intl-it/artist/2x5xoFyjt2akRu1zYfcf9X" target="_blank" rel="noopener" class="link-card featured">
+<div class="link-card-left">
+<span class="link-icon">◎</span>
+<div class="link-info"><span class="link-name">Spotify</span><span class="link-sub">Ascolta in streaming</span></div>
+</div>
+<span class="link-arrow">↗</span>
+</a>
+<a href="https://sollisolomon.bandcamp.com" target="_blank" rel="noopener" class="link-card featured">
+<div class="link-card-left">
+<span class="link-icon">◈</span>
+<div class="link-info"><span class="link-name">Bandcamp</span><span class="link-sub">Acquista e supporta</span></div>
+</div>
+<span class="link-arrow">↗</span>
+</a>
+<a href="https://music.apple.com/is/artist/solli-solomon/1521179836" target="_blank" rel="noopener" class="link-card">
+<div class="link-card-left"><span class="link-icon">◇</span><div class="link-info"><span class="link-name">Apple Music</span><span class="link-sub">Ascolta su Apple</span></div></div><span class="link-arrow">↗</span>
+</a>
+<a href="https://music.amazon.it/artists/B08BYZWHB4" target="_blank" rel="noopener" class="link-card">
+<div class="link-card-left"><span class="link-icon">◁</span><div class="link-info"><span class="link-name">Amazon Music</span><span class="link-sub">Ascolta su Amazon</span></div></div><span class="link-arrow">↗</span>
+</a>
+<a href="https://www.deezer.com/us/artist/99159732" target="_blank" rel="noopener" class="link-card">
+<div class="link-card-left"><span class="link-icon">◉</span><div class="link-info"><span class="link-name">Deezer</span><span class="link-sub">Ascolta su Deezer</span></div></div><span class="link-arrow">↗</span>
+</a>
+<a href="https://www.beatport.com/artist/solli-solomon/1197556" target="_blank" rel="noopener" class="link-card">
+<div class="link-card-left"><span class="link-icon">◬</span><div class="link-info"><span class="link-name">Beatport</span><span class="link-sub">Techno &amp; Dance</span></div></div><span class="link-arrow">↗</span>
+</a>
+<a href="https://on.soundcloud.com/ngDAgpCxanwbQOj13F" target="_blank" rel="noopener" class="link-card">
+<div class="link-card-left"><span class="link-icon">◐</span><div class="link-info"><span class="link-name">SoundCloud</span><span class="link-sub">Ascolta su SoundCloud</span></div></div><span class="link-arrow">↗</span>
+</a>
+<a href="https://audius.co/sollisolomon" target="_blank" rel="noopener" class="link-card">
+<div class="link-card-left"><span class="link-icon">◑</span><div class="link-info"><span class="link-name">Audius</span><span class="link-sub">Piattaforma decentralizzata</span></div></div><span class="link-arrow">↗</span>
+</a>
+<a href="https://tune.fm/@Solli" target="_blank" rel="noopener" class="link-card">
+<div class="link-card-left"><span class="link-icon">◌</span><div class="link-info"><span class="link-name">Tune.fm</span><span class="link-sub">Web3 music</span></div></div><span class="link-arrow">↗</span>
+</a>
+<a href="https://songwhip.com/sollisolomon" target="_blank" rel="noopener" class="link-card">
+<div class="link-card-left"><span class="link-icon">◎</span><div class="link-info"><span class="link-name">Songwhip</span><span class="link-sub">Tutti i link in uno</span></div></div><span class="link-arrow">↗</span>
+</a>
+</div>
+</div>
+<!-- VIDEO -->
+<div class="links-section reveal d2">
+<div class="links-section-label">Video</div>
+<div class="links-grid two-col">
+<a href="https://www.youtube.com/channel/UC49R6ryKnZMl7hEmEuk9ppQ" target="_blank" rel="noopener" class="link-card">
+<div class="link-card-left"><span class="link-icon">▷</span><div class="link-info"><span class="link-name">Canale YouTube</span><span class="link-sub">Canale personale</span></div></div><span class="link-arrow">↗</span>
+</a>
+<a href="https://youtube.com/channel/UCEs3dfxua348gojTw109OMw?si=9y4FDnALHau2HuM9" target="_blank" rel="noopener" class="link-card">
+<div class="link-card-left"><span class="link-icon">▶</span><div class="link-info"><span class="link-name">YouTube Tema</span><span class="link-sub">Brani dal distributore</span></div></div><span class="link-arrow">↗</span>
+</a>
+</div>
+</div>
+<!-- SOCIAL -->
+<div class="links-section reveal d3">
+<div class="links-section-label">Social</div>
+<div class="links-grid">
+<a href="https://www.instagram.com/solli_solomon" target="_blank" rel="noopener" class="link-card">
+<div class="link-card-left"><span class="link-icon">◻</span><div class="link-info"><span class="link-name">Instagram</span><span class="link-sub">@solli_solomon</span></div></div><span class="link-arrow">↗</span>
+</a>
+<a href="https://www.facebook.com/solli.solomon.777" target="_blank" rel="noopener" class="link-card">
+<div class="link-card-left"><span class="link-icon">◼</span><div class="link-info"><span class="link-name">Facebook</span><span class="link-sub">solli.solomon.777</span></div></div><span class="link-arrow">↗</span>
+</a>
+<a href="https://www.tiktok.com/@solli_solomon" target="_blank" rel="noopener" class="link-card">
+<div class="link-card-left"><span class="link-icon">◈</span><div class="link-info"><span class="link-name">TikTok</span><span class="link-sub">@solli_solomon</span></div></div><span class="link-arrow">↗</span>
+</a>
+</div>
+</div>
+</section>
+
+<!-- NOVITÀ E PROSSIME USCITE -->
+<section id="releases">
+<div class="sec-label reveal">004 — Novità &amp; Prossime Uscite</div>
+<div class="sec-divider reveal d1"></div>
+<div class="releases-header reveal">
+<h2>Novità e <em>prossime uscite</em></h2>
+<p>Nuova musica in arrivo. Segui i canali per non perdere nessuna release.</p>
+</div>
+<div class="releases-grid">
+<div class="release-card next reveal">
+<div class="release-date">⬥ Fuori ora</div>
+<div class="release-title">Pulsing Waves</div>
+<div class="release-meta">
+Remix per l'album <strong>Ethos Club Side</strong> di <strong>Otus Medi</strong><br/>
+Compilation con altri artisti
+</div>
+<div class="release-tags">
+<span class="release-tag">Remix</span>
+<span class="release-tag">Techno</span>
+<span class="release-tag">Compilation</span>
+</div>
+<a href="https://sollisolomon.bandcamp.com/track/pulsing-waves-solli-solomon-remix" target="_blank" rel="noopener" class="release-listen">Ascolta su Bandcamp →</a>
+</div>
+
+<div class="release-card coming reveal d1">
+<div class="release-date">Prossimi mesi · 2026</div>
+<div class="release-title">3 Nuovi Brani</div>
+<div class="release-meta">
+Tre produzioni originali già pronte.<br/>
+Date di uscita da definire.
+</div>
+<div class="release-tags">
+<span class="release-tag">Originali</span>
+<span class="release-tag">Elettronica</span>
+<span class="release-tag">In arrivo</span>
+</div>
+</div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+<div class="sec-label reveal">005 — Contatti</div>
+<div class="sec-divider reveal d1"></div>
+<div class="contact-wrap">
+<h2 class="reveal">Parliamo di<br/><em>musica</em></h2>
+<p class="reveal d1">Per collaborazioni, booking o semplicemente per entrare in contatto con l'artista.</p>
+<div class="reveal d2">
+<div class="field-row">
+<input class="field" type="text" id="f-name" placeholder="Nome" required/>
+<input class="field" type="email" id="f-email" placeholder="Email" required/>
+</div>
+<input class="field" type="text" id="f-subject" placeholder="Oggetto"/>
+<textarea class="field" id="f-msg" placeholder="Messaggio" required></textarea>
+<button class="btn-send" id="btn-send" type="button">Invia messaggio</button>
+<p class="form-msg" id="form-ok">✓ Messaggio inviato. Ti rispondo presto.</p>
+<p class="form-msg err" id="form-err">✕ Qualcosa non ha funzionato. Riprova o scrivimi direttamente.</p>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<a href="#hero" class="logo">Solli Solomon</a>
+<p>© 2026 Solli Solomon — Tutti i diritti riservati</p>
+</footer>
+
+<script>
+// CURSORE
+const cur = document.getElementById('cursor');
+const ring = document.getElementById('cring');
+let mx=0, my=0, rx=0, ry=0;
+document.addEventListener('mousemove', e => {
+mx = e.clientX; my = e.clientY;
+cur.style.left = mx + 'px';
+cur.style.top = my + 'px';
+});
+(function loop() {
+rx += (mx - rx) * 0.1;
+ry += (my - ry) * 0.1;
+ring.style.left = rx + 'px';
+ring.style.top = ry + 'px';
+requestAnimationFrame(loop);
+})();
+document.querySelectorAll('a, button, input, textarea').forEach(el => {
+el.addEventListener('mouseenter', () => { cur.classList.add('on-button'); ring.classList.add('on-button'); });
+el.addEventListener('mouseleave', () => { cur.classList.remove('on-button'); ring.classList.remove('on-button'); });
+});
+document.addEventListener('mousedown', () => cur.classList.add('clicking'));
+document.addEventListener('mouseup', () => cur.classList.remove('clicking'));
+
+// SCROLL HEADER
+window.addEventListener('scroll', () =>
+document.getElementById('hdr').classList.toggle('scrolled', scrollY > 50)
+);
+
+// BANNER
+const announceBar = document.getElementById('announce-bar');
+const announceClose = document.getElementById('announce-close');
+document.body.classList.add('has-banner');
+announceClose.addEventListener('click', () => {
+announceBar.style.display = 'none';
+document.body.classList.remove('has-banner');
+});
+
+// ANIMAZIONI
+const obs = new IntersectionObserver(
+entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+{ threshold: 0.08 }
+);
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+// FORM CONTATTI
+const WEB3FORMS_KEY = '08831c13-61b0-4f7b-98fc-d667390455e7';
+document.getElementById('btn-send').addEventListener('click', async () => {
+const name    = document.getElementById('f-name').value.trim();
+const email   = document.getElementById('f-email').value.trim();
+const subject = document.getElementById('f-subject').value.trim();
+const msg     = document.getElementById('f-msg').value.trim();
+const okEl    = document.getElementById('form-ok');
+const errEl   = document.getElementById('form-err');
+const btn     = document.getElementById('btn-send');
+okEl.className = 'form-msg'; errEl.className = 'form-msg err';
+
+if (!name || !email || !msg) {
+errEl.textContent = '✕ Compila almeno nome, email e messaggio.';
+errEl.className = 'form-msg err';
+return;
+}
+btn.disabled = true;
+btn.textContent = 'Invio in corso...';
+try {
+const res = await fetch('https://api.web3forms.com/submit', {
+method: 'POST',
+headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+body: JSON.stringify({
+access_key: WEB3FORMS_KEY,
+name, email,
+subject: subject || 'Contatto dal sito Solli Solomon',
+message: msg,
+from_name: 'Sito Solli Solomon'
+})
+});
+const data = await res.json();
+if (data.success) {
+okEl.className = 'form-msg ok';
+['f-name','f-email','f-subject','f-msg'].forEach(id => document.getElementById(id).value = '');
+btn.textContent = 'Invia messaggio';
+btn.disabled = false;
+} else {
+throw new Error('fail');
+}
+} catch {
+errEl.textContent = '✕ Qualcosa non ha funzionato. Scrivimi su Instagram o Bandcamp.';
+errEl.className = 'form-msg err';
+btn.textContent = 'Invia messaggio';
+btn.disabled = false;
+}
+});
+</script>
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "0c80ea44a28c4fe6bb78df092a0348ce"}'></script>
+<!-- End Cloudflare Web Analytics -->
+</body>
+</html>
