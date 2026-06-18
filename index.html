@@ -226,7 +226,7 @@ body::before {
 content:''; position:fixed; inset:0; pointer-events:none; z-index:9000; opacity:0.45;
 background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
 }
-/* CURSORE: cerchio piccolo */
+/* CURSORE */
 .cursor {
 position:fixed;
 width:8px; height:8px;
@@ -239,7 +239,6 @@ transition:transform 0.15s ease, background 0.2s;
 }
 .cursor.on-button { background:#ffffff; transform:translate(-50%,-50%) scale(1.4); }
 .cursor.clicking { background:#ffffff; transform:translate(-50%,-50%) scale(0.7); }
-/* CURSORE INSEGUITORE: croce cristiana SVG */
 .cursor-ring {
 position:fixed;
 width:36px; height:44px;
@@ -343,7 +342,6 @@ transition:background 0.3s; position:relative; overflow:hidden;
 .music-arrow { margin-top:auto; font-size:15px; color:var(--muted); transition:color 0.3s,transform 0.3s; align-self:flex-end; }
 .music-card:hover .music-arrow { color:var(--accent); transform:translate(3px,-3px); }
 .music-card.collab:hover .music-arrow { color:var(--warm); }
-/* NOTA ESCLUSIVA */
 .music-exclusive { font-size:9px; color:var(--accent); letter-spacing:0.18em; text-transform:uppercase; margin-top:-4px; }
 /* SOCIAL */
 #social { border-top:1px solid var(--border); }
@@ -368,6 +366,8 @@ transition:background 0.3s; position:relative; overflow:hidden;
 .link-card:hover .link-arrow { transform:translate(3px,-3px); color:var(--accent); }
 .link-card.featured .link-name { color:var(--accent); }
 .link-card.featured::before { background:var(--accent); }
+/* VIDEO */
+.links-section reveal d2 { margin-bottom:56px; }
 /* PROSSIME USCITE */
 #releases { border-top:1px solid var(--border); background:var(--surface); }
 .releases-header { margin-bottom:56px; }
@@ -389,15 +389,15 @@ transition:background 0.3s; position:relative; overflow:hidden;
 .release-card.next .release-tag { border-color:rgba(0,200,180,0.25); color:var(--accent); }
 .release-listen { display:inline-block; margin-top:20px; background:var(--accent); color:#07090b; text-decoration:none; padding:12px 24px; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.28em; text-transform:uppercase; transition:background 0.3s,transform 0.2s; }
 .release-listen:hover { background:#00e0ca; transform:translateY(-1px); }
-/* CONTACT */
+/* CONTACT & FORMS */
 #contact { border-top:1px solid var(--border); background:var(--surface); }
 .contact-wrap { max-width:620px; }
 .contact-wrap h2 { font-family:'Cormorant Garamond',serif; font-size:46px; font-weight:300; line-height:1.1; margin-bottom:14px; }
 .contact-wrap h2 em { font-style:italic; color:var(--accent); }
 .contact-wrap > p { color:var(--muted); margin-bottom:44px; line-height:2.1; }
 .field-row { display:grid; grid-template-columns:1fr 1fr; }
-.field { border:1px solid var(--border); margin:-1px; padding:16px 18px; background:transparent; color:var(--text); font-family:'DM Mono',monospace; font-size:12px; outline:none; transition:border-color 0.3s,background 0.3s; width:100%; }
-.field::placeholder { color:var(--muted); }
+.field { border:1px solid var(--border); margin:-1px; padding:16px 18px; background:transparent; color:#ffffff; font-family:'DM Mono',monospace; font-size:12px; outline:none; transition:border-color 0.3s,background 0.3s; width:100%; }
+.field::placeholder { color:#ffffff; opacity:0.85; }
 .field:focus { border-color:var(--accent); background:var(--accent-dim); z-index:1; position:relative; }
 textarea.field { resize:none; height:130px; }
 .btn-send { width:100%; background:transparent; border:1px solid var(--accent); color:var(--accent); padding:16px; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.32em; text-transform:uppercase; cursor:none; transition:background 0.3s,color 0.3s; margin-top:-1px; display:block; }
@@ -428,7 +428,7 @@ footer p { color:var(--muted); font-size:10px; letter-spacing:0.15em; }
 /* RESPONSIVE */
 @media(max-width:960px){
 header{padding:18px 24px;}
-nav a:not(#lang-toggle) {display:none;} /* Nasconde i link menu, ma lascia visibile il pulsante EN/IT */
+nav a:not(#lang-toggle) {display:none;}
 nav {gap: 0;}
 #hero{padding:0 24px 64px;}
 section{padding:80px 24px;}
@@ -760,7 +760,6 @@ Date di uscita da definire.
 </div>
 </div>
 </section>
-
 <!-- IL CENACOLO (COMMUNITY PRIVATA) -->
 <section id="cenacolo">
     <div class="sec-label reveal">005 — Inner Circle</div>
@@ -784,7 +783,6 @@ Date di uscita da definire.
                 </button>
             </div>
             
-            <!-- Messaggio di Successo con Link e QR Code -->
             <div id="cenacolo-success" style="display:none; margin-top: 20px; padding: 20px; border: 1px dashed var(--accent); color: var(--accent);">
                 <strong>✓ Accesso Garantito.</strong><br><br>
                 Benvenuto nel Cenacolo. Usa uno dei metodi qui sotto per entrare nel gruppo blindato su Telegram:<br><br>
@@ -792,7 +790,6 @@ Date di uscita da definire.
                 <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap; margin-top: 15px;">
                     <a href="https://t.me/+TlzorC1zSkY5YzI0" target="_blank" style="display:inline-block; color:#000; background:var(--accent); padding:12px 24px; text-decoration:none; font-family:'DM Mono',monospace; font-size:11px; text-transform:uppercase; font-weight:bold;">Entra nel Gruppo →</a>
                     
-                    <!-- QR Code Generato in Automatico -->
                     <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://t.me/+TlzorC1zSkY5YzI0" alt="QR Code Telegram" style="width: 100px; height: 100px; border: 2px solid var(--accent); border-radius: 4px; padding: 5px; background: #fff;">
                 </div>
                 <div style="margin-top: 20px; font-size: 10px; color: var(--muted); word-break: break-all;">
@@ -802,14 +799,13 @@ Date di uscita da definire.
         </div>
     </div>
 </section>
-
 <!-- CONTACT -->
 <section id="contact">
 <div class="sec-label reveal">006 — Contatti</div>
 <div class="sec-divider reveal d1"></div>
 <div class="contact-wrap">
-<h2 class="reveal">Parliamo di<br/><em>musica</em></h2>
-<p class="reveal d1">Per collaborazioni, booking o semplicemente per entrare in contatto con l'artista.</p>
+<h2 class="reveal">Scrivimi in<br/><em>privato</em></h2>
+<p class="reveal d1">Se non desideri accedere al Cenacolo, o per collaborazioni e booking, usa questo modulo per un contatto diretto.</p>
 <div class="reveal d2">
 <div class="field-row">
 <input class="field" type="text" id="f-name" placeholder="Nome" required/>
@@ -829,13 +825,33 @@ Date di uscita da definire.
 <p>© 2026 Solli Solomon — Tutti i diritti riservati</p>
 </footer>
 <script>
-// SCRIPT IL CENACOLO
-document.getElementById('btn-cenacolo').addEventListener('click', function() {
+// SCRIPT IL CENACOLO (CON INVIO EMAIL)
+document.getElementById('btn-cenacolo').addEventListener('click', async function() {
     const name = document.getElementById('c-name').value.trim();
     const email = document.getElementById('c-email').value.trim();
+    const btn = document.getElementById('btn-cenacolo');
+
     if(name && email) {
-        document.getElementById('cenacolo-form-area').style.display = 'none';
-        document.getElementById('cenacolo-success').style.display = 'block';
+        btn.textContent = 'Attendere...'; 
+        try {
+            await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                    access_key: '08831c13-61b0-4f7b-98fc-d667390455e7',
+                    name: name,
+                    email: email,
+                    subject: 'Nuovo iscritto al Cenacolo!',
+                    message: 'Nuovo accesso al tuo inner circle.\n\nNome: ' + name + '\nEmail: ' + email,
+                    from_name: 'Il Cenacolo'
+                })
+            });
+            document.getElementById('cenacolo-form-area').style.display = 'none';
+            document.getElementById('cenacolo-success').style.display = 'block';
+        } catch (error) {
+            alert('Errore di connessione. Riprova.');
+            btn.textContent = 'Richiedi l\'accesso';
+        }
     } else {
         alert('Per favore, inserisci nome ed email per accedere.');
     }
