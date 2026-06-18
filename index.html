@@ -762,14 +762,12 @@ Date di uscita da definire.
 </section>
 
 <!-- IL CENACOLO (COMMUNITY PRIVATA) -->
-<section id="cenacolo" style="background-color: #040506; border-top: 1px solid var(--border);">
+<section id="cenacolo">
     <div class="sec-label reveal">005 — Inner Circle</div>
     <div class="sec-divider reveal d1"></div>
     
-    <div class="bio-grid" style="grid-template-columns: 1fr; max-width: 800px; margin: 0 auto; text-align: center;">
-        <h2 class="reveal" style="font-family:'Cormorant Garamond',serif; font-size:48px; font-weight:300; margin-bottom:20px;">
-            Il <em>Cenacolo</em>
-        </h2>
+    <div class="contact-wrap">
+        <h2 class="reveal">Il <em>Cenacolo</em></h2>
         <p class="reveal d1" style="color:var(--muted); margin-bottom:40px; font-size:13px; line-height: 2;">
             Uno spazio di comunicazione e condivisione, dove la musica diventa incontro.<br>
             Lascia la tua email per accedere al gruppo privato. Qui desidero condividere in anteprima le bozze dei miei brani, avere i vostri feedback, apprendere dalle idee della community e parlare di musica. Questo spazio è strettamente riservato a chi vuole costruire un'amicizia reale e collaborare, nella consapevolezza del rispetto reciproco e del mio amore in Cristo.
@@ -779,17 +777,27 @@ Date di uscita da definire.
             <div id="cenacolo-form-area">
                 <div style="display:flex; gap:10px; margin-bottom: 15px; flex-wrap: wrap;">
                     <input class="field" type="text" id="c-name" placeholder="Il tuo nome" style="flex:1;" required/>
-                    <input class="field" type="email" id="c-email" placeholder="La tua email migliore" style="flex:2;" required/>
+                    <input class="field" type="email" id="c-email" placeholder="La tua email" style="flex:2;" required/>
                 </div>
                 <button class="btn-send" id="btn-cenacolo" type="button" style="background:var(--accent); color:#000; font-weight:bold; border: none;">
                     Richiedi l'accesso
                 </button>
             </div>
             
+            <!-- Messaggio di Successo con Link e QR Code -->
             <div id="cenacolo-success" style="display:none; margin-top: 20px; padding: 20px; border: 1px dashed var(--accent); color: var(--accent);">
-                <strong>Accesso Garantito.</strong><br><br>
-                Benvenuto nel Cenacolo. Clicca il link qui sotto per entrare nel nostro gruppo Telegram riservato:<br>
-                <a href="https://t.me/+TlzorC1zSkY5YzI0" target="_blank" style="display:inline-block; margin-top:20px; color:#000; background:var(--accent); padding:12px 24px; text-decoration:none; font-family:'DM Mono',monospace; font-size:11px; text-transform:uppercase; font-weight:bold;">Entra nel Gruppo →</a>
+                <strong>✓ Accesso Garantito.</strong><br><br>
+                Benvenuto nel Cenacolo. Usa uno dei metodi qui sotto per entrare nel gruppo blindato su Telegram:<br><br>
+                
+                <div style="display: flex; gap: 20px; align-items: center; flex-wrap: wrap; margin-top: 15px;">
+                    <a href="https://t.me/+TlzorC1zSkY5YzI0" target="_blank" style="display:inline-block; color:#000; background:var(--accent); padding:12px 24px; text-decoration:none; font-family:'DM Mono',monospace; font-size:11px; text-transform:uppercase; font-weight:bold;">Entra nel Gruppo →</a>
+                    
+                    <!-- QR Code Generato in Automatico -->
+                    <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=https://t.me/+TlzorC1zSkY5YzI0" alt="QR Code Telegram" style="width: 100px; height: 100px; border: 2px solid var(--accent); border-radius: 4px; padding: 5px; background: #fff;">
+                </div>
+                <div style="margin-top: 20px; font-size: 10px; color: var(--muted); word-break: break-all;">
+                    Oppure copia questo link: <span style="color: var(--text);">https://t.me/+TlzorC1zSkY5YzI0</span>
+                </div>
             </div>
         </div>
     </div>
