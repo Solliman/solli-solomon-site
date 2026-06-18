@@ -226,15 +226,14 @@ transition:background 0.3s; position:relative; overflow:hidden;
 .release-card.next .release-tag { border-color:rgba(0,200,180,0.25); color:var(--accent); }
 .release-listen { display:inline-block; margin-top:20px; background:var(--accent); color:#07090b; text-decoration:none; padding:12px 24px; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.28em; text-transform:uppercase; transition:background 0.3s,transform 0.2s; }
 .release-listen:hover { background:#00e0ca; transform:translateY(-1px); }
-/* CONTACT */
-#contact { border-top:1px solid var(--border); background:var(--surface); }
+/* CENACOLO (THE UPPER ROOM) */
+#cenacolo { border-top:1px solid var(--border); }
 .contact-wrap { max-width:620px; }
-.contact-wrap h2 { font-family:'Cormorant Garamond',serif; font-size:46px; font-weight:300; line-height:1.1; margin-bottom:14px; }
-.contact-wrap h2 em { font-style:italic; color:var(--accent); }
-.contact-wrap > p { color:var(--muted); margin-bottom:44px; line-height:2.1; }
+/* CONTACT & FORMS */
+#contact { border-top:1px solid var(--border); background:var(--surface); }
 .field-row { display:grid; grid-template-columns:1fr 1fr; }
-.field { border:1px solid var(--border); margin:-1px; padding:16px 18px; background:transparent; color:var(--text); font-family:'DM Mono',monospace; font-size:12px; outline:none; transition:border-color 0.3s,background 0.3s; width:100%; }
-.field::placeholder { color:var(--muted); }
+.field { border:1px solid var(--border); margin:-1px; padding:16px 18px; background:transparent; color:#ffffff; font-family:'DM Mono',monospace; font-size:12px; outline:none; transition:border-color 0.3s,background 0.3s; width:100%; }
+.field::placeholder { color:#ffffff; opacity:0.85; }
 .field:focus { border-color:var(--accent); background:var(--accent-dim); z-index:1; position:relative; }
 textarea.field { resize:none; height:130px; }
 .btn-send { width:100%; background:transparent; border:1px solid var(--accent); color:var(--accent); padding:16px; font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.32em; text-transform:uppercase; cursor:none; transition:background 0.3s,color 0.3s; margin-top:-1px; display:block; }
@@ -639,8 +638,8 @@ Release dates to be defined.
 <div class="sec-label reveal">006 — Contact</div>
 <div class="sec-divider reveal d1"></div>
 <div class="contact-wrap">
-<h2 class="reveal">Let's talk about<br/><em>music</em></h2>
-<p class="reveal d1">For collaborations, booking, or simply to get in touch with the artist.</p>
+<h2 class="reveal">Write me<br/><em>privately</em></h2>
+<p class="reveal d1">If you prefer not to join the Upper Room, or for collaborations and booking, send me a direct message.</p>
 <div class="reveal d2">
 <div class="field-row">
 <input class="field" type="text" id="f-name" placeholder="Name" required/>
@@ -660,13 +659,33 @@ Release dates to be defined.
 <p>© 2026 Solli Solomon — All rights reserved</p>
 </footer>
 <script>
-// CENACOLO SCRIPT
-document.getElementById('btn-cenacolo').addEventListener('click', function() {
+// CENACOLO SCRIPT (WITH EMAIL SENDING)
+document.getElementById('btn-cenacolo').addEventListener('click', async function() {
     const name = document.getElementById('c-name').value.trim();
     const email = document.getElementById('c-email').value.trim();
+    const btn = document.getElementById('btn-cenacolo');
+
     if(name && email) {
-        document.getElementById('cenacolo-form-area').style.display = 'none';
-        document.getElementById('cenacolo-success').style.display = 'block';
+        btn.textContent = 'Please wait...';
+        try {
+            await fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify({
+                    access_key: '08831c13-61b0-4f7b-98fc-d667390455e7',
+                    name: name,
+                    email: email,
+                    subject: 'New member in The Upper Room!',
+                    message: 'New access to your inner circle.\n\nName: ' + name + '\nEmail: ' + email,
+                    from_name: 'The Upper Room'
+                })
+            });
+            document.getElementById('cenacolo-form-area').style.display = 'none';
+            document.getElementById('cenacolo-success').style.display = 'block';
+        } catch (error) {
+            alert('Connection error. Please try again.');
+            btn.textContent = 'Request Access';
+        }
     } else {
         alert('Please enter your name and email to request access.');
     }
