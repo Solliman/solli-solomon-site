@@ -250,3 +250,22 @@ body.has-banner header{ top:38px; }
 /* NASCONDE IL QR CODE SU SMARTPHONE */
 .desktop-only { display: none; }
 @media (min-width: 768px) { .desktop-only { display: block; } }
+/* --- STILE TESTI IL CENACOLO --- */
+#cenacolo h2 { 
+    font-family: 'Cormorant Garamond', serif; 
+    font-size: 46px; 
+    font-weight: 300; 
+    line-height: 1.1; 
+    margin-bottom: 28px; 
+}
+#cenacolo h2 em { 
+    font-style: italic; 
+    color: var(--accent); 
+}
+#cenacolo p { 
+    color: var(--muted); 
+    margin-bottom: 18px; 
+    line-height: 2.15; 
+    font-size: 13px; 
+    max-width: 600px; 
+}
