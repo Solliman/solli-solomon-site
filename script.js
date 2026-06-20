@@ -1,34 +1,22 @@
-// SCRIPT IL CENACOLO (CON INVIO EMAIL)
-document.getElementById('btn-cenacolo').addEventListener('click', async function() {
-    const name = document.getElementById('c-name').value.trim();
-    const email = document.getElementById('c-email').value.trim();
-    const btn = document.getElementById('btn-cenacolo');
-
-    if(name && email) {
-        btn.textContent = 'Attendere...'; 
-        try {
-            await fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-                body: JSON.stringify({
-                    access_key: '08831c13-61b0-4f7b-98fc-d667390455e7',
-                    name: name,
-                    email: email,
-                    subject: 'Nuovo iscritto al Cenacolo!',
-                    message: 'Nuovo accesso al tuo inner circle.\n\nNome: ' + name + '\nEmail: ' + email,
-                    from_name: 'Il Cenacolo'
-                })
-            });
-            document.getElementById('cenacolo-form-area').style.display = 'none';
-            document.getElementById('cenacolo-success').style.display = 'block';
-        } catch (error) {
-            alert('Errore di connessione. Riprova.');
-            btn.textContent = 'Richiedi l\'accesso';
-        }
-    } else {
-        alert('Per favore, inserisci nome ed email per accedere.');
-    }
-});
+// SCRIPT IL CENACOLO (CON INVIO EMAIL SILENZIOSA)
+const btnCenacolo = document.getElementById('btn-cenacolo');
+if (btnCenacolo) {
+    btnCenacolo.addEventListener('click', () => {
+        const WEB3FORMS_KEY = '08831c13-61b0-4f7b-98fc-d667390455e7';
+        fetch('https://api.web3forms.com/submit', { 
+            method: 'POST', 
+            headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, 
+            body: JSON.stringify({ 
+                access_key: WEB3FORMS_KEY, 
+                name: 'Notifica Sistema', 
+                email: 'noreply@sollisolomon.com', 
+                subject: '🚨 Nuovo clic su Il Cenacolo!', 
+                message: 'Qualcuno ha appena cliccato il bottone per entrare su Telegram dal sito.', 
+                from_name: 'Sito Solli Solomon' 
+            }) 
+        }).catch(err => console.log('Notifica inviata.'));
+    });
+}
 
 // CURSORE
 const cur = document.getElementById('cursor');
