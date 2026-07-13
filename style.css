@@ -246,7 +246,7 @@ footer p { color:var(--muted); font-size:10px; letter-spacing:0.15em; }
 header{padding:18px 24px;}
 nav a:not(#lang-toggle) {display:none;}
 nav {gap: 0;}
-#hero{padding:160px 24px 80px; align-items:flex-start;}
+#hero{padding:240px 24px 80px; display:flex; flex-direction:column; justify-content:flex-start; align-items:center;}
 .hero-container{grid-template-columns:1fr; gap:48px; text-align:center;}
 .hero-cover-wrap{order:-1; max-width:280px; margin:0 auto;}
 .hero-content{margin:0 auto;}
