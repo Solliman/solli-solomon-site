@@ -326,7 +326,23 @@ body.has-banner header{ top:38px; }
 /* --- DISCOGRAFIA COLLAPSE SU MOBILE --- */
 .show-more-btn {
     display: none;
-    margin: 32px auto 0 auto;
+    margin: 40px auto 0 auto;
+    background: transparent;
+    border: 1px solid var(--accent);
+    border-radius: 4px;
+    color: var(--text);
+    padding: 12px 24px;
+    font-family: inherit;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    outline: none;
+}
+.show-more-btn:hover {
+    background: var(--accent-dim);
+    border-color: var(--accent);
 }
 @media(max-width:767px) {
     .music-grid.collapsed > *:nth-child(n+7) {
