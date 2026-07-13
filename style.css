@@ -73,7 +73,7 @@ padding:0 52px 90px; overflow:hidden;
 }
 .hero-bg {
 position:absolute; inset:0;
-background-image:url('solli-banner.png');
+background-image:url('pastor-cover.jpg');
 background-size:cover; background-position:center 30%;
 }
 .hero-bg::after {
