@@ -109,7 +109,18 @@ throw new Error('fail');
 } catch {
 errEl.textContent = '✕ Qualcosa non ha funzionato. Scrivimi su Instagram o Bandcamp.';
 errEl.className = 'form-msg err';
-btn.textContent = 'Invia messaggio';
-btn.disabled = false;
-}
+    btn.textContent = 'Invia messaggio';
+    btn.disabled = false;
+    }
 });
+
+// MOSTRO ALTRO NELLA DISCOGRAFIA SU MOBILE
+const btnShowMore = document.getElementById('btn-show-more');
+const musicGrid = document.getElementById('music-grid');
+if (btnShowMore && musicGrid) {
+    btnShowMore.addEventListener('click', () => {
+        musicGrid.classList.remove('collapsed');
+        btnShowMore.style.display = 'none';
+    });
+}
+

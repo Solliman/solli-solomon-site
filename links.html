@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solli Solomon — Links</title>
+    <meta name="description" content="Ascolta e connettiti con Solli Solomon. Bandcamp, Spotify, Telegram Cenacolo.">
+    <!-- Font Ufficiali -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #0a0a0a;
+            --surface: #121212;
+            --border: #222222;
+            --text: #e2e8e4;
+            --muted: #8a8a8a;
+            --accent: #d4af37; /* Oro */
+            --accent-dim: rgba(212, 175, 55, 0.15);
+            --warm: #00c8b4; /* Cyan/Verde acqua */
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'DM Mono', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 24px 16px;
+        }
+        .container {
+            width: 100%;
+            max-width: 480px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .avatar {
+            width: 96px;
+            height: 96px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+            margin-bottom: 16px;
+        }
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 300;
+            margin-bottom: 8px;
+            letter-spacing: 0.05em;
+        }
+        h1 em { font-style: italic; color: var(--accent); }
+        .subtitle {
+            font-size: 12px;
+            color: var(--muted);
+            margin-bottom: 32px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .links-list {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 32px;
+        }
+        .link-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 16px 24px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            text-decoration: none;
+            font-size: 13px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        .link-btn:hover {
+            background: #181818;
+            border-color: var(--accent);
+            transform: translateY(-2px);
+        }
+        /* Bottoni In Evidenza */
+        .link-btn.featured-bandcamp {
+            background: var(--accent-dim);
+            border-color: var(--accent);
+            font-weight: bold;
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.1);
+        }
+        .link-btn.featured-bandcamp:hover {
+            background: rgba(212, 175, 55, 0.25);
+            box-shadow: 0 6px 16px rgba(212, 175, 55, 0.2);
+        }
+        .link-btn.featured-telegram {
+            background: rgba(0, 200, 180, 0.1);
+            border-color: var(--warm);
+            font-weight: bold;
+        }
+        .link-btn.featured-telegram:hover {
+            background: rgba(0, 200, 180, 0.2);
+        }
+        .link-btn.site-btn {
+            border-style: dashed;
+            color: var(--accent);
+        }
+        .btn-icon {
+            margin-right: 10px;
+            font-size: 16px;
+        }
+        footer {
+            font-size: 10px;
+            color: var(--muted);
+            letter-spacing: 0.1em;
+            margin-top: auto;
+        }
+        .lang-switch {
+            margin-top: 16px;
+            font-size: 11px;
+        }
+        .lang-switch a {
+            color: var(--muted);
+            text-decoration: none;
+            margin: 0 8px;
+        }
+        .lang-switch a.active {
+            color: var(--accent);
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="solli-artist.jpg" alt="Solli Solomon" class="avatar">
+        <h1>Solli <em>Solomon</em></h1>
+        <p class="subtitle">Techno Cristiana & Elettronica Spirituale</p>
+
+        <div class="links-list">
+            <!-- BANDCAMP (Ascolto & Supporto Principale) -->
+            <a href="https://sollisolomon.bandcamp.com" class="link-btn featured-bandcamp" target="_blank" rel="noopener">
+                <span class="btn-icon">◈</span> Ascolta & Supporta su Bandcamp
+            </a>
+
+            <!-- TELEGRAM CENACOLO (Fidelizzazione e Contatto) -->
+            <a href="https://t.me/+TlzorC1zSkY5YzI0" class="link-btn featured-telegram" target="_blank" rel="noopener">
+                <span class="btn-icon">💬</span> Entra nel Cenacolo (Telegram)
+            </a>
+
+            <!-- SITO WEB UFFICIALE (Esplora tutto) -->
+            <a href="https://sollisolomon.pages.dev" class="link-btn site-btn">
+                <span class="btn-icon">✦</span> Visita il Sito Ufficiale
+            </a>
+
+            <!-- SPOTIFY (Streaming Secondario) -->
+            <a href="https://open.spotify.com/intl-it/artist/2x5xoFyjt2akRu1zYfcf9X" class="link-btn" target="_blank" rel="noopener">
+                <span class="btn-icon">◎</span> Ascolta su Spotify
+            </a>
+
+            <!-- YOUTUBE -->
+            <a href="https://www.youtube.com/channel/UC49R6ryKnZMl7hEmEuk9ppQ" class="link-btn" target="_blank" rel="noopener">
+                <span class="btn-icon">▷</span> Canale YouTube
+            </a>
+
+            <!-- CONTATTI -->
+            <a href="https://sollisolomon.pages.dev#contact" class="link-btn">
+                <span class="btn-icon">✉</span> Scrivimi in privato
+            </a>
+        </div>
+
+        <footer>
+            © 2026 Solli Solomon
+        </footer>
+
+        <div class="lang-switch">
+            <a href="links.html" class="active">IT</a> | <a href="en-links.html">EN</a>
+        </div>
+    </div>
+</body>
+</html>
