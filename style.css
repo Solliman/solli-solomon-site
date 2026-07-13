@@ -137,18 +137,31 @@ transition:background 0.3s; position:relative; overflow:hidden;
     background-size: cover;
     background-position: center;
     opacity: 0;
-    filter: grayscale(100%) brightness(0.5) blur(1px);
+    filter: grayscale(80%) brightness(0.6) blur(2px);
     transition: opacity 0.5s ease, transform 0.5s ease;
     z-index: 1;
     pointer-events: none;
 }
 .music-card:hover .music-card-bg {
-    opacity: 0.18;
-    transform: scale(1.06);
+    opacity: 0.35;
+    transform: scale(1.08);
 }
 .music-card > *:not(.music-card-bg) {
     position: relative;
     z-index: 2;
+}
+.music-card-thumb {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 4px;
+    object-fit: cover;
+    border: 1px solid var(--border);
+    margin-bottom: 6px;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    background: #000;
+}
+.music-card:hover .music-card-thumb {
+    transform: scale(1.03);
 }
 .music-card::after { content:''; position:absolute; bottom:0; left:0; right:0; height:2px; background:var(--accent); transform:scaleX(0); transition:transform 0.4s cubic-bezier(0.16,1,0.3,1); z-index: 3; }
 .music-card:hover { background:var(--bg); }
