@@ -164,7 +164,7 @@ transition:background 0.3s; position:relative; overflow:hidden;
 .link-card.featured .link-name { color:var(--accent); }
 .link-card.featured::before { background:var(--accent); }
 /* VIDEO */
-.links-section reveal d2 { margin-bottom:56px; }
+.links-section.reveal.d2 { margin-bottom:56px; }
 /* PROSSIME USCITE */
 #releases { border-top:1px solid var(--border); background:var(--surface); }
 .releases-header { margin-bottom:56px; }
