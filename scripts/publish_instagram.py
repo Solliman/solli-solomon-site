@@ -25,6 +25,12 @@ def load_credentials():
         print(f"Error reading credentials file: {e}")
         return None, None
 
+def challenge_code_handler(username, choice):
+    print(f"\n⚠️ Instagram richiede un codice di verifica (Challenge).")
+    print(f"Il codice di 6 cifre è stato inviato tramite: {choice}")
+    code = input("👉 Inserisci il codice di 6 cifre qui nel terminale: ")
+    return code.strip()
+
 def main():
     parser = argparse.ArgumentParser(description="Publish a photo to Instagram using instagrapi")
     parser.add_argument('--image', required=True, help="Path to the image file (JPG/PNG)")
@@ -46,6 +52,9 @@ def main():
             sys.exit(1)
 
     cl = Client()
+    # Imposta il gestore per i codici di verifica (email/SMS)
+    cl.challenge_code_handler = challenge_code_handler
+
     session_file = 'instagram_session.json'
     session_loaded = False
 
