@@ -49,8 +49,16 @@ Questo documento funge da **memoria storica e registro del flusso di lavoro (wor
     *   Un pulsante outline `.show-more-btn` ("Mostra tutta la discografia (+)") permette di espandere la griglia tramite un trigger JavaScript minimale che rimuove la classe `.collapsed`.
 *   **Copertine Discografia:**
     *   Tutte le schede dei brani includono ora l'artwork ufficiale quadrato.
-    *   I file locali sono stati eliminati per non appesantire il deposito Git (fatta eccezione per `pastor-cover.jpg` e `pastor_promo_story.jpg`). Le copertine dei vecchi brani sono caricate in streaming sfruttando le CDN di Bandcamp (`https://f4.bcbits.com/img/...`).
+    *   I file locali sono stati eliminati per non appesantire il deposito Git (fatta eccezione per `public/pastor-cover.jpg` e `promo/pastor_promo_story.jpg`). Le copertine dei vecchi brani sono caricate in streaming sfruttando le CDN di Bandcamp (`https://f4.bcbits.com/img/...`).
     *   Effetto Hover (Desktop): Al passaggio del mouse la copertina appare sfocata sullo sfondo della scheda (`opacity: 0.35`, `filter: grayscale(1) blur(2px)`).
+
+*   **Organizzazione delle Cartelle (Nuovo Layout):**
+    *   `public/`: Contiene tutti i file attivi del sito web (pagine HTML, fogli di stile CSS, file JS, immagini per il sito, favicon.svg, robots.txt, sitemap.xml).
+    *   `backups/`: Contiene le copie di sicurezza locali (`_today.html` e `_yesterday.html`).
+    *   `workflow/`: Contiene la memoria storica (`storyteller.md`) e le guide.
+    *   `promo/`: Contiene gli asset promozionali per i social (es. l'immagine verticale della storia di Pastor, didascalie pronte per Instagram, immagini originali pesanti).
+    *   `scripts/`: Contiene script di automazione (es. lo script Python per caricare i post su Instagram).
+    *   *Nota di build:* La cartella principale per il deploy del sito su Cloudflare Pages deve essere impostata su `/public` (anziché sulla radice del deposito).
 
 ---
 
