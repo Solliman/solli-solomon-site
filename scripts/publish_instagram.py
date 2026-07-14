@@ -15,15 +15,15 @@ def load_credentials():
     if not os.path.exists(config_path):
         print(f"Error: '{config_path}' not found in the root directory.")
         print("Please create this file with the following format:")
-        print('{\n  "username": "YOUR_INSTAGRAM_USERNAME",\n  "password": "YOUR_INSTAGRAM_PASSWORD"\n}')
-        return None, None
+        print('{\n  "username": "YOUR_INSTAGRAM_USERNAME",\n  "password": "YOUR_INSTAGRAM_PASSWORD",\n  "sessionid": "OPTIONAL_BROWSER_SESSION_ID"\n}')
+        return None, None, None
     try:
         with open(config_path, 'r', encoding='utf-8') as f:
             config = json.load(f)
-        return config.get('username'), config.get('password')
+        return config.get('username'), config.get('password'), config.get('sessionid')
     except Exception as e:
         print(f"Error reading credentials file: {e}")
-        return None, None
+        return None, None, None
 
 def challenge_code_handler(username, choice):
     print(f"\n⚠️ Instagram richiede un codice di verifica (Challenge).")
@@ -37,7 +37,10 @@ def main():
     parser.add_argument('--caption', required=True, help="Caption text OR path to a text file containing the caption")
     args = parser.parse_args()
 
-    username, password = load_credentials()
+    credentials = load_credentials()
+    if not credentials:
+        sys.exit(1)
+    username, password, sessionid = credentials
     if not username or not password:
         sys.exit(1)
 
@@ -58,15 +61,26 @@ def main():
     session_file = 'instagram_session.json'
     session_loaded = False
 
-    # Attempt to load cached session to avoid frequent login blocks
-    if os.path.exists(session_file):
+    # 1. Attempt login via browser session ID (highest priority, bypasses block)
+    if sessionid:
+        try:
+            print("Attempting login using browser session ID...")
+            cl.login_by_sessionid(sessionid)
+            cl.dump_settings(session_file)
+            print("Session ID login successful!")
+            session_loaded = True
+        except Exception as e:
+            print(f"Session ID login failed: {e}. Falling back to standard login...")
+
+    # 2. Attempt to load cached session to avoid frequent login blocks
+    if not session_loaded and os.path.exists(session_file):
         try:
             cl.load_settings(session_file)
             cl.login(username, password)
-            print("Session loaded and logged in successfully.")
+            print("Cached session loaded and logged in successfully.")
             session_loaded = True
         except Exception as e:
-            print(f"Could not reuse session settings ({e}). Logging in fresh...")
+            print(f"Could not reuse cached session ({e}). Logging in fresh...")
 
     if not session_loaded:
         try:
