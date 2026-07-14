@@ -5,4 +5,5 @@ original_images/
 backups/
 instagram_credentials.json
 instagram_session.json
+instagram_meta_config.json
 scripts/__pycache__/
