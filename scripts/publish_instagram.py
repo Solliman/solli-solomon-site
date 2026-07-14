@@ -91,17 +91,38 @@ def main():
             print(f"Login failed: {e}")
             sys.exit(1)
 
-    print(f"Uploading photo '{args.image}' to Instagram...")
+    print("Preparing image for Instagram compliance...")
+    clean_image_path = "temp_instagram_upload.jpg"
+    try:
+        from PIL import Image
+        im = Image.open(args.image)
+        # Convert image to RGB (removes alpha channel or complex color spaces that cause upload errors)
+        rgb_im = im.convert('RGB')
+        rgb_im.save(clean_image_path, "JPEG", quality=95)
+        upload_path = clean_image_path
+        print("Image successfully formatted for Instagram.")
+    except Exception as e:
+        print(f"Warning: Could not clean image with PIL ({e}). Using original file.")
+        upload_path = args.image
+
+    print(f"Uploading photo '{upload_path}' to Instagram...")
     try:
         media = cl.photo_upload(
-            path=args.image,
+            path=upload_path,
             caption=caption_text
         )
         print("🎉 Success! Post uploaded to Instagram.")
         print(f"Post Link: https://www.instagram.com/p/{media.code}/")
     except Exception as e:
         print(f"Upload failed: {e}")
+        # Clean up temp file
+        if os.path.exists(clean_image_path):
+            os.remove(clean_image_path)
         sys.exit(1)
+
+    # Clean up temp file on success
+    if os.path.exists(clean_image_path):
+        os.remove(clean_image_path)
 
 if __name__ == "__main__":
     main()
