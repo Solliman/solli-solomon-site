@@ -1,9 +1,13 @@
 # NotebookLM Downloads (heavy files)
 Sito Solli Solomon - NotebookLM.html
 Sito Solli Solomon - NotebookLM_files/
-original_images/
-backups/
+# Local non-website folders (numerical prefixes)
+01 - backups/
+02 - promo/
+03 - scripts/
+04 - workflow/
+
+# Private credentials and session files
 instagram_credentials.json
 instagram_session.json
 instagram_meta_config.json
-scripts/__pycache__/
