@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  antigravity-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: solli-antigravity-web
+    restart: always
+    ports:
+      - "8080:8080"
+    environment:
+      - TELEGRAM_TOKEN=***REDACTED_TELEGRAM_TOKEN***
+      - GEMINI_API_KEY=***REDACTED_GEMINI_KEY***
+    working_dir: /app/01 - SSSite/06 - antigravity_app
+    volumes:
+      - ../../:/app
+    command: uvicorn main:app --host 0.0.0.0 --port 8080 --reload
+
+  telegram-bot:
+    image: python:3.11-slim
+    container_name: solli-telegram-bot
+    restart: always
+    environment:
+      - TELEGRAM_TOKEN=***REDACTED_TELEGRAM_TOKEN***
+      - GEMINI_API_KEY=***REDACTED_GEMINI_KEY***
+      - TZ=Europe/Rome
+    working_dir: /app/04 - Scripts/02 - telegram_bot
+    volumes:
+      - ../../:/app
+    command: sh -c "pip install --no-cache-dir -r requirements.txt && python telegram_bot.py"

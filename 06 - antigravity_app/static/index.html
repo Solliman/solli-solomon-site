@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antigravity — Solli Solomon Control Center</title>
+    <meta name="description" content="Dashboard di controllo per la gestione del sito, del bot Telegram, dei meme e dei backup sul NAS.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/repo/favicon.svg">
+</head>
+<body>
+
+    <!-- Main Container -->
+    <div class="container">
+        
+        <!-- Header -->
+        <header>
+            <div class="logo-area">
+                <h1>antigravity</h1>
+                <p class="subtitle">Solli Solomon — Control Center & Automation</p>
+            </div>
+            <div class="status-badge" id="status-badge">
+                <span class="indicator stopped" id="status-indicator"></span>
+                <span class="status-text" id="status-text">Connessione...</span>
+            </div>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="tabs">
+            <button class="tab-btn active" data-tab="automation">Automazione & Script</button>
+            <button class="tab-btn" data-tab="discography">Gestione Discografia</button>
+            <button class="tab-btn" data-tab="memes">Meme Gallery</button>
+            <button class="tab-btn" data-tab="chat-promo">Chat Canzoni e Promo (Reel)</button>
+        </nav>
+
+        <!-- Tabs Content -->
+        <main>
+            
+            <!-- Tab 1: Automation & Scripts -->
+            <section id="automation" class="tab-content active">
+                <div class="grid-two-col">
+                    
+                    <!-- Script Controls -->
+                    <div class="card">
+                        <h2>Esegui Automazioni</h2>
+                        <p class="card-desc">Avvia gli script Python per la creazione dei meme, caroselli o per il backup sul NAS.</p>
+                        
+                        <div class="btn-group-vertical">
+                            <div class="control-item">
+                                <div class="info">
+                                    <h3>Compila Meme</h3>
+                                    <p>Genera i meme a partire dai prompt e dai versetti in 03 - Meme.</p>
+                                </div>
+                                <button class="btn-primary" onclick="runScript('compile_memes')">Avvia</button>
+                            </div>
+                            
+                            <div class="control-item">
+                                <div class="info">
+                                    <h3>Genera Carosello Promo</h3>
+                                    <p>Crea le immagini quadrate per i post carosello Instagram.</p>
+                                </div>
+                                <button class="btn-primary" onclick="runScript('generate_carousel')">Avvia</button>
+                            </div>
+
+                            <div class="control-item">
+                                <div class="info">
+                                    <h3>Genera Carosello Pastor</h3>
+                                    <p>Crea le slide quadrate specifiche per la promo di Pastor.</p>
+                                </div>
+                                <button class="btn-primary" onclick="runScript('generate_pastor_carousel')">Avvia</button>
+                            </div>
+                            
+                            <div class="control-item">
+                                <div class="info">
+                                    <h3>Genera Promo Reel</h3>
+                                    <p>Sintetizza la clip video promozionale per Instagram Reels.</p>
+                                </div>
+                                <button class="btn-primary" onclick="runScript('generate_promo_reel')">Avvia</button>
+                            </div>
+                            
+                            <div class="control-item">
+                                <div class="info">
+                                    <h3>Backup su NAS</h3>
+                                    <p>Sincronizza i file della discografia e i social log sui dischi del NAS.</p>
+                                </div>
+                                <button class="btn-warm" onclick="runScript('backup')">Esegui Backup</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Logs / Console Output -->
+                    <div class="card console-card">
+                        <div class="console-header">
+                            <h2>Console Output</h2>
+                            <span class="active-task-badge" id="active-task-badge">Idle</span>
+                        </div>
+                        <div class="console" id="console-output">Nessun log disponibile. Seleziona ed esegui un'operazione per visualizzare l'output in tempo reale.</div>
+                    </div>
+                    
+                </div>
+            </section>
+            
+            <!-- Tab 2: Discography Management -->
+            <section id="discography" class="tab-content">
+                <div class="card form-card">
+                    <h2>Aggiungi alla Discografia</h2>
+                    <p class="card-desc">Inserisce automaticamente una nuova traccia sia sul sito in italiano che in inglese.</p>
+                    
+                    <form id="add-track-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="track-num">Numero Traccia *</label>
+                                <input type="number" id="track-num" placeholder="Es. 20" required min="1">
+                            </div>
+                            <div class="form-group">
+                                <label for="track-title">Titolo Traccia *</label>
+                                <input type="text" id="track-title" placeholder="Es. Wept" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="track-collab">Dettagli / Collaborazioni (opzionale)</label>
+                                <input type="text" id="track-collab" placeholder="Es. feat. Star Bstreet">
+                            </div>
+                            <div class="form-group">
+                                <label for="track-url">Link Piattaforma / Bandcamp *</label>
+                                <input type="url" id="track-url" placeholder="https://sollisolomon.bandcamp.com/track/..." required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="track-image">URL Immagine Copertina (opzionale)</label>
+                                <input type="text" id="track-image" placeholder="Usa URL Bandcamp o lascia vuoto per favicon.svg">
+                            </div>
+                            <div class="form-group toggle-group">
+                                <label for="track-coming">
+                                    <input type="checkbox" id="track-coming" onchange="toggleComingFields()">
+                                    Brano in arrivo (non ancora pubblicato)
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row" id="coming-fields" style="display: none;">
+                            <div class="form-group">
+                                <label for="track-release-date">Mese di Uscita (es. In arrivo a Settembre 2026)</label>
+                                <input type="text" id="track-release-date" placeholder="Es. In arrivo a Settembre 2026">
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="btn-primary">Aggiungi Traccia</button>
+                        
+                        <div class="form-notification" id="form-notification"></div>
+                    </form>
+                </div>
+            </section>
+            
+            <!-- Tab 3: Meme Gallery -->
+            <section id="memes" class="tab-content">
+                <div class="card">
+                    <h2>Meme Gallery & Tracciamento</h2>
+                    <p class="card-desc">Visualizza i meme pronti all'uso nella cartella ed i versetti biblici associati. Segnali come pubblicati per rimuoverli dal pool.</p>
+                    
+                    <div class="meme-grid" id="meme-gallery">
+                        <!-- Filled dynamically by JavaScript -->
+                        <div class="loading-spinner">Caricamento galleria meme...</div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Tab 4: Chat Canzoni e Promo (Reel) -->
+            <section id="chat-promo" class="tab-content">
+                <div class="grid-two-col">
+                    
+                    <!-- Column 1: Telegram Chat History -->
+                    <div class="card chat-card">
+                        <h2>Cronologia Chat Telegram</h2>
+                        <p class="card-desc">Visualizza le conversazioni sincronizzate dal bot del NAS a computer spento.</p>
+                        
+                        <div class="chat-layout">
+                            <!-- Left: List of chat sessions -->
+                            <div class="chat-sessions-list" id="chat-sessions-list">
+                                <div class="loading-spinner">Caricamento chat...</div>
+                            </div>
+                            
+                            <!-- Right: Messages in the active session -->
+                            <div class="chat-messages-container">
+                                <div class="chat-messages-header" id="chat-messages-header">
+                                    Seleziona una conversazione
+                                </div>
+                                <div class="chat-messages-body" id="chat-messages-body">
+                                    <div class="chat-placeholder">
+                                        <span class="chat-placeholder-icon">💬</span>
+                                        <p>Seleziona una sessione a sinistra per visualizzare la conversazione completa.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Column 2: Songs & Promos (Reel) Panel -->
+                    <div class="card promo-panel-card">
+                        <h2>Anteprime Canzoni e Promo (Reel)</h2>
+                        <p class="card-desc">Riproduci i reel video finiti, sfoglia le slide dei caroselli e copia le didascalie.</p>
+                        
+                        <!-- Promo selection dropdown/tabs -->
+                        <div class="promo-selector-wrap">
+                            <label for="promo-select">Seleziona Promo:</label>
+                            <select id="promo-select" class="form-select" onchange="switchPromo()">
+                                <!-- Options will be dynamically filled -->
+                            </select>
+                        </div>
+                        
+                        <div id="promo-content-area">
+                            <div class="loading-spinner">Caricamento promo...</div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </section>
+
+        </main>
+        
+        <!-- Footer -->
+        <footer>
+            <p>Antigravity App v1.0.0 — Sincronizzato con il NAS in Docker</p>
+        </footer>
+
+    </div>
+
+    <!-- Modal for viewing prompt details -->
+    <div id="prompt-modal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title">Dettagli Prompt</h2>
+            <pre id="modal-text"></pre>
+        </div>
+    </div>
+
+    <!-- Script loading -->
+    <script src="app.js"></script>
+</body>
+</html>
