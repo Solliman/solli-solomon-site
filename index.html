@@ -510,9 +510,40 @@
         </div>
     </section>
 
+        <!-- RIFLESSIONI & SCRITTI -->
+    <section id="articles" class="reveal">
+        <div class="sec-label">005 — Riflessioni & Scritti</div>
+        <div class="releases-header">
+            <h2>Riflessioni e <em>scritti</em></h2>
+            <p>La parola che anticipa il suono. Archivio dei pensieri su fede, esistenza, verità e libertà interiore.</p>
+        </div>
+        
+        <div class="articles-grid" id="articles-grid">
+            <!-- Popolato via JS con 4 articoli per volta -->
+        </div>
+
+        <div style="text-align: center; margin-top: 32px;">
+            <button id="btn-more-articles" class="btn-ghost show-more-btn">Mostra altre riflessioni (+)</button>
+        </div>
+    </section>
+
+    <!-- FULLSCREEN SYSTEM THEME READER MODAL -->
+    <div id="article-reader-modal" class="article-reader-overlay">
+        <div id="reading-progress-bar" class="reading-progress-bar"></div>
+        <div class="article-reader-header">
+            <button id="btn-close-reader" class="article-reader-close">← Chiudi Lettura</button>
+            <span style="font-family: 'DM Mono', monospace; font-size: 10px; opacity: 0.6; text-transform: uppercase;">Solli Solomon — Archivio</span>
+        </div>
+        <div class="article-reader-content">
+            <div id="reader-date" class="article-reader-date"></div>
+            <h1 id="reader-title" class="article-reader-title"></h1>
+            <div id="reader-body" class="article-reader-body"></div>
+        </div>
+    </div>
+
     <!-- INNER CIRCLE -->
     <section id="cenacolo" class="reveal">
-        <div class="sec-label">005 — Inner Circle</div>
+        <div class="sec-label">006 — Inner Circle</div>
         <h2>Il <em>Cenacolo</em></h2>
         <p>Uno spazio di comunicazione e condivisione, dove la musica diventa incontro.<br><br>
         Lascia la tua email per accedere al gruppo privato. Qui desidero condividere in anteprima le bozze dei miei brani, avere i vostri feedback, apprendere dalle idee della community e parlare di musica. Questo spazio è strettamente riservato a chi vuole costruire un'amicizia reale e collaborare, nella consapevolezza del rispetto reciproco e del mio amore in Cristo.</p>
@@ -532,7 +563,7 @@
 
     <!-- CONTATTI -->
     <section id="contact" class="reveal">
-        <div class="sec-label">006 — Contatti</div>
+        <div class="sec-label">007 — Contatti</div>
         <div class="contact-wrap">
             <h2>Scrivimi in <em>privato</em></h2>
             <p>Se non desideri accedere al Cenacolo, o per collaborazioni e booking, usa questo modulo per un contatto diretto.</p>
@@ -559,6 +590,7 @@
     </footer>
 
     <!-- SCRIPT COLLEGATO -->
+    <script src="articles_data.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

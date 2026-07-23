@@ -124,3 +124,111 @@ if (btnShowMore && musicGrid) {
     });
 }
 
+
+
+// LOGICA ARTICOLI E RIFLESSIONI (RENDER 4 ALLA VOLTA + READER SYSTEM THEME + PROGRESS BAR)
+let currentArticleIndex = 0;
+const ARTICLES_PER_PAGE = 4;
+const articlesGrid = document.getElementById('articles-grid');
+const btnMoreArticles = document.getElementById('btn-more-articles');
+
+const readerModal = document.getElementById('article-reader-modal');
+const btnCloseReader = document.getElementById('btn-close-reader');
+const progressBar = document.getElementById('reading-progress-bar');
+const readerDate = document.getElementById('reader-date');
+const readerTitle = document.getElementById('reader-title');
+const readerBody = document.getElementById('reader-body');
+
+function createExcerpt(htmlText) {
+    const tmp = document.createElement('div');
+    tmp.innerHTML = htmlText;
+    const txt = tmp.textContent || tmp.innerText || '';
+    return txt.length > 130 ? txt.substring(0, 130) + '...' : txt;
+}
+
+function renderArticles() {
+    if (typeof SOL_ARTICLES === 'undefined' || !articlesGrid) return;
+
+    const nextBatch = SOL_ARTICLES.slice(currentArticleIndex, currentArticleIndex + ARTICLES_PER_PAGE);
+    
+    nextBatch.forEach((art, idx) => {
+        const globalIdx = currentArticleIndex + idx;
+        const card = document.createElement('div');
+        card.className = 'article-card reveal visible';
+        card.innerHTML = `
+            <div class="article-date">${art.date}</div>
+            <h3 class="article-title">${art.title}</h3>
+            <div class="article-excerpt">${createExcerpt(art.content)}</div>
+            <div class="article-read-btn">Leggi articolo <span>→</span></div>
+        `;
+        card.addEventListener('click', () => openArticleReader(globalIdx));
+        articlesGrid.appendChild(card);
+    });
+
+    currentArticleIndex += nextBatch.length;
+
+    if (btnMoreArticles) {
+        if (currentArticleIndex >= SOL_ARTICLES.length) {
+            btnMoreArticles.style.display = 'none';
+        } else {
+            btnMoreArticles.style.display = 'inline-block';
+        }
+    }
+}
+
+if (btnMoreArticles) {
+    btnMoreArticles.addEventListener('click', renderArticles);
+}
+
+// APRE IL READER MODAL
+function openArticleReader(index) {
+    if (typeof SOL_ARTICLES === 'undefined' || !SOL_ARTICLES[index]) return;
+    const art = SOL_ARTICLES[index];
+
+    readerDate.textContent = art.date;
+    readerTitle.textContent = art.title;
+    readerBody.innerHTML = art.content;
+
+    readerModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+    readerModal.scrollTop = 0;
+    updateProgressBar();
+}
+
+// CHIUDE IL READER MODAL
+function closeArticleReader() {
+    readerModal.classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+if (btnCloseReader) {
+    btnCloseReader.addEventListener('click', closeArticleReader);
+}
+
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && readerModal && readerModal.classList.contains('active')) {
+        closeArticleReader();
+    }
+});
+
+// BARRA DI PROGRESSO LETTURA
+function updateProgressBar() {
+    if (!readerModal || !progressBar) return;
+    const scrollTop = readerModal.scrollTop;
+    const scrollHeight = readerModal.scrollHeight - readerModal.clientHeight;
+    if (scrollHeight > 0) {
+        const pct = (scrollTop / scrollHeight) * 100;
+        progressBar.style.width = pct + '%';
+    } else {
+        progressBar.style.width = '0%';
+    }
+}
+
+if (readerModal) {
+    readerModal.addEventListener('scroll', updateProgressBar);
+}
+
+// Inizializza i primi 4 articoli
+if (typeof SOL_ARTICLES !== 'undefined') {
+    renderArticles();
+}
