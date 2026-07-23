@@ -155,9 +155,18 @@ function renderArticles() {
         const globalIdx = currentArticleIndex + idx;
         const card = document.createElement('div');
         card.className = 'article-card reveal visible';
+
+        const thumbHtml = art.img ? `
+            <div class="article-card-thumb-wrap">
+                <img src="${art.img}" class="article-card-thumb" alt="${art.title}" loading="lazy">
+            </div>
+        ` : '';
+
         card.innerHTML = `
+            ${thumbHtml}
             <div class="article-date">${art.date}</div>
             <h3 class="article-title">${art.title}</h3>
+            <div class="article-author">by ${art.author}</div>
             <div class="article-excerpt">${createExcerpt(art.content)}</div>
             <div class="article-read-btn">Leggi articolo <span>→</span></div>
         `;
@@ -185,9 +194,11 @@ function openArticleReader(index) {
     if (typeof SOL_ARTICLES === 'undefined' || !SOL_ARTICLES[index]) return;
     const art = SOL_ARTICLES[index];
 
-    readerDate.textContent = art.date;
+    readerDate.textContent = `${art.date} · by ${art.author}`;
     readerTitle.textContent = art.title;
-    readerBody.innerHTML = art.content;
+
+    const footerSig = `<div class="article-author-footer">✍️ Scritto da <strong>${art.author}</strong> · ${art.date}</div>`;
+    readerBody.innerHTML = art.content + footerSig;
 
     readerModal.classList.add('active');
     document.body.style.overflow = 'hidden';
