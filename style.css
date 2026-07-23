@@ -60,7 +60,7 @@ transition:background 0.5s, border-color 0.5s;
 }
 header.scrolled { background:rgba(7,9,11,0.93); backdrop-filter:blur(18px); border-color:var(--border); }
 .logo { font-family:'Cormorant Garamond',serif; font-size:17px; font-weight:300; letter-spacing:0.32em; text-transform:uppercase; color:var(--text); text-decoration:none; }
-nav { display:flex; gap:36px; align-items: center; }
+nav { display:flex; gap:22px; align-items: center; }
 nav a { color:var(--muted); text-decoration:none; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; transition:color 0.3s; }
 nav a:hover { color:var(--accent); }
 #lang-toggle { text-decoration:none; background:none; border:none; color:var(--accent); font-weight: bold; font-size:10px; letter-spacing:0.22em; text-transform:uppercase; cursor:none; transition:color 0.3s; padding:0; outline:none; }
