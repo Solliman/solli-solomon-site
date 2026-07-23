@@ -36,12 +36,10 @@ for post in calendar:
     except Exception:
         continue
 
-    diff_sec = (now - post_dt).total_seconds()
-
-    # Finestra di 7 minuti (copre il cron ogni 5 min + margine)
-    if 0 <= diff_sec <= 420:
+    # Se l'orario del post è arrivato (o passato) e non è ancora stato inviato
+    if now >= post_dt:
         number = post["number"].zfill(3)
-        print(f"📤 Trovato post da inviare: Meme #{number}")
+        print(f"📤 Trovato post da inviare: Meme #{number} (programmato per {post['date']} {post['time']})")
 
         # Cerca l'immagine
         imgs = (
