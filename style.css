@@ -174,7 +174,8 @@ transition:background 0.3s; position:relative; overflow:hidden;
 .music-arrow { margin-top:auto; font-size:15px; color:var(--muted); transition:color 0.3s,transform 0.3s; align-self:flex-end; }
 .music-card:hover .music-arrow { color:var(--accent); transform:translate(3px,-3px); }
 .music-card.collab:hover .music-arrow { color:var(--warm); }
-.music-exclusive { font-size:9px; color:var(--accent); letter-spacing:0.18em; text-transform:uppercase; margin-top:-4px; }
+.music-card-container { display: flex; flex-direction: column; background: var(--bg); position: relative; }
+.mini-player-box { padding: 6px 12px 12px; background: var(--surface); border-top: 1px solid var(--border); z-index: 5; }
 /* SOCIAL */
 #social { border-top:1px solid var(--border); }
 .social-intro { margin-bottom:72px; }
