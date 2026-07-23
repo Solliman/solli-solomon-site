@@ -1,3 +1,5 @@
-Prompt per AI (Orizzontale 16:9): Prompt di prova.
-Testo sul Meme (da inserire al centro/in alto): FOTO PROVA SCHEDULER (Cancellami dopo il test!)
-Testo in basso a destra: Test di funzionamento - "Questo è solo un messaggio di test per verificare che la programmazione sul NAS funzioni correttamente."
+🚀 PROVA SISTEMA AUTOMATICO
+
+Ecco la prova! Il tuo scheduler GitHub Actions funziona perfettamente.
+
+Da questo momento ogni meme verrà inviato automaticamente su Telegram all'ora stabilita, con la foto e la caption, senza toccare nulla! 🙏✨
