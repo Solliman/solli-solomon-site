@@ -251,6 +251,6 @@ if (readerModal) {
 }
 
 // Inizializza i primi 4 articoli
-if (typeof SOL_ARTICLES !== 'undefined') {
+if (getActiveArticles().length > 0) {
     renderArticles();
 }
