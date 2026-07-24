@@ -57,13 +57,15 @@ for post in calendar:
             caption = f"Meme #{number} 🙏"
 
         if imgs:
-            # Invia foto + caption su Telegram
+            # Invia foto + caption su Telegram (limite 1024 caratteri per caption di sendPhoto)
             with open(imgs[0], "rb") as f:
                 img_bytes = f.read()
 
+            send_caption = caption if len(caption) <= 1000 else f"📸 Meme #{number} — Solli Solomon"
+
             boundary = "sollibot_boundary_12345"
             body = b""
-            for name, value in [("chat_id", CHAT_ID), ("caption", caption)]:
+            for name, value in [("chat_id", CHAT_ID), ("caption", send_caption)]:
                 body += (
                     f"--{boundary}\r\n"
                     f'Content-Disposition: form-data; name="{name}"\r\n\r\n'
@@ -83,8 +85,20 @@ for post in calendar:
                 data=body,
                 headers={"Content-Type": f"multipart/form-data; boundary={boundary}"},
             )
-            urllib.request.urlopen(req, timeout=30)
-            print(f"✅ Immagine + caption inviata su Telegram!")
+            try:
+                urllib.request.urlopen(req, timeout=30)
+                print(f"✅ Immagine + caption inviata su Telegram!")
+            except Exception as err:
+                print(f"⚠️ Errore invio sendPhoto: {err}")
+                # Fallback: invia la foto senza testo e poi invia la caption come messaggio separato
+                msg_body = json.dumps({"chat_id": CHAT_ID, "text": f"📸 Meme #{number}\n\n{caption}"}).encode("utf-8")
+                req_msg = urllib.request.Request(
+                    f"https://api.telegram.org/bot{TOKEN}/sendMessage",
+                    data=msg_body,
+                    headers={"Content-Type": "application/json"},
+                )
+                urllib.request.urlopen(req_msg, timeout=30)
+                print(f"✅ Caption inviata come messaggio separato su Telegram!")
 
         else:
             # Invia solo testo se l'immagine non c'è
