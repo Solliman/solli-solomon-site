@@ -65,8 +65,10 @@
         <nav>
             <a href="#bio">Bio</a>
             <a href="#music">Discography</a>
-            <a href="#releases">News</a>
             <a href="#social">Social</a>
+            <a href="#releases">News</a>
+            <a href="#articles">Reflections</a>
+            <a href="#cenacolo">Cenacolo</a>
             <a href="#contact">Contact</a>
             <a href="index.html" id="lang-toggle" aria-label="Switch to Italian">IT</a>
         </nav>
@@ -398,9 +400,40 @@
         </div>
     </section>
 
+        <!-- REFLECTIONS & WRITINGS -->
+    <section id="articles" class="reveal">
+        <div class="sec-label">005 — Reflections & Writings</div>
+        <div class="releases-header">
+            <h2>Reflections and <em>writings</em></h2>
+            <p>The word that precedes the sound. Full archive of thoughts on faith, existence, truth, and inner freedom.</p>
+        </div>
+        
+        <div class="articles-grid" id="articles-grid">
+            <!-- Populated via JS with 4 articles at a time -->
+        </div>
+
+        <div style="text-align: center; margin-top: 32px;">
+            <button id="btn-more-articles" class="btn-ghost show-more-btn">Show more reflections (+)</button>
+        </div>
+    </section>
+
+    <!-- FULLSCREEN SYSTEM THEME READER MODAL -->
+    <div id="article-reader-modal" class="article-reader-overlay">
+        <div id="reading-progress-bar" class="reading-progress-bar"></div>
+        <div class="article-reader-header">
+            <button id="btn-close-reader" class="article-reader-close">← Close Reader</button>
+            <span style="font-family: 'DM Mono', monospace; font-size: 10px; opacity: 0.6; text-transform: uppercase;">Solli Solomon — Archive</span>
+        </div>
+        <div class="article-reader-content">
+            <div id="reader-date" class="article-reader-date"></div>
+            <h1 id="reader-title" class="article-reader-title"></h1>
+            <div id="reader-body" class="article-reader-body"></div>
+        </div>
+    </div>
+
     <!-- INNER CIRCLE -->
     <section id="cenacolo" class="reveal">
-        <div class="sec-label">005 — Inner Circle</div>
+        <div class="sec-label">006 — Inner Circle</div>
         <h2>The <em>Cenacolo</em></h2>
         <p>A space for communication and sharing, where music becomes an encounter.<br><br>
         Leave your email to access the private group. Here I want to share early drafts of my tracks, get your feedback, learn from the community's ideas, and talk about music. This space is strictly reserved for those who want to build real friendship and collaborate, aware of mutual respect and my love in Christ.</p>
@@ -420,7 +453,7 @@
 
     <!-- CONTACT -->
     <section id="contact" class="reveal">
-        <div class="sec-label">006 — Contact</div>
+        <div class="sec-label">007 — Contact</div>
         <div class="contact-wrap">
             <h2>Message me <em>privately</em></h2>
             <p>If you don't wish to join the Cenacolo, or for collaborations and booking, use this form for direct contact.</p>
@@ -447,6 +480,7 @@
     </footer>
 
     <!-- SCRIPT LINK -->
+    <script src="articles_data.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
