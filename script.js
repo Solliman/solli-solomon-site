@@ -146,10 +146,18 @@ function createExcerpt(htmlText) {
     return txt.length > 130 ? txt.substring(0, 130) + '...' : txt;
 }
 
-function renderArticles() {
-    if (typeof SOL_ARTICLES === 'undefined' || !articlesGrid) return;
+function getActiveArticles() {
+    if (typeof SOL_ARTICLES_EN !== 'undefined') return SOL_ARTICLES_EN;
+    if (typeof SOL_ARTICLES !== 'undefined') return SOL_ARTICLES;
+    return [];
+}
 
-    const nextBatch = SOL_ARTICLES.slice(currentArticleIndex, currentArticleIndex + ARTICLES_PER_PAGE);
+function renderArticles() {
+    const activeArticles = getActiveArticles();
+    if (!activeArticles.length || !articlesGrid) return;
+
+    const nextBatch = activeArticles.slice(currentArticleIndex, currentArticleIndex + ARTICLES_PER_PAGE);
+    const readBtnText = (typeof SOL_ARTICLES_EN !== 'undefined') ? 'Read article' : 'Leggi articolo';
     
     nextBatch.forEach((art, idx) => {
         const globalIdx = currentArticleIndex + idx;
@@ -168,7 +176,7 @@ function renderArticles() {
             <h3 class="article-title">${art.title}</h3>
             <div class="article-author">by ${art.author}</div>
             <div class="article-excerpt">${createExcerpt(art.content)}</div>
-            <div class="article-read-btn">Leggi articolo <span>→</span></div>
+            <div class="article-read-btn">${readBtnText} <span>→</span></div>
         `;
         card.addEventListener('click', () => openArticleReader(globalIdx));
         articlesGrid.appendChild(card);
@@ -177,7 +185,7 @@ function renderArticles() {
     currentArticleIndex += nextBatch.length;
 
     if (btnMoreArticles) {
-        if (currentArticleIndex >= SOL_ARTICLES.length) {
+        if (currentArticleIndex >= activeArticles.length) {
             btnMoreArticles.style.display = 'none';
         } else {
             btnMoreArticles.style.display = 'inline-block';
@@ -191,13 +199,16 @@ if (btnMoreArticles) {
 
 // APRE IL READER MODAL
 function openArticleReader(index) {
-    if (typeof SOL_ARTICLES === 'undefined' || !SOL_ARTICLES[index]) return;
-    const art = SOL_ARTICLES[index];
+    const activeArticles = getActiveArticles();
+    if (!activeArticles.length || !activeArticles[index]) return;
+    const art = activeArticles[index];
+
+    const writtenByLabel = (typeof SOL_ARTICLES_EN !== 'undefined') ? 'Written by' : 'Scritto da';
 
     readerDate.textContent = `${art.date} · by ${art.author}`;
     readerTitle.textContent = art.title;
 
-    const footerSig = `<div class="article-author-footer">✍️ Scritto da <strong>${art.author}</strong> · ${art.date}</div>`;
+    const footerSig = `<div class="article-author-footer">✍️ ${writtenByLabel} <strong>${art.author}</strong> · ${art.date}</div>`;
     readerBody.innerHTML = art.content + footerSig;
 
     readerModal.classList.add('active');
