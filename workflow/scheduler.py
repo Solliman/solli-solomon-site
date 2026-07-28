@@ -20,7 +20,7 @@ now = datetime.utcnow() + timedelta(hours=2)
 print(f"🕐 Orario attuale (IT): {now.strftime('%d/%m/%Y %H:%M')}")
 
 # Leggi il calendario
-with open("03 - Meme/calendar.json", encoding="utf-8") as f:
+with open("workflow/calendar.json", encoding="utf-8") as f:
     calendar = json.load(f)
 
 inviato = False
@@ -41,15 +41,14 @@ for post in calendar:
         number = post["number"].zfill(3)
         print(f"📤 Trovato post da inviare: #{number} (programmato per {post['date']} {post['time']})")
 
-        # Cerca l'immagine nei Meme o nelle Promozioni
+        # Cerca l'immagine
         imgs = (
-            glob.glob(f"03 - Meme/memes_images/meme_{number}*.jpg")
-            + glob.glob(f"03 - Meme/memes_images/meme_{number}*.png")
-            + glob.glob(f"04 - Promozioni/*/*{number}*.jpg")
+            glob.glob(f"workflow/memes/meme_{number}*.jpg")
+            + glob.glob(f"workflow/memes/meme_{number}*.png")
         )
 
-        # Cerca la caption nei Meme o nelle Promozioni
-        txts = glob.glob(f"03 - Meme/captions/meme_{number}*.txt") + glob.glob(f"04 - Promozioni/*/*{number}*.txt")
+        # Cerca la caption
+        txts = glob.glob(f"workflow/captions/meme_{number}*.txt")
         if txts:
             with open(txts[0], encoding="utf-8") as f:
                 caption = f.read().strip()
@@ -120,5 +119,5 @@ if not inviato:
     print("ℹ️  Nessun post da inviare in questo momento.")
 
 # Salva il calendario aggiornato
-with open("03 - Meme/calendar.json", "w", encoding="utf-8") as f:
+with open("workflow/calendar.json", "w", encoding="utf-8") as f:
     json.dump(calendar, f, indent=2, ensure_ascii=False)
