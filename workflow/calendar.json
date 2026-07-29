@@ -35,33 +35,38 @@
     "sent": true
   },
   {
+    "number": "002",
     "date": "31/07/2026",
     "time": "17:15",
     "type": "meme",
-    "number": "002",
     "sent": false
   },
   {
-    "date": "31/07/2026",
-    "time": "17:15",
+    "number": "002",
+    "date": "02/08/2026",
+    "time": "18:00",
     "type": "meme",
-    "number": "002",
-    "title": "Reel 1 - Vanità Teaser",
     "sent": false
   },
   {
-    "date": "03/08/2026",
-    "time": "17:15",
-    "type": "reel",
     "number": "001",
-    "title": "Reel 2 - Vanità Deep Dive",
+    "date": "03/08/2026",
+    "time": "07:15",
+    "type": "carousel",
     "sent": false
   },
   {
+    "number": "001",
+    "date": "03/08/2026",
+    "time": "17:00",
+    "type": "reel",
+    "sent": false
+  },
+  {
+    "number": "003",
     "date": "05/08/2026",
     "time": "17:15",
     "type": "meme",
-    "number": "003",
     "sent": false
   },
   {
