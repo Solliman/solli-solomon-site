@@ -1,9 +1,9 @@
 name: 📅 Solli Post Scheduler
 
 on:
-  schedule:
-    - cron: '*/5 * * * *'  # Ogni 5 minuti
-  workflow_dispatch:        # Trigger manuale da GitHub
+  # schedule DISABILITATO — lo scheduler gira in locale sul Mac Mini via launchd
+  # - cron: '*/5 * * * *'
+  workflow_dispatch:        # Trigger manuale di emergenza da GitHub
 
 jobs:
   send-post:
