@@ -254,32 +254,3 @@ if (readerModal) {
 if (getActiveArticles().length > 0) {
     renderArticles();
 }
-
-// VANITA CARD PLAYER AUDIO LOGIC
-const btnVanitaCardPlay = document.getElementById('btn-vanita-card-play');
-const cardVanitaPlayer = document.getElementById('card-vanita-player');
-let vanitaAudio = null;
-
-if (cardVanitaPlayer) {
-    cardVanitaPlayer.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (!vanitaAudio) {
-            vanitaAudio = new Audio('vanita.mp3');
-            vanitaAudio.addEventListener('play', () => {
-                if (btnVanitaCardPlay) btnVanitaCardPlay.textContent = '❚❚';
-            });
-            vanitaAudio.addEventListener('pause', () => {
-                if (btnVanitaCardPlay) btnVanitaCardPlay.textContent = '▶';
-            });
-            vanitaAudio.addEventListener('ended', () => {
-                if (btnVanitaCardPlay) btnVanitaCardPlay.textContent = '▶';
-            });
-        }
-        if (vanitaAudio.paused) {
-            vanitaAudio.play();
-        } else {
-            vanitaAudio.pause();
-        }
-    });
-}
-
