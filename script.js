@@ -279,16 +279,28 @@ if (miniAudio && miniPlayerWrap) {
         btnPlayPause.addEventListener('click', togglePlay);
     }
 
+    const cardVanitaPlayer = document.getElementById('card-vanita-player');
+    const btnVanitaCardPlay = document.getElementById('btn-vanita-card-play');
+
+    if (cardVanitaPlayer) {
+        cardVanitaPlayer.addEventListener('click', (e) => {
+            e.preventDefault();
+            togglePlay();
+        });
+    }
+
     miniAudio.addEventListener('play', () => {
         miniPlayerWrap.classList.add('playing');
         if (playIcon) playIcon.style.display = 'none';
         if (pauseIcon) pauseIcon.style.display = 'inline-block';
+        if (btnVanitaCardPlay) btnVanitaCardPlay.textContent = '❚❚';
     });
 
     miniAudio.addEventListener('pause', () => {
         miniPlayerWrap.classList.remove('playing');
         if (playIcon) playIcon.style.display = 'inline-block';
         if (pauseIcon) pauseIcon.style.display = 'none';
+        if (btnVanitaCardPlay) btnVanitaCardPlay.textContent = '▶';
     });
 
     miniAudio.addEventListener('timeupdate', () => {
