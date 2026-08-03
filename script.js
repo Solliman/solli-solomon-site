@@ -255,80 +255,31 @@ if (getActiveArticles().length > 0) {
     renderArticles();
 }
 
-// MINI PLAYER AUDIO LOGIC
-const miniAudio = document.getElementById('mini-audio');
-const miniPlayerWrap = document.getElementById('mini-player-wrap');
-const miniPlayerFab = document.getElementById('mini-player-fab');
-const btnPlayPause = document.getElementById('mini-play-pause');
-const playIcon = document.getElementById('mini-play-icon');
-const pauseIcon = document.getElementById('mini-pause-icon');
-const progressContainer = document.getElementById('mini-progress-container');
-const progressFill = document.getElementById('mini-progress-fill');
-const btnCloseMini = document.getElementById('mini-player-close');
+// VANITA CARD AUDIO PLAYER LOGIC
+const btnVanitaCardPlay = document.getElementById('btn-vanita-card-play');
+const cardVanitaPlayer = document.getElementById('card-vanita-player');
+let vanitaAudio = null;
 
-if (miniAudio && miniPlayerWrap) {
-    function togglePlay() {
-        if (miniAudio.paused) {
-            miniAudio.play();
+if (cardVanitaPlayer) {
+    cardVanitaPlayer.addEventListener('click', (e) => {
+        e.preventDefault();
+        if (!vanitaAudio) {
+            vanitaAudio = new Audio('vanita.mp3');
+            vanitaAudio.addEventListener('play', () => {
+                if (btnVanitaCardPlay) btnVanitaCardPlay.textContent = '❚❚';
+            });
+            vanitaAudio.addEventListener('pause', () => {
+                if (btnVanitaCardPlay) btnVanitaCardPlay.textContent = '▶';
+            });
+            vanitaAudio.addEventListener('ended', () => {
+                if (btnVanitaCardPlay) btnVanitaCardPlay.textContent = '▶';
+            });
+        }
+        if (vanitaAudio.paused) {
+            vanitaAudio.play();
         } else {
-            miniAudio.pause();
-        }
-    }
-
-    if (btnPlayPause) {
-        btnPlayPause.addEventListener('click', togglePlay);
-    }
-
-    const cardVanitaPlayer = document.getElementById('card-vanita-player');
-    const btnVanitaCardPlay = document.getElementById('btn-vanita-card-play');
-
-    if (cardVanitaPlayer) {
-        cardVanitaPlayer.addEventListener('click', (e) => {
-            e.preventDefault();
-            togglePlay();
-        });
-    }
-
-    miniAudio.addEventListener('play', () => {
-        miniPlayerWrap.classList.add('playing');
-        if (playIcon) playIcon.style.display = 'none';
-        if (pauseIcon) pauseIcon.style.display = 'inline-block';
-        if (btnVanitaCardPlay) btnVanitaCardPlay.textContent = '❚❚';
-    });
-
-    miniAudio.addEventListener('pause', () => {
-        miniPlayerWrap.classList.remove('playing');
-        if (playIcon) playIcon.style.display = 'inline-block';
-        if (pauseIcon) pauseIcon.style.display = 'none';
-        if (btnVanitaCardPlay) btnVanitaCardPlay.textContent = '▶';
-    });
-
-    miniAudio.addEventListener('timeupdate', () => {
-        if (miniAudio.duration && progressFill) {
-            const pct = (miniAudio.currentTime / miniAudio.duration) * 100;
-            progressFill.style.width = pct + '%';
+            vanitaAudio.pause();
         }
     });
-
-    if (progressContainer) {
-        progressContainer.addEventListener('click', (e) => {
-            const rect = progressContainer.getBoundingClientRect();
-            const pos = (e.clientX - rect.left) / rect.width;
-            if (miniAudio.duration) {
-                miniAudio.currentTime = pos * miniAudio.duration;
-            }
-        });
-    }
-
-    if (btnCloseMini && miniPlayerFab) {
-        btnCloseMini.addEventListener('click', () => {
-            miniPlayerWrap.classList.add('collapsed');
-            miniPlayerFab.classList.add('visible');
-        });
-        miniPlayerFab.addEventListener('click', () => {
-            miniPlayerWrap.classList.remove('collapsed');
-            miniPlayerFab.classList.remove('visible');
-        });
-    }
 }
 
