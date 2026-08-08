@@ -46,28 +46,28 @@
     "date": "03/08/2026",
     "time": "07:15",
     "type": "carousel",
-    "sent": false
+    "sent": true
   },
   {
     "number": "001",
     "date": "03/08/2026",
     "time": "17:00",
     "type": "reel",
-    "sent": false
+    "sent": true
   },
   {
     "number": "003",
     "date": "05/08/2026",
     "time": "17:15",
     "type": "meme",
-    "sent": false
+    "sent": true
   },
   {
     "date": "07/08/2026",
     "time": "17:15",
     "type": "meme",
     "number": "004",
-    "sent": false
+    "sent": true
   },
   {
     "date": "09/08/2026",
