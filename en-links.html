@@ -193,5 +193,25 @@
             <a href="links.html">IT</a> | <a href="en-links.html" class="active">EN</a>
         </div>
     </div>
+    <script>
+        document.querySelectorAll('.link-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const label = btn.textContent.trim();
+                const url = btn.getAttribute('href');
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({
+                        access_key: '08831c13-61b0-4f7b-98fc-d667390455e7',
+                        name: 'System Notification',
+                        email: 'noreply@sollisolomon.com',
+                        subject: `🔗 Link-in-Bio Click: ${label}`,
+                        message: `Someone clicked the link "${label}" (${url}) from the English Link-in-Bio page.`,
+                        from_name: 'Solli Solomon Website'
+                    })
+                }).catch(() => {});
+            });
+        });
+    </script>
 </body>
 </html>

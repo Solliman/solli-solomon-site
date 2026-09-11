@@ -254,6 +254,21 @@ function openArticleReader(index) {
     document.body.style.overflow = 'hidden';
     readerModal.scrollTop = 0;
     updateProgressBar();
+
+    // Notifica Web3Forms silenziosa per l'apertura articolo
+    const WEB3FORMS_KEY = '08831c13-61b0-4f7b-98fc-d667390455e7';
+    fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+            access_key: WEB3FORMS_KEY,
+            name: 'Notifica Sistema',
+            email: 'noreply@sollisolomon.com',
+            subject: `📖 Lettura Articolo: ${art.title}`,
+            message: `Qualcuno sta leggendo l'articolo "${art.title}" (Pubblicato il: ${art.date}, Autore: ${art.author}).`,
+            from_name: 'Sito Solli Solomon'
+        })
+    }).catch(() => {});
 }
 
 // CHIUDE IL READER MODAL

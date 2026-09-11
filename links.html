@@ -193,5 +193,25 @@
             <a href="links.html" class="active">IT</a> | <a href="en-links.html">EN</a>
         </div>
     </div>
+    <script>
+        document.querySelectorAll('.link-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const label = btn.textContent.trim();
+                const url = btn.getAttribute('href');
+                fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                    body: JSON.stringify({
+                        access_key: '08831c13-61b0-4f7b-98fc-d667390455e7',
+                        name: 'Notifica Sistema',
+                        email: 'noreply@sollisolomon.com',
+                        subject: `🔗 Clic Link-in-Bio: ${label}`,
+                        message: `Qualcuno ha cliccato sul link "${label}" (${url}) dalla pagina Link-in-Bio.`,
+                        from_name: 'Sito Solli Solomon'
+                    })
+                }).catch(() => {});
+            });
+        });
+    </script>
 </body>
 </html>
