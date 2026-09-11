@@ -119,46 +119,56 @@
     </section>
 
     <!-- TICKER: tutti i 21 brani, dal più recente al primo pubblicato -->
-    <div id="ticker"><span id="tickerSpan">
-<b>WEPT</b> — ispirata a Giovanni 11:35: l'empatia divina, il dolore umano, la promessa della risurrezione.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<b>VANITÀ</b> — ispirata all'Ecclesiaste: oltre le illusioni del successo passeggero, la verità che resta.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<b>PASTOR</b> — "Il Signore non parla solo per bocca di Mosè, ma anche attraverso i suoi pastori."<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<b>PULSING WAVES</b> (Otus Medi rmx) — remix per il progetto Ethos di Otus Medi, nato da una call aperta su Instagram.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<b>ALFA E OMEGA</b> — Apocalisse 1:8: "Io sono l'Alfa e l'Omega" — la techno come forma di adorazione.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<b>ELEUTHERIA</b> — in greco "libertà": parlare a Dio senza filtri, parole oneste su un beat techno.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<b>REGNA</b> — ispirata a Giacomo 4:7: la techno come atto di resistenza spirituale.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<b>VIVE</b> — una voce elettronica proclama un unico messaggio: Cristo vive.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<b>APOSTOLOS REMIX</b> — gli stessi dodici apostoli, ricostruiti dopo che l'originale fu rimosso dalle piattaforme.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<b>SCOPPIERÀ LA MUSICA</b> (rmx) — remix del brano di Radio Gatto: energia dance e amicizia tra artisti.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<b>ISRAELE</b> — i nomi dei figli di Giacobbe, in ricordo della storia e dell'eredità di Israele.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<b>APOSTOLOS</b> — i dodici apostoli nominati uno ad uno, da Matteo 10: la scrittura che diventa ritmo.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<b>GERICO</b> — Giosuè 6: sette giri, sette trombe, e le mura crollano.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<b>CALL HIS NAME</b> — un loop vocale che insiste come una preghiera: l'adorazione che diventa ritmo.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<b>APOC 13</b> — Apocalisse 13, la bestia e il marchio: un viaggio spoken word nella Scrittura.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<b>APOCALISSE</b> — l'intero libro dell'Apocalisse, letto capitolo per capitolo su un beat techno.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<b>LUI È IL RE</b> — "Lui è il Re, io amo il Re": un anthem sulla confessione di fede più semplice.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<b>JSS</b> — ispirata a Matteo 6:6: l'intimità della preghiera personale, lontano dallo spettacolo.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<b>LA MUSICA CAMBIA</b> — "la musica è Vita se la sorgente è Acqua Viva": una dichiarazione rara nel panorama cristiano italiano.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<b>TIGER BALM</b> — il secondo brano pubblicato: un ruggito di leone, il farsi sentire attraverso Dio.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<b>QOELET</b> — il primissimo brano, nato con Star Bstreet: Ecclesiaste 1:2, "vanità delle vanità".<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-<b>WEPT</b> — ispirata a Giovanni 11:35: l'empatia divina, il dolore umano, la promessa della risurrezione.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
-</span></div>
-    <script>
-    (function(){
-      const tickerEl = document.getElementById('ticker');
-      const tickerSpan = document.getElementById('tickerSpan');
-      if(!tickerEl || !tickerSpan) return;
-      const restart = () => {
-        tickerSpan.style.animation = 'none';
-        void tickerSpan.offsetWidth;
-        tickerSpan.style.animation = '';
-      };
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => { if(entry.isIntersecting) restart(); });
-      }, { threshold: 0.2 });
-      observer.observe(tickerEl);
-    })();
-    </script>
+    <div id="ticker">
+      <div class="ticker-track">
+        <div class="ticker-content">
+          <b>WEPT</b> — ispirata a Giovanni 11:35: l'empatia divina, il dolore umano, la promessa della risurrezione.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>VANITÀ</b> — ispirata all'Ecclesiaste: oltre le illusioni del successo passeggero, la verità che resta.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>PASTOR</b> — "Il Signore non parla solo per bocca di Mosè, ma anche attraverso i suoi pastori."<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>PULSING WAVES</b> (Otus Medi rmx) — remix per il progetto Ethos di Otus Medi, nato da una call aperta su Instagram.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>ALFA E OMEGA</b> — Apocalisse 1:8: "Io sono l'Alfa e l'Omega" — la techno come forma di adorazione.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>ELEUTHERIA</b> — in greco "libertà": parlare a Dio senza filtri, parole oneste su un beat techno.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>REGNA</b> — ispirata a Giacomo 4:7: la techno come atto di resistenza spirituale.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>VIVE</b> — una voce elettronica proclama un unico messaggio: Cristo vive.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>APOSTOLOS REMIX</b> — gli stessi dodici apostoli, ricostruiti dopo che l'originale fu rimosso dalle piattaforme.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>SCOPPIERÀ LA MUSICA</b> (rmx) — remix del brano di Radio Gatto: energia dance e amicizia tra artisti.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>ISRAELE</b> — i nomi dei figli di Giacobbe, in ricordo della storia e dell'eredità di Israele.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>APOSTOLOS</b> — i dodici apostoli nominati uno ad uno, da Matteo 10: la scrittura che diventa ritmo.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>GERICO</b> — Giosuè 6: sette giri, sette trombe, e le mura crollano.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>CALL HIS NAME</b> — un loop vocale che insiste come una preghiera: l'adorazione che diventa ritmo.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>APOC 13</b> — Apocalisse 13, la bestia e il marchio: un viaggio spoken word nella Scrittura.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>APOCALISSE</b> — l'intero libro dell'Apocalisse, letto capitolo per capitolo su un beat techno.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>LUI È IL RE</b> — "Lui è il Re, io amo il Re": un anthem sulla confessione di fede più semplice.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>JSS</b> — ispirata a Matteo 6:6: l'intimità della preghiera personale, lontano dallo spettacolo.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>LA MUSICA CAMBIA</b> — "la musica è Vita se la sorgente è Acqua Viva": una dichiarazione rara nel panorama cristiano italiano.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>TIGER BALM</b> — il secondo brano pubblicato: un ruggito di leone, il farsi sentire attraverso Dio.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>QOELET</b> — il primissimo brano, nato con Star Bstreet: Ecclesiaste 1:2, "vanità delle vanità".<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        </div>
+        <div class="ticker-content" aria-hidden="true">
+          <b>WEPT</b> — ispirata a Giovanni 11:35: l'empatia divina, il dolore umano, la promessa della risurrezione.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>VANITÀ</b> — ispirata all'Ecclesiaste: oltre le illusioni del successo passeggero, la verità che resta.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>PASTOR</b> — "Il Signore non parla solo per bocca di Mosè, ma anche attraverso i suoi pastori."<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>PULSING WAVES</b> (Otus Medi rmx) — remix per il progetto Ethos di Otus Medi, nato da una call aperta su Instagram.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>ALFA E OMEGA</b> — Apocalisse 1:8: "Io sono l'Alfa e l'Omega" — la techno come forma di adorazione.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>ELEUTHERIA</b> — in greco "libertà": parlare a Dio senza filtri, parole oneste su un beat techno.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>REGNA</b> — ispirata a Giacomo 4:7: la techno come atto di resistenza spirituale.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>VIVE</b> — una voce elettronica proclama un unico messaggio: Cristo vive.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>APOSTOLOS REMIX</b> — gli stessi dodici apostoli, ricostruiti dopo che l'originale fu rimosso dalle piattaforme.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>SCOPPIERÀ LA MUSICA</b> (rmx) — remix del brano di Radio Gatto: energia dance e amicizia tra artisti.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>ISRAELE</b> — i nomi dei figli di Giacobbe, in ricordo della storia e dell'eredità di Israele.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>APOSTOLOS</b> — i dodici apostoli nominati uno ad uno, da Matteo 10: la scrittura che diventa ritmo.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>GERICO</b> — Giosuè 6: sette giri, sette trombe, e le mura crollano.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>CALL HIS NAME</b> — un loop vocale che insiste come una preghiera: l'adorazione che diventa ritmo.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>APOC 13</b> — Apocalisse 13, la bestia e il marchio: un viaggio spoken word nella Scrittura.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>APOCALISSE</b> — l'intero libro dell'Apocalisse, letto capitolo per capitolo su un beat techno.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>LUI È IL RE</b> — "Lui è il Re, io amo il Re": un anthem sulla confessione di fede più semplice.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>JSS</b> — ispirata a Matteo 6:6: l'intimità della preghiera personale, lontano dallo spettacolo.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>LA MUSICA CAMBIA</b> — "la musica è Vita se la sorgente è Acqua Viva": una dichiarazione rara nel panorama cristiano italiano.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>TIGER BALM</b> — il secondo brano pubblicato: un ruggito di leone, il farsi sentire attraverso Dio.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <b>QOELET</b> — il primissimo brano, nato con Star Bstreet: Ecclesiaste 1:2, "vanità delle vanità".<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        </div>
+      </div>
+    </div>
 
     <!-- BIOGRAFIA (solo testo, senza foto — la foto vive nell'Hero come nel mockup D) -->
     <section id="bio" class="reveal">

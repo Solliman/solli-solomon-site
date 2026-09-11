@@ -91,12 +91,14 @@ padding:150px 52px 80px; gap:40px; overflow:hidden;
 .verse-text { font-family:'Cormorant Garamond',serif; font-style:italic; font-size:clamp(20px,2.6vw,30px); max-width:700px; margin:0 auto; color:var(--text); }
 .verse-ref { margin-top:14px; font-size:9px; letter-spacing:0.3em; text-transform:uppercase; color:var(--accent); }
 /* TICKER — testi reali Bandcamp, tutti i 21 brani (mockup D) */
-#ticker { overflow:hidden; white-space:nowrap; padding:16px 0; background:var(--text); }
-#ticker span { display:inline-block; padding-left:100%; animation:tickerScroll 280s linear infinite; font-size:11px; color:var(--accent-bright); }
-#ticker b { color:var(--bg); }
-#ticker .sep { white-space:pre; }
-@keyframes tickerScroll { from{transform:translateX(0);} to{transform:translateX(-100%);} }
-@media(max-width:520px){ #ticker span{font-size:10px;} }
+#ticker { overflow:hidden; white-space:nowrap; padding:16px 0; background:var(--text); user-select:none; }
+.ticker-track { display:flex; width:max-content; animation:tickerScroll 160s linear infinite; }
+.ticker-track:hover { animation-play-state:paused; }
+.ticker-content { display:inline-flex; align-items:center; white-space:nowrap; font-size:11px; color:var(--accent-bright); }
+.ticker-content b { color:var(--bg); }
+.ticker-content .sep { white-space:pre; }
+@keyframes tickerScroll { 0%{transform:translateX(0);} 100%{transform:translateX(-50%);} }
+@media(max-width:520px){ .ticker-content { font-size:10px; } }
 /* SECTIONS */
 section { padding:116px 52px; }
 .sec-label { font-size:10px; letter-spacing:0.42em; text-transform:uppercase; color:var(--accent); margin-bottom:10px; }
