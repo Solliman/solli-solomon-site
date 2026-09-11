@@ -51,6 +51,11 @@ transition: fill 0.2s;
 }
 .cursor-ring.on-button svg .cross-shape { fill: var(--text); }
 .cursor-ring.clicking svg .cross-shape { fill: var(--text); }
+
+@media (pointer: coarse), (hover: none), (max-width: 820px) {
+  .cursor, .cursor-ring { display: none !important; }
+  html, body, a, button, input, textarea { cursor: auto !important; }
+}
 /* HEADER */
 header {
 position:fixed; top:0; left:0; right:0; z-index:100;
