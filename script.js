@@ -48,17 +48,6 @@ window.addEventListener('scroll', () =>
 document.getElementById('hdr').classList.toggle('scrolled', scrollY > 50)
 );
 
-// BANNER
-const announceBar = document.getElementById('announce-bar');
-const announceClose = document.getElementById('announce-close');
-if(announceClose) {
-    document.body.classList.add('has-banner');
-    announceClose.addEventListener('click', () => {
-        announceBar.style.display = 'none';
-        document.body.classList.remove('has-banner');
-    });
-}
-
 // ANIMAZIONI
 const obs = new IntersectionObserver(
 entries => entries.forEach(e => { if (e.isIntersecting)
@@ -69,15 +58,16 @@ document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
 // FORM CONTATTI
 const WEB3FORMS_KEY = '08831c13-61b0-4f7b-98fc-d667390455e7';
-document.getElementById('btn-send').addEventListener('click', async () => {
+const btnSendEl = document.getElementById('btn-send');
+if (btnSendEl) {
+btnSendEl.addEventListener('click', async () => {
 const name    = document.getElementById('f-name').value.trim();
 const email   = document.getElementById('f-email').value.trim();
-const subject = document.getElementById('f-subject').value.trim();
 const msg     = document.getElementById('f-msg').value.trim();
 const okEl    = document.getElementById('form-ok');
 const errEl   = document.getElementById('form-err');
-const btn     = document.getElementById('btn-send');
-okEl.className = 'form-msg'; errEl.className = 'form-msg err';
+const btn     = btnSendEl;
+okEl.className = 'form-msg'; errEl.className = 'form-msg';
 if (!name || !email || !msg) {
 errEl.textContent = '✕ Compila almeno nome, email e messaggio.'; errEl.className = 'form-msg err';
 return;
@@ -91,7 +81,7 @@ headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
 body: JSON.stringify({
 access_key: WEB3FORMS_KEY,
 name, email,
-subject: subject || 'Contatto dal sito Solli Solomon',
+subject: 'Contatto dal sito Solli Solomon',
 message: msg,
 from_name: 'Sito Solli Solomon'
 })
@@ -99,7 +89,7 @@ from_name: 'Sito Solli Solomon'
 const data = await res.json();
 if (data.success) {
 okEl.className = 'form-msg ok';
-['f-name','f-email','f-subject','f-msg'].forEach(id =>
+['f-name','f-email','f-msg'].forEach(id =>
 document.getElementById(id).value = '');
 btn.textContent = 'Invia messaggio';
 btn.disabled = false;
@@ -113,24 +103,50 @@ errEl.className = 'form-msg err';
     btn.disabled = false;
     }
 });
-
-// MOSTRO ALTRO NELLA DISCOGRAFIA SU MOBILE
-const btnShowMore = document.getElementById('btn-show-more');
-const musicGrid = document.getElementById('music-grid');
-if (btnShowMore && musicGrid) {
-    btnShowMore.addEventListener('click', () => {
-        musicGrid.classList.remove('collapsed');
-        btnShowMore.style.display = 'none';
-    });
 }
 
+// DISCOGRAFIA — paginazione a blocchi di 5, come nel mockup D: "mostra più" e "mostra meno" fianco a fianco
+const btnShowMore = document.getElementById('btn-show-more');
+const btnShowLess = document.getElementById('btn-show-less');
+const musicGrid = document.getElementById('music-grid');
+if (btnShowMore && musicGrid) {
+    musicGrid.classList.remove('collapsed'); // da qui in poi la visibilità è gestita interamente da JS
+    const allTracks = Array.from(musicGrid.children);
+    const TRACKS_PAGE_SIZE = 5;
+    let visibleTrackCount = Math.min(TRACKS_PAGE_SIZE, allTracks.length);
 
+    function renderTracks() {
+        allTracks.forEach((track, i) => {
+            track.style.display = i < visibleTrackCount ? 'flex' : 'none';
+            track.classList.toggle('is-last-visible', i === visibleTrackCount - 1);
+        });
+        btnShowMore.style.display = visibleTrackCount >= allTracks.length ? 'none' : 'inline-block';
+        if (btnShowLess) {
+            btnShowLess.style.display = visibleTrackCount > TRACKS_PAGE_SIZE ? 'inline-block' : 'none';
+        }
+    }
 
-// LOGICA ARTICOLI E RIFLESSIONI (RENDER 4 ALLA VOLTA + READER SYSTEM THEME + PROGRESS BAR)
-let currentArticleIndex = 0;
+    btnShowMore.addEventListener('click', () => {
+        visibleTrackCount = Math.min(visibleTrackCount + TRACKS_PAGE_SIZE, allTracks.length);
+        renderTracks();
+    });
+
+    if (btnShowLess) {
+        btnShowLess.addEventListener('click', () => {
+            visibleTrackCount = Math.max(visibleTrackCount - TRACKS_PAGE_SIZE, TRACKS_PAGE_SIZE);
+            renderTracks();
+        });
+    }
+
+    renderTracks();
+}
+
+// LOGICA ARTICOLI E RIFLESSIONI (MOSTRA DI PIÙ / MOSTRA DI MENO A BLOCCHI DI 4 + READER SYSTEM THEME + PROGRESS BAR)
+let articleVisibleCount = 0;
 const ARTICLES_PER_PAGE = 4;
 const articlesGrid = document.getElementById('articles-grid');
 const btnMoreArticles = document.getElementById('btn-more-articles');
+const btnFewerArticles = document.getElementById('btn-fewer-articles');
 
 const readerModal = document.getElementById('article-reader-modal');
 const btnCloseReader = document.getElementById('btn-close-reader');
@@ -156,11 +172,14 @@ function renderArticles() {
     const activeArticles = getActiveArticles();
     if (!activeArticles.length || !articlesGrid) return;
 
-    const nextBatch = activeArticles.slice(currentArticleIndex, currentArticleIndex + ARTICLES_PER_PAGE);
-    const readBtnText = (typeof SOL_ARTICLES_EN !== 'undefined') ? 'Read article' : 'Leggi articolo';
-    
-    nextBatch.forEach((art, idx) => {
-        const globalIdx = currentArticleIndex + idx;
+    if (articleVisibleCount === 0) {
+        articleVisibleCount = Math.min(ARTICLES_PER_PAGE, activeArticles.length);
+    }
+
+    articlesGrid.innerHTML = '';
+    const visible = activeArticles.slice(0, articleVisibleCount);
+
+    visible.forEach((art, idx) => {
         const card = document.createElement('div');
         card.className = 'article-card reveal visible';
 
@@ -172,29 +191,49 @@ function renderArticles() {
 
         card.innerHTML = `
             ${thumbHtml}
-            <div class="article-date">${art.date}</div>
-            <h3 class="article-title">${art.title}</h3>
-            <div class="article-author">by ${art.author}</div>
-            <div class="article-excerpt">${createExcerpt(art.content)}</div>
-            <div class="article-read-btn">${readBtnText} <span>→</span></div>
+            <div class="article-body">
+                <div class="article-date">${art.date}</div>
+                <h3 class="article-title">${art.title}</h3>
+                <div class="article-author">by ${art.author}</div>
+            </div>
         `;
-        card.addEventListener('click', () => openArticleReader(globalIdx));
+        card.addEventListener('click', () => openArticleReader(idx));
         articlesGrid.appendChild(card);
     });
 
-    currentArticleIndex += nextBatch.length;
-
     if (btnMoreArticles) {
-        if (currentArticleIndex >= activeArticles.length) {
-            btnMoreArticles.style.display = 'none';
-        } else {
-            btnMoreArticles.style.display = 'inline-block';
-        }
+        btnMoreArticles.style.display = articleVisibleCount >= activeArticles.length ? 'none' : 'inline-block';
+    }
+    if (btnFewerArticles) {
+        btnFewerArticles.style.display = articleVisibleCount > ARTICLES_PER_PAGE ? 'inline-block' : 'none';
     }
 }
 
 if (btnMoreArticles) {
-    btnMoreArticles.addEventListener('click', renderArticles);
+    btnMoreArticles.addEventListener('click', () => {
+        const activeArticles = getActiveArticles();
+        articleVisibleCount = Math.min(articleVisibleCount + ARTICLES_PER_PAGE, activeArticles.length);
+        renderArticles();
+    });
+}
+
+if (btnFewerArticles) {
+    btnFewerArticles.addEventListener('click', () => {
+        const activeArticles = getActiveArticles();
+        articleVisibleCount = Math.max(articleVisibleCount - ARTICLES_PER_PAGE, Math.min(ARTICLES_PER_PAGE, activeArticles.length));
+        renderArticles();
+    });
+}
+
+// "TUTTI GLI ARTICOLI" nell'header di sezione — carica in un colpo solo tutte le riflessioni
+const btnAllArticles = document.getElementById('btn-all-articles');
+if (btnAllArticles) {
+    btnAllArticles.addEventListener('click', (e) => {
+        e.preventDefault();
+        const activeArticles = getActiveArticles();
+        articleVisibleCount = activeArticles.length;
+        renderArticles();
+    });
 }
 
 // APRE IL READER MODAL
@@ -253,4 +292,59 @@ if (readerModal) {
 // Inizializza i primi 4 articoli
 if (getActiveArticles().length > 0) {
     renderArticles();
+}
+
+// ONDA ANIMATA NELL'HERO (onda "a S" fluida, dal mockup D)
+const waveCanvas = document.getElementById('waveCanvas');
+if (waveCanvas) {
+    const ctx = waveCanvas.getContext('2d');
+    function resizeWave(){ waveCanvas.width = waveCanvas.offsetWidth; waveCanvas.height = waveCanvas.offsetHeight; }
+    resizeWave();
+    window.addEventListener('resize', resizeWave);
+    let t = 0;
+    function drawWave(){
+        ctx.clearRect(0,0,waveCanvas.width,waveCanvas.height);
+        const midY = waveCanvas.height * 0.42;
+        const amp = waveCanvas.height * 0.09;
+        const points = [];
+        const steps = 60;
+        for(let i=0;i<=steps;i++){
+            const x = (waveCanvas.width / steps) * i;
+            const y = midY
+                + Math.sin(i*0.35 + t) * amp
+                + Math.sin(i*0.11 + t*0.6) * amp * 0.5;
+            points.push([x,y]);
+        }
+        ctx.beginPath();
+        ctx.moveTo(points[0][0], points[0][1]);
+        for(let i=1;i<points.length-2;i++){
+            const xc = (points[i][0] + points[i+1][0]) / 2;
+            const yc = (points[i][1] + points[i+1][1]) / 2;
+            ctx.quadraticCurveTo(points[i][0], points[i][1], xc, yc);
+        }
+        const grad = ctx.createLinearGradient(0,0,waveCanvas.width,0);
+        grad.addColorStop(0, 'rgba(184,137,63,0)');
+        grad.addColorStop(0.5, 'rgba(184,137,63,0.85)');
+        grad.addColorStop(1, 'rgba(184,137,63,0)');
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // seconda onda più sottile, sfasata, come un'eco
+        ctx.beginPath();
+        for(let i=0;i<=steps;i++){
+            const x = (waveCanvas.width / steps) * i;
+            const y = midY + amp*0.6
+                + Math.sin(i*0.35 + t + 1.4) * amp * 0.7
+                + Math.sin(i*0.11 + t*0.6) * amp * 0.4;
+            if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+        }
+        ctx.strokeStyle = 'rgba(184,137,63,0.25)';
+        ctx.lineWidth = 1;
+        ctx.stroke();
+
+        t += 0.012;
+        requestAnimationFrame(drawWave);
+    }
+    drawWave();
 }

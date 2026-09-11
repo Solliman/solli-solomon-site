@@ -59,7 +59,7 @@
     <!-- Font Ufficiali -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=DM+Mono:wght@300;400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
     
     <!-- Foglio di Stile -->
     <link rel="stylesheet" href="style.css?v=1.0.1">
@@ -79,58 +79,91 @@
         <svg viewBox="0 0 100 100" width="36" height="44"><path class="cross-shape" d="M45,0 h10 v40 h40 v10 h-40 v50 h-10 v-50 h-40 v-10 h40 z"/></svg>
     </div>
 
-    <!-- BANNER ANNUNCIO NUOVA RELEASE WEPT -->
-    <div id="announce-bar" class="announce-bar">
-        <img src="wept-cover.jpg" alt="Wept Cover">
-        <span>⚡ NEW SINGLE —</span>
-        <strong>Wept</strong>
-        <a href="https://too.fm/8j4eb3e" class="announce-link" target="_blank" rel="noopener">Listen Now →</a>
-        <button id="announce-close" class="announce-close">×</button>
-    </div>
-
     <!-- HEADER & NAVIGAZIONE -->
     <header id="hdr">
         <a href="#hero" class="logo">Solli Solomon</a>
         <nav>
             <a href="#bio">Bio</a>
             <a href="#music">Discography</a>
-            <a href="#social">Social</a>
-            <a href="#releases">News</a>
             <a href="#articles">Reflections</a>
-            <a href="#cenacolo">Cenacolo</a>
             <a href="#contact">Contact</a>
+            <a href="#cenacolo">Cenacolo</a>
             <a href="index.html" id="lang-toggle" aria-label="Switch to Italian">IT</a>
         </nav>
     </header>
 
-    <!-- HERO SECTION -->
+    <!-- HERO SECTION (layout a griglia del mockup D, con onda fissa + onda animata) -->
     <section id="hero">
-        <div class="hero-bg"></div>
+        <svg class="pulse-line" viewBox="0 0 800 800" preserveAspectRatio="none">
+            <polyline points="0,420 150,420 190,300 230,540 270,420 800,420" fill="none" stroke="#b8893f" stroke-width="1.5"/>
+        </svg>
+        <canvas id="waveCanvas"></canvas>
         <div class="hero-content">
-            <div class="hero-tag">Producer · Italy · Electronic Music</div>
-            <h1 class="hero-title">Solli <em>Solomon</em></h1>
+            <div class="hero-tag">Producer · Italy · Christian Techno</div>
+            <h1 class="hero-title">Solli<br><em>Solomon</em></h1>
             <p class="hero-sub">Between techno, spirituality, and sonic exploration. Every frequency is an intention, every beat a truth.</p>
             <div class="hero-cta">
                 <a href="https://too.fm/8j4eb3e" class="btn-primary" target="_blank" rel="noopener">⚡ Listen now to "Wept"</a>
                 <a href="https://sollisolomon.bandcamp.com" class="btn-ghost" target="_blank" rel="noopener">Listen on Bandcamp</a>
             </div>
         </div>
-        <div class="scroll-indicator">
-            <span>Scroll</span>
-            <div class="scroll-bar"></div>
+        <div class="hero-photo">
+            <img src="solli-bio-photo.png" alt="Solli Solomon - Italian producer of Christian Techno and spiritual electronic music" loading="lazy">
         </div>
     </section>
 
-    <!-- BIOGRAFIA -->
-    <section id="bio" class="reveal">
-        <div class="sec-label">001 — Biography</div>
-        <div class="bio-grid">
-            
-            <div class="bio-img-wrap reveal d2">
-                <div class="bio-img-frame"></div>
-                <img src="solli-artist.jpg" alt="Solli Solomon - Produttore italiano di Techno Cristiana ed elettronica spirituale" class="bio-img" loading="lazy">
-            </div>
+    <!-- VERSE STRIP -->
+    <section id="verse">
+        <p class="verse-text">"Jesus wept." — John 11:35</p>
+        <p class="verse-ref">Inspiration for the new single Wept</p>
+    </section>
 
+    <!-- TICKER: tutti i 21 brani, dal più recente al primo pubblicato -->
+    <div id="ticker"><span id="tickerSpan">
+<b>WEPT</b> — ispirata a Giovanni 11:35: l'empatia divina, il dolore umano, la promessa della risurrezione.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<b>VANITÀ</b> — ispirata all'Ecclesiaste: oltre le illusioni del successo passeggero, la verità che resta.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<b>PASTOR</b> — "Il Signore non parla solo per bocca di Mosè, ma anche attraverso i suoi pastori."<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<b>PULSING WAVES</b> (Otus Medi rmx) — remix per il progetto Ethos di Otus Medi, nato da una call aperta su Instagram.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<b>ALFA E OMEGA</b> — Apocalisse 1:8: "Io sono l'Alfa e l'Omega" — la techno come forma di adorazione.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<b>ELEUTHERIA</b> — in greco "libertà": parlare a Dio senza filtri, parole oneste su un beat techno.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<b>REGNA</b> — ispirata a Giacomo 4:7: la techno come atto di resistenza spirituale.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<b>VIVE</b> — una voce elettronica proclama un unico messaggio: Cristo vive.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<b>APOSTOLOS REMIX</b> — gli stessi dodici apostoli, ricostruiti dopo che l'originale fu rimosso dalle piattaforme.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<b>SCOPPIERÀ LA MUSICA</b> (rmx) — remix del brano di Radio Gatto: energia dance e amicizia tra artisti.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<b>ISRAELE</b> — i nomi dei figli di Giacobbe, in ricordo della storia e dell'eredità di Israele.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<b>APOSTOLOS</b> — i dodici apostoli nominati uno ad uno, da Matteo 10: la scrittura che diventa ritmo.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<b>GERICO</b> — Giosuè 6: sette giri, sette trombe, e le mura crollano.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<b>CALL HIS NAME</b> — un loop vocale che insiste come una preghiera: l'adorazione che diventa ritmo.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<b>APOC 13</b> — Apocalisse 13, la bestia e il marchio: un viaggio spoken word nella Scrittura.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<b>APOCALISSE</b> — l'intero libro dell'Apocalisse, letto capitolo per capitolo su un beat techno.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<b>LUI È IL RE</b> — "Lui è il Re, io amo il Re": un anthem sulla confessione di fede più semplice.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<b>JSS</b> — ispirata a Matteo 6:6: l'intimità della preghiera personale, lontano dallo spettacolo.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<b>LA MUSICA CAMBIA</b> — "la musica è Vita se la sorgente è Acqua Viva": una dichiarazione rara nel panorama cristiano italiano.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<b>TIGER BALM</b> — il secondo brano pubblicato: un ruggito di leone, il farsi sentire attraverso Dio.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<b>QOELET</b> — il primissimo brano, nato con Star Bstreet: Ecclesiaste 1:2, "vanità delle vanità".<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+<b>WEPT</b> — ispirata a Giovanni 11:35: l'empatia divina, il dolore umano, la promessa della risurrezione.<span class="sep">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+</span></div>
+    <script>
+    (function(){
+      const tickerEl = document.getElementById('ticker');
+      const tickerSpan = document.getElementById('tickerSpan');
+      if(!tickerEl || !tickerSpan) return;
+      const restart = () => {
+        tickerSpan.style.animation = 'none';
+        void tickerSpan.offsetWidth;
+        tickerSpan.style.animation = '';
+      };
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if(entry.isIntersecting) restart(); });
+      }, { threshold: 0.2 });
+      observer.observe(tickerEl);
+    })();
+    </script>
+
+    <!-- BIOGRAFIA (solo testo, senza foto — la foto vive nell'Hero come nel mockup D) -->
+    <section id="bio" class="reveal">
+        <div class="sec-label">Biography</div>
+        <div class="bio-grid">
             <div class="bio-text">
                 <h2>Suonare la <em>verità</em></h2>
                 <p>Solli Solomon è un produttore italiano pionieristico in cui il suono si fa preghiera e il ritmo diventa rivelazione. La sua proposta artistica si colloca nella <strong>techno cristiana</strong> e nella musica elettronica sperimentale e contemplativa — un cammino in cui ogni frequenza è un'intenzione spirituale e ogni beat una ricerca di verità in Cristo.</p>
@@ -149,385 +182,69 @@
         </div>
     </section>
 
-    <!-- DISCOGRAFIA -->
+    <!-- ULTIMA USCITA — card esatta del mockup D, tra Bio e Discografia -->
+    <section id="release">
+        <div class="release-card">
+            <img class="release-cover" src="wept-cover.jpg" alt="Wept cover">
+            <div>
+                <div class="release-eyebrow">⚡ Latest Release</div>
+                <h2 class="release-title">Wept</h2>
+                <p class="release-desc">The new single, inspired by John 11:35. Available on Spotify, Apple Music, Bandcamp and all digital stores.</p>
+                <a href="https://too.fm/8j4eb3e" class="btn-primary" target="_blank" rel="noopener">Listen now →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- DISCOGRAFIA — lista minimal del mockup D, tutti i 21 brani reali -->
     <section id="music" class="reveal">
-        <div class="sec-label">002 — Discography</div>
-        <div class="music-header">
-            <h2>Tutta la <em>musica</em></h2>
-            <a href="https://sollisolomon.bandcamp.com" target="_blank" rel="noopener">Vai su Bandcamp →</a>
+        <div class="section-head">
+            <h2 class="section-title">Discography</h2>
+            <a href="https://sollisolomon.bandcamp.com" class="section-link" target="_blank" rel="noopener">View on Bandcamp →</a>
         </div>
-        
+
         <div class="music-grid collapsed" id="music-grid">
-            
-            <!-- PROSSIME USCITE CON COPERTINE UFFICIALI -->
-            <div class="music-card-item">
-                <a href="https://sollisolomon.bandcamp.com/track/wept" class="music-card coming collab" target="_blank" rel="noopener" style="border-color: var(--accent);">
-                    <div class="music-card-bg" style="background-image: url('wept-cover.jpg');"></div>
-                    <img src="wept-cover.jpg" class="music-card-thumb" alt="Wept Cover" loading="lazy">
-                    <span class="music-num">— 21</span>
-                    <h3 class="music-title">Wept</h3>
-                    <span class="music-collab" style="color: var(--accent); font-weight: bold;">⚡ OUT NOW ↗</span>
-                </a>
-                <div class="music-card-player">
-                    <iframe src="https://bandcamp.com/EmbeddedPlayer/track=794135649/size=small/bgcol=111111/linkcol=00c8b4/transparent=true/" seamless><a href="https://sollisolomon.bandcamp.com/track/wept">Wept</a></iframe>
-                </div>
-            </div>
-
-            <div class="music-card-item">
-                <a href="https://sollisolomon.bandcamp.com/track/vanit" class="music-card collab" target="_blank" rel="noopener">
-                    <div class="music-card-bg" style="background-image: url('vanita-cover.jpg');"></div>
-                    <img src="vanita-cover.jpg" class="music-card-thumb" alt="Vanità Cover" loading="lazy">
-                    <span class="music-num">— 20</span>
-                    <h3 class="music-title">Vanità</h3>
-                    <span class="music-arrow">↗</span>
-                </a>
-                <div class="music-card-player">
-                    <iframe src="https://bandcamp.com/EmbeddedPlayer/track=3193251904/size=small/bgcol=111111/linkcol=00c8b4/transparent=true/" seamless><a href="https://sollisolomon.bandcamp.com/track/vanit">Vanità</a></iframe>
-                </div>
-            </div>
-
-            <!-- CATALOGO AGGIORNATO CON PASTOR -->
-            <div class="music-card-item">
-                <a href="https://sollisolomon.bandcamp.com/track/pastor" class="music-card collab" target="_blank" rel="noopener">
-                    <div class="music-card-bg" style="background-image: url('pastor-cover.jpg');"></div>
-                    <img src="pastor-cover.jpg" class="music-card-thumb" alt="Pastor Cover" loading="lazy">
-                    <span class="music-num">— 19</span>
-                    <h3 class="music-title">Pastor</h3>
-                    <span class="music-arrow">↗</span>
-                </a>
-                <div class="music-card-player">
-                    <iframe src="https://bandcamp.com/EmbeddedPlayer/track=3706509697/size=small/bgcol=111111/linkcol=00c8b4/transparent=true/" seamless><a href="https://sollisolomon.bandcamp.com/track/pastor">Pastor</a></iframe>
-                </div>
-            </div>
-
-            <div class="music-card-item">
-                <a href="https://ffm.to/pulsing-waves-solli-solomon-remix" class="music-card" target="_blank" rel="noopener">
-                <div class="music-card-bg" style="background-image: url('https://f4.bcbits.com/img/a1658796852_2.jpg');"></div>
-                <img src="https://f4.bcbits.com/img/a1658796852_2.jpg" class="music-card-thumb" alt="Pulsing Waves Cover" loading="lazy">
-                <span class="music-num">— 18</span>
-                <h3 class="music-title">Pulsing Waves Remix</h3>
-                <span class="music-collab">Otus Medi rmx</span>
-                <span class="music-arrow">↗</span>
-            </a>
-                <div class="music-card-player">
-                    <iframe src="https://bandcamp.com/EmbeddedPlayer/track=2801780508/size=small/bgcol=111111/linkcol=00c8b4/transparent=true/" seamless><a href="https://ffm.to/pulsing-waves-solli-solomon-remix">Pulsing Waves Remix</a></iframe>
-                </div>
-            </div>
-
-            <div class="music-card-item">
-                <a href="https://sollisolomon.bandcamp.com/track/alfa-e-omega" class="music-card" target="_blank" rel="noopener">
-                <div class="music-card-bg" style="background-image: url('https://f4.bcbits.com/img/a1002809993_2.jpg');"></div>
-                <img src="https://f4.bcbits.com/img/a1002809993_2.jpg" class="music-card-thumb" alt="Alfa e Omega Cover" loading="lazy">
-                <span class="music-num">— 17</span>
-                <h3 class="music-title">Alfa e Omega</h3>
-                <span class="music-arrow">↗</span>
-            </a>
-                <div class="music-card-player">
-                    <iframe src="https://bandcamp.com/EmbeddedPlayer/track=1059049884/size=small/bgcol=111111/linkcol=00c8b4/transparent=true/" seamless><a href="https://sollisolomon.bandcamp.com/track/alfa-e-omega">Alfa e Omega</a></iframe>
-                </div>
-            </div>
-
-            <div class="music-card-item">
-                <a href="https://sollisolomon.bandcamp.com/track/eleutheria" class="music-card" target="_blank" rel="noopener">
-                <div class="music-card-bg" style="background-image: url('https://f4.bcbits.com/img/a2450994607_2.jpg');"></div>
-                <img src="https://f4.bcbits.com/img/a2450994607_2.jpg" class="music-card-thumb" alt="Eleutheria Cover" loading="lazy">
-                <span class="music-num">— 16</span>
-                <h3 class="music-title">Eleutheria</h3>
-                <span class="music-arrow">↗</span>
-            </a>
-                <div class="music-card-player">
-                    <iframe src="https://bandcamp.com/EmbeddedPlayer/track=663401689/size=small/bgcol=111111/linkcol=00c8b4/transparent=true/" seamless><a href="https://sollisolomon.bandcamp.com/track/eleutheria">Eleutheria</a></iframe>
-                </div>
-            </div>
-
-            <div class="music-card-item">
-                <a href="https://sollisolomon.bandcamp.com/track/regna" class="music-card" target="_blank" rel="noopener">
-                <div class="music-card-bg" style="background-image: url('https://f4.bcbits.com/img/a1670791140_2.jpg');"></div>
-                <img src="https://f4.bcbits.com/img/a1670791140_2.jpg" class="music-card-thumb" alt="Regna Cover" loading="lazy">
-                <span class="music-num">— 15</span>
-                <h3 class="music-title">Regna</h3>
-                <span class="music-arrow">↗</span>
-            </a>
-                <div class="music-card-player">
-                    <iframe src="https://bandcamp.com/EmbeddedPlayer/track=4211299170/size=small/bgcol=111111/linkcol=00c8b4/transparent=true/" seamless><a href="https://sollisolomon.bandcamp.com/track/regna">Regna</a></iframe>
-                </div>
-            </div>
-
-            <div class="music-card-item">
-                <a href="https://sollisolomon.bandcamp.com/track/vive" class="music-card" target="_blank" rel="noopener">
-                <div class="music-card-bg" style="background-image: url('https://f4.bcbits.com/img/a1863227577_2.jpg');"></div>
-                <img src="https://f4.bcbits.com/img/a1863227577_2.jpg" class="music-card-thumb" alt="Vive Cover" loading="lazy">
-                <span class="music-num">— 14</span>
-                <h3 class="music-title">Vive</h3>
-                <span class="music-arrow">↗</span>
-            </a>
-                <div class="music-card-player">
-                    <iframe src="https://bandcamp.com/EmbeddedPlayer/track=3115238083/size=small/bgcol=111111/linkcol=00c8b4/transparent=true/" seamless><a href="https://sollisolomon.bandcamp.com/track/vive">Vive</a></iframe>
-                </div>
-            </div>
-
-            <div class="music-card-item">
-                <a href="https://sollisolomon.bandcamp.com/track/apostolos-remix" class="music-card" target="_blank" rel="noopener">
-                <div class="music-card-bg" style="background-image: url('https://f4.bcbits.com/img/a3951593211_2.jpg');"></div>
-                <img src="https://f4.bcbits.com/img/a3951593211_2.jpg" class="music-card-thumb" alt="Apostolos Remix Cover" loading="lazy">
-                <span class="music-num">— 13</span>
-                <h3 class="music-title">Apostolos Remix</h3>
-                <span class="music-arrow">↗</span>
-            </a>
-                <div class="music-card-player">
-                    <iframe src="https://bandcamp.com/EmbeddedPlayer/track=2411393427/size=small/bgcol=111111/linkcol=00c8b4/transparent=true/" seamless><a href="https://sollisolomon.bandcamp.com/track/apostolos-remix">Apostolos Remix</a></iframe>
-                </div>
-            </div>
-
-            <div class="music-card-item">
-                <a href="https://sollisolomon.bandcamp.com/track/scoppieral-la-musica" class="music-card collab" target="_blank" rel="noopener">
-                <div class="music-card-bg" style="background-image: url('https://f4.bcbits.com/img/a0788214234_2.jpg');"></div>
-                <img src="https://f4.bcbits.com/img/a0788214234_2.jpg" class="music-card-thumb" alt="Scoppierà la Musica Cover" loading="lazy">
-                <span class="music-num">— 12</span>
-                <h3 class="music-title">Scoppierà la Musica</h3>
-                <span class="music-collab">Solli Solomon rmx</span>
-                <span class="music-arrow">↗</span>
-            </a>
-                <div class="music-card-player">
-                    <iframe src="https://bandcamp.com/EmbeddedPlayer/track=2202799669/size=small/bgcol=111111/linkcol=00c8b4/transparent=true/" seamless><a href="https://sollisolomon.bandcamp.com/track/scoppieral-la-musica">Scoppierà la Musica</a></iframe>
-                </div>
-            </div>
-
-            <div class="music-card-item">
-                <a href="https://sollisolomon.bandcamp.com/track/israele" class="music-card" target="_blank" rel="noopener">
-                <div class="music-card-bg" style="background-image: url('https://f4.bcbits.com/img/a1664718547_2.jpg');"></div>
-                <img src="https://f4.bcbits.com/img/a1664718547_2.jpg" class="music-card-thumb" alt="Israele Cover" loading="lazy">
-                <span class="music-num">— 11</span>
-                <h3 class="music-title">Israele</h3>
-                <span class="music-arrow">↗</span>
-            </a>
-                <div class="music-card-player">
-                    <iframe src="https://bandcamp.com/EmbeddedPlayer/track=1815328070/size=small/bgcol=111111/linkcol=00c8b4/transparent=true/" seamless><a href="https://sollisolomon.bandcamp.com/track/israele">Israele</a></iframe>
-                </div>
-            </div>
-
-            <div class="music-card-item">
-                <a href="https://sollisolomon.bandcamp.com/track/apostolos" class="music-card" target="_blank" rel="noopener">
-                <div class="music-card-bg" style="background-image: url('https://f4.bcbits.com/img/a3151450866_2.jpg');"></div>
-                <img src="https://f4.bcbits.com/img/a3151450866_2.jpg" class="music-card-thumb" alt="Apostolos Cover" loading="lazy">
-                <span class="music-num">— 10</span>
-                <h3 class="music-title">Apostolos</h3>
-                <span class="music-exclusive">Esclusiva Bandcamp</span>
-                <span class="music-arrow">↗</span>
-            </a>
-                <div class="music-card-player">
-                    <iframe src="https://bandcamp.com/EmbeddedPlayer/track=100580313/size=small/bgcol=111111/linkcol=00c8b4/transparent=true/" seamless><a href="https://sollisolomon.bandcamp.com/track/apostolos">Apostolos</a></iframe>
-                </div>
-            </div>
-
-            <div class="music-card-item">
-                <a href="https://sollisolomon.bandcamp.com/track/gerico" class="music-card" target="_blank" rel="noopener">
-                <div class="music-card-bg" style="background-image: url('https://f4.bcbits.com/img/a0156613694_2.jpg');"></div>
-                <img src="https://f4.bcbits.com/img/a0156613694_2.jpg" class="music-card-thumb" alt="Gerico Cover" loading="lazy">
-                <span class="music-num">— 09</span>
-                <h3 class="music-title">Gerico</h3>
-                <span class="music-arrow">↗</span>
-            </a>
-                <div class="music-card-player">
-                    <iframe src="https://bandcamp.com/EmbeddedPlayer/track=2989038520/size=small/bgcol=111111/linkcol=00c8b4/transparent=true/" seamless><a href="https://sollisolomon.bandcamp.com/track/gerico">Gerico</a></iframe>
-                </div>
-            </div>
-
-            <div class="music-card-item">
-                <a href="https://sollisolomon.bandcamp.com/track/call-his-name" class="music-card" target="_blank" rel="noopener">
-                <div class="music-card-bg" style="background-image: url('https://f4.bcbits.com/img/a3711508480_2.jpg');"></div>
-                <img src="https://f4.bcbits.com/img/a3711508480_2.jpg" class="music-card-thumb" alt="Call His Name Cover" loading="lazy">
-                <span class="music-num">— 08</span>
-                <h3 class="music-title">Call His Name</h3>
-                <span class="music-arrow">↗</span>
-            </a>
-                <div class="music-card-player">
-                    <iframe src="https://bandcamp.com/EmbeddedPlayer/track=3668492775/size=small/bgcol=111111/linkcol=00c8b4/transparent=true/" seamless><a href="https://sollisolomon.bandcamp.com/track/call-his-name">Call His Name</a></iframe>
-                </div>
-            </div>
-
-            <div class="music-card-item">
-                <a href="https://sollisolomon.bandcamp.com/track/apoc-13" class="music-card" target="_blank" rel="noopener">
-                <div class="music-card-bg" style="background-image: url('https://f4.bcbits.com/img/a0981998107_2.jpg');"></div>
-                <img src="https://f4.bcbits.com/img/a0981998107_2.jpg" class="music-card-thumb" alt="APOC 13 Cover" loading="lazy">
-                <span class="music-num">— 07</span>
-                <h3 class="music-title">APOC 13</h3>
-                <span class="music-arrow">↗</span>
-            </a>
-                <div class="music-card-player">
-                    <iframe src="https://bandcamp.com/EmbeddedPlayer/track=3337664499/size=small/bgcol=111111/linkcol=00c8b4/transparent=true/" seamless><a href="https://sollisolomon.bandcamp.com/track/apoc-13">APOC 13</a></iframe>
-                </div>
-            </div>
-
-            <div class="music-card-item">
-                <a href="https://sollisolomon.bandcamp.com/track/apocalisse" class="music-card" target="_blank" rel="noopener">
-                <div class="music-card-bg" style="background-image: url('https://f4.bcbits.com/img/a0115028803_2.jpg');"></div>
-                <img src="https://f4.bcbits.com/img/a0115028803_2.jpg" class="music-card-thumb" alt="Apocalisse Cover" loading="lazy">
-                <span class="music-num">— 06</span>
-                <h3 class="music-title">Apocalisse</h3>
-                <span class="music-arrow">↗</span>
-            </a>
-                <div class="music-card-player">
-                    <iframe src="https://bandcamp.com/EmbeddedPlayer/track=1131953570/size=small/bgcol=111111/linkcol=00c8b4/transparent=true/" seamless><a href="https://sollisolomon.bandcamp.com/track/apocalisse">Apocalisse</a></iframe>
-                </div>
-            </div>
-
-            <div class="music-card-item">
-                <a href="https://sollisolomon.bandcamp.com/track/tiger-balm" class="music-card" target="_blank" rel="noopener">
-                <div class="music-card-bg" style="background-image: url('https://f4.bcbits.com/img/a3130126428_2.jpg');"></div>
-                <img src="https://f4.bcbits.com/img/a3130126428_2.jpg" class="music-card-thumb" alt="Tiger Balm Cover" loading="lazy">
-                <span class="music-num">— 05</span>
-                <h3 class="music-title">Tiger Balm</h3>
-                <span class="music-arrow">↗</span>
-            </a>
-                <div class="music-card-player">
-                    <iframe src="https://bandcamp.com/EmbeddedPlayer/track=1078174604/size=small/bgcol=111111/linkcol=00c8b4/transparent=true/" seamless><a href="https://sollisolomon.bandcamp.com/track/tiger-balm">Tiger Balm</a></iframe>
-                </div>
-            </div>
-
-            <div class="music-card-item">
-                <a href="https://sollisolomon.bandcamp.com/track/lui-il-re" class="music-card collab" target="_blank" rel="noopener">
-                <div class="music-card-bg" style="background-image: url('https://f4.bcbits.com/img/a3657517753_2.jpg');"></div>
-                <img src="https://f4.bcbits.com/img/a3657517753_2.jpg" class="music-card-thumb" alt="Lui è il Re Cover" loading="lazy">
-                <span class="music-num">— 04</span>
-                <h3 class="music-title">Lui è il Re</h3>
-                <span class="music-collab">feat. Star Bstreet</span>
-                <span class="music-arrow">↗</span>
-            </a>
-                <div class="music-card-player">
-                    <iframe src="https://bandcamp.com/EmbeddedPlayer/track=4041367537/size=small/bgcol=111111/linkcol=00c8b4/transparent=true/" seamless><a href="https://sollisolomon.bandcamp.com/track/lui-il-re">Lui è il Re</a></iframe>
-                </div>
-            </div>
-
-            <div class="music-card-item">
-                <a href="https://sollisolomon.bandcamp.com/track/jss" class="music-card collab" target="_blank" rel="noopener">
-                <div class="music-card-bg" style="background-image: url('https://f4.bcbits.com/img/a2388256926_2.jpg');"></div>
-                <img src="https://f4.bcbits.com/img/a2388256926_2.jpg" class="music-card-thumb" alt="Jss Cover" loading="lazy">
-                <span class="music-num">— 03</span>
-                <h3 class="music-title">Jss</h3>
-                <span class="music-collab">feat. Star Bstreet</span>
-                <span class="music-arrow">↗</span>
-            </a>
-                <div class="music-card-player">
-                    <iframe src="https://bandcamp.com/EmbeddedPlayer/track=3931047871/size=small/bgcol=111111/linkcol=00c8b4/transparent=true/" seamless><a href="https://sollisolomon.bandcamp.com/track/jss">Jss</a></iframe>
-                </div>
-            </div>
-
-            <div class="music-card-item">
-                <a href="https://sollisolomon.bandcamp.com/track/la-musica-cambia" class="music-card collab" target="_blank" rel="noopener">
-                <div class="music-card-bg" style="background-image: url('https://f4.bcbits.com/img/a2054981751_2.jpg');"></div>
-                <img src="https://f4.bcbits.com/img/a2054981751_2.jpg" class="music-card-thumb" alt="La Musica Cambia Cover" loading="lazy">
-                <span class="music-num">— 02</span>
-                <h3 class="music-title">La Musica Cambia</h3>
-                <span class="music-collab">feat. Star Bstreet</span>
-                <span class="music-arrow">↗</span>
-            </a>
-                <div class="music-card-player">
-                    <iframe src="https://bandcamp.com/EmbeddedPlayer/track=3086846734/size=small/bgcol=111111/linkcol=00c8b4/transparent=true/" seamless><a href="https://sollisolomon.bandcamp.com/track/la-musica-cambia">La Musica Cambia</a></iframe>
-                </div>
-            </div>
-
-            <div class="music-card-item">
-                <a href="https://sollisolomon.bandcamp.com/track/qoelet" class="music-card collab" target="_blank" rel="noopener">
-                <div class="music-card-bg" style="background-image: url('https://f4.bcbits.com/img/a2479394766_2.jpg');"></div>
-                <img src="https://f4.bcbits.com/img/a2479394766_2.jpg" class="music-card-thumb" alt="Qoelet Cover" loading="lazy">
-                <span class="music-num">— 01</span>
-                <h3 class="music-title">Qoelet</h3>
-                <span class="music-collab">feat. Star Bstreet · 2019</span>
-                <span class="music-arrow">↗</span>
-            </a>
-                <div class="music-card-player">
-                    <iframe src="https://bandcamp.com/EmbeddedPlayer/track=1339563274/size=small/bgcol=111111/linkcol=00c8b4/transparent=true/" seamless><a href="https://sollisolomon.bandcamp.com/track/qoelet">Qoelet</a></iframe>
-                </div>
-            </div>
-            
+            <a href="https://sollisolomon.bandcamp.com/track/wept" class="disco-track" target="_blank" rel="noopener"><span class="disco-num">21</span><img class="disco-cover" src="wept-cover.jpg" alt=""><span class="disco-name">Wept</span><span class="disco-tag">Out now</span><span class="disco-player"><iframe src="https://bandcamp.com/EmbeddedPlayer/track=794135649/size=small/bgcol=ece3cf/linkcol=b8893f/tracklist=false/artwork=none/transparent=true/" seamless></iframe></span></a>
+            <a href="https://sollisolomon.bandcamp.com/track/vanit" class="disco-track" target="_blank" rel="noopener"><span class="disco-num">20</span><img class="disco-cover" src="vanita-cover.jpg" alt=""><span class="disco-name">Vanità</span><span class="disco-tag">Single</span><span class="disco-player"><iframe src="https://bandcamp.com/EmbeddedPlayer/track=3193251904/size=small/bgcol=ece3cf/linkcol=b8893f/tracklist=false/artwork=none/transparent=true/" seamless></iframe></span></a>
+            <a href="https://sollisolomon.bandcamp.com/track/pastor" class="disco-track" target="_blank" rel="noopener"><span class="disco-num">19</span><img class="disco-cover" src="pastor-cover.jpg" alt=""><span class="disco-name">Pastor</span><span class="disco-tag">Single</span><span class="disco-player"><iframe src="https://bandcamp.com/EmbeddedPlayer/track=3706509697/size=small/bgcol=ece3cf/linkcol=b8893f/tracklist=false/artwork=none/transparent=true/" seamless></iframe></span></a>
+            <a href="https://ffm.to/pulsing-waves-solli-solomon-remix" class="disco-track" target="_blank" rel="noopener"><span class="disco-num">18</span><img class="disco-cover" src="https://f4.bcbits.com/img/a1658796852_16.jpg" alt=""><span class="disco-name">Pulsing Waves <em>(Otus Medi rmx)</em></span><span class="disco-tag">Remix</span><span class="disco-player"><iframe src="https://bandcamp.com/EmbeddedPlayer/track=2801780508/size=small/bgcol=ece3cf/linkcol=b8893f/tracklist=false/artwork=none/transparent=true/" seamless></iframe></span></a>
+            <a href="https://sollisolomon.bandcamp.com/track/alfa-e-omega" class="disco-track" target="_blank" rel="noopener"><span class="disco-num">17</span><img class="disco-cover" src="https://f4.bcbits.com/img/a1002809993_16.jpg" alt=""><span class="disco-name">Alfa e Omega</span><span class="disco-tag">Single</span><span class="disco-player"><iframe src="https://bandcamp.com/EmbeddedPlayer/track=1059049884/size=small/bgcol=ece3cf/linkcol=b8893f/tracklist=false/artwork=none/transparent=true/" seamless></iframe></span></a>
+            <a href="https://sollisolomon.bandcamp.com/track/eleutheria" class="disco-track" target="_blank" rel="noopener"><span class="disco-num">16</span><img class="disco-cover" src="https://f4.bcbits.com/img/a2450994607_16.jpg" alt=""><span class="disco-name">Eleutheria</span><span class="disco-tag">Single</span><span class="disco-player"><iframe src="https://bandcamp.com/EmbeddedPlayer/track=663401689/size=small/bgcol=ece3cf/linkcol=b8893f/tracklist=false/artwork=none/transparent=true/" seamless></iframe></span></a>
+            <a href="https://sollisolomon.bandcamp.com/track/regna" class="disco-track" target="_blank" rel="noopener"><span class="disco-num">15</span><img class="disco-cover" src="https://f4.bcbits.com/img/a1670791140_16.jpg" alt=""><span class="disco-name">Regna</span><span class="disco-tag">Single</span><span class="disco-player"><iframe src="https://bandcamp.com/EmbeddedPlayer/track=4211299170/size=small/bgcol=ece3cf/linkcol=b8893f/tracklist=false/artwork=none/transparent=true/" seamless></iframe></span></a>
+            <a href="https://sollisolomon.bandcamp.com/track/vive" class="disco-track" target="_blank" rel="noopener"><span class="disco-num">14</span><img class="disco-cover" src="https://f4.bcbits.com/img/a1863227577_16.jpg" alt=""><span class="disco-name">Vive</span><span class="disco-tag">Single</span><span class="disco-player"><iframe src="https://bandcamp.com/EmbeddedPlayer/track=3115238083/size=small/bgcol=ece3cf/linkcol=b8893f/tracklist=false/artwork=none/transparent=true/" seamless></iframe></span></a>
+            <a href="https://sollisolomon.bandcamp.com/track/apostolos-remix" class="disco-track" target="_blank" rel="noopener"><span class="disco-num">13</span><img class="disco-cover" src="https://f4.bcbits.com/img/a3951593211_16.jpg" alt=""><span class="disco-name">Apostolos Remix</span><span class="disco-tag">Remix</span><span class="disco-player"><iframe src="https://bandcamp.com/EmbeddedPlayer/track=2411393427/size=small/bgcol=ece3cf/linkcol=b8893f/tracklist=false/artwork=none/transparent=true/" seamless></iframe></span></a>
+            <a href="https://sollisolomon.bandcamp.com/track/scoppieral-la-musica" class="disco-track" target="_blank" rel="noopener"><span class="disco-num">12</span><img class="disco-cover" src="https://f4.bcbits.com/img/a0788214234_16.jpg" alt=""><span class="disco-name">Scoppierà la Musica <em>(Solli Solomon rmx)</em></span><span class="disco-tag">Remix</span><span class="disco-player"><iframe src="https://bandcamp.com/EmbeddedPlayer/track=2202799669/size=small/bgcol=ece3cf/linkcol=b8893f/tracklist=false/artwork=none/transparent=true/" seamless></iframe></span></a>
+            <a href="https://sollisolomon.bandcamp.com/track/israele" class="disco-track" target="_blank" rel="noopener"><span class="disco-num">11</span><img class="disco-cover" src="https://f4.bcbits.com/img/a1664718547_16.jpg" alt=""><span class="disco-name">Israele</span><span class="disco-tag">Single</span><span class="disco-player"><iframe src="https://bandcamp.com/EmbeddedPlayer/track=1815328070/size=small/bgcol=ece3cf/linkcol=b8893f/tracklist=false/artwork=none/transparent=true/" seamless></iframe></span></a>
+            <a href="https://sollisolomon.bandcamp.com/track/apostolos" class="disco-track" target="_blank" rel="noopener"><span class="disco-num">10</span><img class="disco-cover" src="https://f4.bcbits.com/img/a3151450866_16.jpg" alt=""><span class="disco-name">Apostolos</span><span class="disco-tag">Bandcamp exclusive</span><span class="disco-player"><iframe src="https://bandcamp.com/EmbeddedPlayer/track=100580313/size=small/bgcol=ece3cf/linkcol=b8893f/tracklist=false/artwork=none/transparent=true/" seamless></iframe></span></a>
+            <a href="https://sollisolomon.bandcamp.com/track/gerico" class="disco-track" target="_blank" rel="noopener"><span class="disco-num">09</span><img class="disco-cover" src="https://f4.bcbits.com/img/a0156613694_16.jpg" alt=""><span class="disco-name">Gerico</span><span class="disco-tag">Single</span><span class="disco-player"><iframe src="https://bandcamp.com/EmbeddedPlayer/track=2989038520/size=small/bgcol=ece3cf/linkcol=b8893f/tracklist=false/artwork=none/transparent=true/" seamless></iframe></span></a>
+            <a href="https://sollisolomon.bandcamp.com/track/call-his-name" class="disco-track" target="_blank" rel="noopener"><span class="disco-num">08</span><img class="disco-cover" src="https://f4.bcbits.com/img/a3711508480_16.jpg" alt=""><span class="disco-name">Call His Name</span><span class="disco-tag">Single</span><span class="disco-player"><iframe src="https://bandcamp.com/EmbeddedPlayer/track=3668492775/size=small/bgcol=ece3cf/linkcol=b8893f/tracklist=false/artwork=none/transparent=true/" seamless></iframe></span></a>
+            <a href="https://sollisolomon.bandcamp.com/track/apoc-13" class="disco-track" target="_blank" rel="noopener"><span class="disco-num">07</span><img class="disco-cover" src="https://f4.bcbits.com/img/a0981998107_16.jpg" alt=""><span class="disco-name">APOC 13</span><span class="disco-tag">Single</span><span class="disco-player"><iframe src="https://bandcamp.com/EmbeddedPlayer/track=3337664499/size=small/bgcol=ece3cf/linkcol=b8893f/tracklist=false/artwork=none/transparent=true/" seamless></iframe></span></a>
+            <a href="https://sollisolomon.bandcamp.com/track/apocalisse" class="disco-track" target="_blank" rel="noopener"><span class="disco-num">06</span><img class="disco-cover" src="https://f4.bcbits.com/img/a0115028803_16.jpg" alt=""><span class="disco-name">Apocalisse</span><span class="disco-tag">Single</span><span class="disco-player"><iframe src="https://bandcamp.com/EmbeddedPlayer/track=1131953570/size=small/bgcol=ece3cf/linkcol=b8893f/tracklist=false/artwork=none/transparent=true/" seamless></iframe></span></a>
+            <a href="https://sollisolomon.bandcamp.com/track/tiger-balm" class="disco-track" target="_blank" rel="noopener"><span class="disco-num">05</span><img class="disco-cover" src="https://f4.bcbits.com/img/a3130126428_16.jpg" alt=""><span class="disco-name">Tiger Balm</span><span class="disco-tag">Single</span><span class="disco-player"><iframe src="https://bandcamp.com/EmbeddedPlayer/track=1078174604/size=small/bgcol=ece3cf/linkcol=b8893f/tracklist=false/artwork=none/transparent=true/" seamless></iframe></span></a>
+            <a href="https://sollisolomon.bandcamp.com/track/lui-il-re" class="disco-track" target="_blank" rel="noopener"><span class="disco-num">04</span><img class="disco-cover" src="https://f4.bcbits.com/img/a3657517753_16.jpg" alt=""><span class="disco-name">Lui è il Re <em>(feat. Star Bstreet)</em></span><span class="disco-tag">Single</span><span class="disco-player"><iframe src="https://bandcamp.com/EmbeddedPlayer/track=4041367537/size=small/bgcol=ece3cf/linkcol=b8893f/tracklist=false/artwork=none/transparent=true/" seamless></iframe></span></a>
+            <a href="https://sollisolomon.bandcamp.com/track/jss" class="disco-track" target="_blank" rel="noopener"><span class="disco-num">03</span><img class="disco-cover" src="https://f4.bcbits.com/img/a2388256926_16.jpg" alt=""><span class="disco-name">Jss <em>(feat. Star Bstreet)</em></span><span class="disco-tag">Single</span><span class="disco-player"><iframe src="https://bandcamp.com/EmbeddedPlayer/track=3931047871/size=small/bgcol=ece3cf/linkcol=b8893f/tracklist=false/artwork=none/transparent=true/" seamless></iframe></span></a>
+            <a href="https://sollisolomon.bandcamp.com/track/la-musica-cambia" class="disco-track" target="_blank" rel="noopener"><span class="disco-num">02</span><img class="disco-cover" src="https://f4.bcbits.com/img/a2054981751_16.jpg" alt=""><span class="disco-name">La Musica Cambia <em>(feat. Star Bstreet)</em></span><span class="disco-tag">Single</span><span class="disco-player"><iframe src="https://bandcamp.com/EmbeddedPlayer/track=3086846734/size=small/bgcol=ece3cf/linkcol=b8893f/tracklist=false/artwork=none/transparent=true/" seamless></iframe></span></a>
+            <a href="https://sollisolomon.bandcamp.com/track/qoelet" class="disco-track" target="_blank" rel="noopener"><span class="disco-num">01</span><img class="disco-cover" src="https://f4.bcbits.com/img/a2479394766_16.jpg" alt=""><span class="disco-name">Qoelet <em>(feat. Star Bstreet · 2019)</em></span><span class="disco-tag">Single</span><span class="disco-player"><iframe src="https://bandcamp.com/EmbeddedPlayer/track=1339563274/size=small/bgcol=ece3cf/linkcol=b8893f/tracklist=false/artwork=none/transparent=true/" seamless></iframe></span></a>
         </div>
-        <button id="btn-show-more" class="btn-ghost show-more-btn">Show full discography (+)</button>
-    </section>
-
-    <!-- SOCIAL & LINKS -->
-    <section id="social" class="reveal">
-        <div class="sec-label">003 — Listen & Follow</div>
-        <div class="social-intro">
-            <h2>Wherever <em>music plays</em></h2>
-            <p>Find me on every platform. Listen, share, support. Music lives when it travels from soul to soul.</p>
-        </div>
-        
-        <div class="links-section reveal d1">
-            <div class="links-section-label">Streaming & Purchase</div>
-            <div class="links-grid">
-                <a href="https://open.spotify.com/intl-it/artist/2x5xoFyjt2akRu1zYfcf9X" class="link-card" target="_blank" rel="noopener"><div class="link-card-left"><span class="link-icon">◎</span><div class="link-info"><span class="link-name">Spotify</span><span class="link-sub">Stream online</span></div></div><span class="link-arrow">↗</span></a>
-                <a href="https://sollisolomon.bandcamp.com" class="link-card featured" target="_blank" rel="noopener"><div class="link-card-left"><span class="link-icon">◈</span><div class="link-info"><span class="link-name">Bandcamp</span><span class="link-sub">Buy & support</span></div></div><span class="link-arrow">↗</span></a>
-                <a href="https://music.apple.com/is/artist/solli-solomon/1521179836" class="link-card" target="_blank" rel="noopener"><div class="link-card-left"><span class="link-icon">◇</span><div class="link-info"><span class="link-name">Apple Music</span><span class="link-sub">Ascolta su Apple</span></div></div><span class="link-arrow">↗</span></a>
-                <a href="https://music.amazon.it/artists/B08BYZWHB4" class="link-card" target="_blank" rel="noopener"><div class="link-card-left"><span class="link-icon">◁</span><div class="link-info"><span class="link-name">Amazon Music</span><span class="link-sub">Ascolta su Amazon</span></div></div><span class="link-arrow">↗</span></a>
-                <a href="https://www.deezer.com/us/artist/99159732" class="link-card" target="_blank" rel="noopener"><div class="link-card-left"><span class="link-icon">◉</span><div class="link-info"><span class="link-name">Deezer</span><span class="link-sub">Ascolta su Deezer</span></div></div><span class="link-arrow">↗</span></a>
-                <a href="https://www.beatport.com/artist/solli-solomon/1197556" class="link-card" target="_blank" rel="noopener"><div class="link-card-left"><span class="link-icon">◬</span><div class="link-info"><span class="link-name">Beatport</span><span class="link-sub">Techno & Dance</span></div></div><span class="link-arrow">↗</span></a>
-                <a href="https://on.soundcloud.com/ngDAgpCxanwbQOj13F" class="link-card" target="_blank" rel="noopener"><div class="link-card-left"><span class="link-icon">◐</span><div class="link-info"><span class="link-name">SoundCloud</span><span class="link-sub">Ascolta su SoundCloud</span></div></div><span class="link-arrow">↗</span></a>
-                <a href="https://audius.co/sollisolomon" class="link-card" target="_blank" rel="noopener"><div class="link-card-left"><span class="link-icon">◑</span><div class="link-info"><span class="link-name">Audius</span><span class="link-sub">Decentralized platform</span></div></div><span class="link-arrow">↗</span></a>
-                <a href="https://tune.fm/@Solli" class="link-card" target="_blank" rel="noopener"><div class="link-card-left"><span class="link-icon">◌</span><div class="link-info"><span class="link-name">Tune.fm</span><span class="link-sub">Web3 music</span></div></div><span class="link-arrow">↗</span></a>
-                <a href="https://songwhip.com/sollisolomon" class="link-card" target="_blank" rel="noopener"><div class="link-card-left"><span class="link-icon">◎</span><div class="link-info"><span class="link-name">Songwhip</span><span class="link-sub">All links in one</span></div></div><span class="link-arrow">↗</span></a>
-            </div>
-        </div>
-
-        <div class="links-section reveal d2">
-            <div class="links-section-label">Video</div>
-            <div class="links-grid two-col">
-                <a href="https://www.youtube.com/channel/UC49R6ryKnZMl7hEmEuk9ppQ" class="link-card" target="_blank" rel="noopener"><div class="link-card-left"><span class="link-icon">▷</span><div class="link-info"><span class="link-name">Canale YouTube</span><span class="link-sub">Canale personale</span></div></div><span class="link-arrow">↗</span></a>
-                <a href="https://youtube.com/channel/UCEs3dfxua348gojTw109OMw?si=9y4FDnALHau2HuM9" class="link-card" target="_blank" rel="noopener"><div class="link-card-left"><span class="link-icon">▶</span><div class="link-info"><span class="link-name">YouTube Tema</span><span class="link-sub">Brani dal distributore</span></div></div><span class="link-arrow">↗</span></a>
-            </div>
-        </div>
-
-        <div class="links-section reveal d3">
-            <div class="links-section-label">Social</div>
-            <div class="links-grid">
-                <a href="https://www.instagram.com/solli_solomon" class="link-card" target="_blank" rel="noopener"><div class="link-card-left"><span class="link-icon">◻</span><div class="link-info"><span class="link-name">Instagram</span><span class="link-sub">@solli_solomon</span></div></div><span class="link-arrow">↗</span></a>
-                <a href="https://www.facebook.com/solli.solomon.777" class="link-card" target="_blank" rel="noopener"><div class="link-card-left"><span class="link-icon">◼</span><div class="link-info"><span class="link-name">Facebook</span><span class="link-sub">solli.solomon.777</span></div></div><span class="link-arrow">↗</span></a>
-                <a href="https://www.tiktok.com/@solli_solomon" class="link-card" target="_blank" rel="noopener"><div class="link-card-left"><span class="link-icon">◈</span><div class="link-info"><span class="link-name">TikTok</span><span class="link-sub">@solli_solomon</span></div></div><span class="link-arrow">↗</span></a>
-            </div>
+        <div class="show-more-row">
+            <button id="btn-show-more" class="btn-ghost show-more-btn">Show more tracks (+)</button>
+            <button id="btn-show-less" class="btn-ghost show-more-btn" style="display:none;">Show less (−)</button>
         </div>
     </section>
 
-    <!-- NOVITÀ & PROSSIME USCITE AGGIORNATA CON PASTOR -->
-    <section id="releases" class="reveal">
-        <div class="sec-label">004 — News & Upcoming Releases</div>
-        <div class="releases-header">
-            <h2>News and <em>upcoming releases</em></h2>
-            <p>Nuova musica in arrivo. Segui i canali per non perdere nessuna release.</p>
-        </div>
-        <div class="releases-grid">
-            
-            <div class="release-card" style="border-color: var(--accent);">
-                <div class="release-date" style="color: var(--accent); font-weight: bold;">⚡ LATEST RELEASE</div>
-                <h3 class="release-title">Wept</h3>
-                <div class="release-meta">
-                    The new single "Wept", inspired by John 11:35 ("Jesus wept").<br>
-                    Listen on Spotify, Apple Music, Bandcamp, and all digital platforms.
-                </div>
-                <div class="release-tags">
-                    <span class="release-tag">Single</span>
-                    <span class="release-tag">Christian Techno</span>
-                    <span class="release-tag">New Single</span>
-                </div>
-                <a href="https://too.fm/8j4eb3e" class="release-listen" target="_blank" rel="noopener" style="background: var(--accent); color: #000; font-weight: bold;">Listen Now →</a>
-            </div>
-
-        </div>
-    </section>
-
-        <!-- RIFLESSIONI & SCRITTI -->
+    <!-- RIFLESSIONI & SCRITTI -->
     <section id="articles" class="reveal">
-        <div class="sec-label">005 — Reflections & Writings</div>
-        <div class="releases-header">
-            <h2>Reflections and <em>writings</em></h2>
-            <p>The word that precedes the sound. Full archive of thoughts on faith, existence, truth, and inner freedom.</p>
+        <div class="section-head">
+            <h2 class="section-title">Reflections & Writings</h2>
+            <a href="#articles" id="btn-all-articles" class="section-link">All articles →</a>
         </div>
-        
+
         <div class="articles-grid" id="articles-grid">
             <!-- Popolato via JS con 4 articoli per volta -->
         </div>
 
-        <div style="text-align: center; margin-top: 32px;">
+        <div class="show-more-row">
             <button id="btn-more-articles" class="btn-ghost show-more-btn">Show more reflections (+)</button>
+            <button id="btn-fewer-articles" class="btn-ghost show-more-btn" style="display:none;">Show less (−)</button>
         </div>
     </section>
 
@@ -545,51 +262,57 @@
         </div>
     </div>
 
-    <!-- INNER CIRCLE -->
-    <section id="cenacolo" class="reveal">
-        <div class="sec-label">006 — Inner Circle</div>
-        <h2>The <em>Cenacolo</em></h2>
-        <p>A space for communication and sharing, where music becomes an encounter.<br><br>
-        Leave your email to access the private group. Here I want to share early drafts of my tracks, get your feedback, learn from the community's ideas, and talk about music. This space is strictly reserved for those who want to build real friendship and collaborate, aware of mutual respect and my love in Christ.</p>
-        
-        <div style="margin-top:40px; padding:24px; border:1px solid var(--accent); background:var(--accent-dim); display:inline-block;">
-            <h3 style="font-family:'DM Mono',monospace; color:var(--text); font-size:14px; margin-bottom:16px;"><strong>✓ Guaranteed Access.</strong></h3>
-            <p style="font-family:'DM Mono',monospace; font-size:12px; margin-bottom:24px;">Welcome to the Cenacolo. Use one of the methods below to enter the private Telegram group:</p>
-            
-            <div style="display:flex; gap:24px; align-items:center;">
-                <button id="btn-cenacolo" class="btn-primary" style="border:none; cursor:none;" onclick="window.open('https://t.me/+TlzorC1zSkY5YzI0', '_blank')">Enter the Group →</button>
-                <img src="qr-cenacolo.png" alt="QR Code Cenacolo" class="desktop-only" style="width:100px; height:100px; border:2px solid var(--accent); border-radius:4px; padding:4px; background:#000;" loading="lazy">
+    <!-- CONTATTI — riquadro a 2 colonne esatto del mockup D -->
+    <section id="contact" class="reveal">
+        <div class="contact-box">
+            <div>
+                <div class="contact-eyebrow">Contact</div>
+                <h2 class="contact-title">Message me <em>privately</em></h2>
+                <p class="contact-desc">For collaborations, booking, or just to say hi — if you don't wish to join the Cenacolo, use this form.</p>
             </div>
+            <div class="contact-form">
+                <input type="text" id="f-name" class="field" placeholder="Name" required>
+                <input type="email" id="f-email" class="field" placeholder="Email" required>
+                <textarea id="f-msg" class="field" placeholder="Message" required></textarea>
+                <button id="btn-send" class="btn-primary">Send message</button>
 
-            <p style="margin-top:20px; font-size:10px; color:var(--muted);">Or copy this link: https://t.me/+TlzorC1zSkY5YzI0</p>
+                <div id="form-ok" class="form-msg">✓ Message sent. I'll reply soon.</div>
+                <div id="form-err" class="form-msg">✕ Something went wrong. Message me on Instagram or Bandcamp.</div>
+            </div>
         </div>
     </section>
 
-    <!-- CONTATTI -->
-    <section id="contact" class="reveal">
-        <div class="sec-label">007 — Contact</div>
-        <div class="contact-wrap">
-            <h2>Message me <em>privately</em></h2>
-            <p>If you don't wish to join the Cenacolo, or for collaborations and booking, use this form for direct contact.</p>
-            
-            <div class="contact-form">
-                <div class="field-row">
-                    <input type="text" id="f-name" class="field" placeholder="Name *" required>
-                    <input type="email" id="f-email" class="field" placeholder="Email *" required>
-                </div>
-                <input type="text" id="f-subject" class="field" placeholder="Subject">
-                <textarea id="f-msg" class="field" placeholder="Message *" required></textarea>
-                <button id="btn-send" class="btn-send">Send message</button>
-                
-                <div id="form-ok" class="form-msg ok">✓ Message sent. I'll reply soon.</div>
-                <div id="form-err" class="form-msg err">✕ Something went wrong. Message me on Instagram or Bandcamp.</div>
-            </div>
+    <!-- INNER CIRCLE — esatto mockup D, isola scura centrata -->
+    <section id="cenacolo" class="reveal">
+        <div class="cenacolo-eyebrow">Inner Circle</div>
+        <h2 class="cenacolo-title">The Cenacolo</h2>
+        <p class="cenacolo-desc">A space for communication and sharing, where music becomes an encounter. Early drafts, feedback, and real friendship, in mutual respect.</p>
+        <div class="cenacolo-actions">
+            <button id="btn-cenacolo" class="btn-primary" onclick="window.open('https://t.me/+TlzorC1zSkY5YzI0', '_blank')">Enter the Group →</button>
+            <img src="qr-cenacolo.png" alt="QR Code Cenacolo" class="cenacolo-qr desktop-only" loading="lazy">
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer>
         <a href="#hero" class="logo">Solli Solomon</a>
+        <div class="footer-icons">
+            <a href="https://open.spotify.com/intl-it/artist/2x5xoFyjt2akRu1zYfcf9X" target="_blank" rel="noopener">Spotify</a><span class="footer-icons-sep">-</span>
+            <a href="https://sollisolomon.bandcamp.com" target="_blank" rel="noopener">Bandcamp</a><span class="footer-icons-sep">-</span>
+            <a href="https://music.apple.com/is/artist/solli-solomon/1521179836" target="_blank" rel="noopener">Apple Music</a><span class="footer-icons-sep">-</span>
+            <a href="https://music.amazon.it/artists/B08BYZWHB4" target="_blank" rel="noopener">Amazon Music</a><span class="footer-icons-sep">-</span>
+            <a href="https://www.deezer.com/us/artist/99159732" target="_blank" rel="noopener">Deezer</a><span class="footer-icons-sep">-</span>
+            <a href="https://www.beatport.com/artist/solli-solomon/1197556" target="_blank" rel="noopener">Beatport</a><span class="footer-icons-sep">-</span>
+            <a href="https://on.soundcloud.com/ngDAgpCxanwbQOj13F" target="_blank" rel="noopener">SoundCloud</a><span class="footer-icons-sep">-</span>
+            <a href="https://audius.co/sollisolomon" target="_blank" rel="noopener">Audius</a><span class="footer-icons-sep">-</span>
+            <a href="https://tune.fm/@Solli" target="_blank" rel="noopener">Tune.fm</a><span class="footer-icons-sep">-</span>
+            <a href="https://songwhip.com/sollisolomon" target="_blank" rel="noopener">Songwhip</a><span class="footer-icons-group-sep">|</span>
+            <a href="https://www.youtube.com/channel/UC49R6ryKnZMl7hEmEuk9ppQ" target="_blank" rel="noopener">YouTube</a><span class="footer-icons-sep">-</span>
+            <a href="https://youtube.com/channel/UCEs3dfxua348gojTw109OMw?si=9y4FDnALHau2HuM9" target="_blank" rel="noopener">YouTube Tema</a><span class="footer-icons-group-sep">|</span>
+            <a href="https://www.instagram.com/solli_solomon" target="_blank" rel="noopener">Instagram</a><span class="footer-icons-sep">-</span>
+            <a href="https://www.facebook.com/solli.solomon.777" target="_blank" rel="noopener">Facebook</a><span class="footer-icons-sep">-</span>
+            <a href="https://www.tiktok.com/@solli_solomon" target="_blank" rel="noopener">TikTok</a>
+        </div>
         <p>© 2026 Solli Solomon — All rights reserved</p>
     </footer>
 
