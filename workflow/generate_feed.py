@@ -26,23 +26,25 @@ REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 INDEX_HTML_PATH = os.path.join(REPO_ROOT, "index.html")
 FEED_PATH = os.path.join(REPO_ROOT, "feed.xml")
 
-# Stessa logica di estrazione usata dal workflow n8n "Il Cenacolo -
-# Uscite Musicali", cosi le due fonti restano coerenti tra loro.
+# Estrazione dalla lista minimal ".disco-track" (mockup D, sostituita alla
+# vecchia griglia ".music-card" nel redesign dell'11/09). Stessa logica di
+# estrazione usata dal workflow n8n "Il Cenacolo - Uscite Musicali", cosi
+# le due fonti restano coerenti tra loro.
 TRACK_RE = re.compile(
-    r'<a\s+href="([^"]+)"\s+class="music-card[^"]*"[^>]*>'
+    r'<a\s+href="([^"]+)"\s+class="disco-track"[^>]*>'
     r'(?P<body>.*?)'
-    r'<h3 class="music-title">([^<]+)</h3>',
+    r'</a>',
     re.DOTALL,
 )
-COVER_RE = re.compile(r"background-image:\s*url\('([^']+)'\)")
+NAME_RE = re.compile(r'<span class="disco-name">(?P<body>.*?)</span>', re.DOTALL)
+COVER_RE = re.compile(r'<img class="disco-cover" src="([^"]+)"')
 
 RELEASE_CARD_RE = re.compile(
-    r'<div class="release-card"[^>]*>(?P<body>.*?)</div>\s*(?=<div class="release-card"|</div>\s*</section>)',
+    r'<div class="release-card"[^>]*>(?P<body>.*?)(?=<div class="release-card"|</section>)',
     re.DOTALL,
 )
-RELEASE_TITLE_RE = re.compile(r'<h3 class="release-title">([^<]+)</h3>')
-RELEASE_META_RE = re.compile(r'<div class="release-meta"[^>]*>(.*?)</div>', re.DOTALL)
-RELEASE_LINK_RE = re.compile(r'<a href="([^"]+)" class="release-listen"')
+RELEASE_TITLE_RE = re.compile(r'<h2 class="release-title">([^<]+)</h2>')
+RELEASE_DESC_RE = re.compile(r'<p class="release-desc">(.*?)</p>', re.DOTALL)
 
 
 def strip_tags(text):
@@ -56,7 +58,10 @@ def extract_tracks(index_html):
     for m in TRACK_RE.finditer(index_html):
         link = m.group(1)
         body = m.group("body")
-        title = m.group(3).strip()
+        name_match = NAME_RE.search(body)
+        if not name_match:
+            continue
+        title = strip_tags(name_match.group("body"))
         cover_match = COVER_RE.search(body)
         cover = cover_match.group(1) if cover_match else None
         if cover and not cover.startswith("http"):
@@ -66,17 +71,17 @@ def extract_tracks(index_html):
 
 
 def extract_release_descriptions(index_html):
-    """Descrizioni più ricche dalla sezione 'Novità & Prossime Uscite',
-    quando esistono, indicizzate per titolo brano."""
+    """Descrizione più ricca dalla sezione 'Ultima Uscita' (#release),
+    quando esiste, indicizzata per titolo brano."""
     descriptions = {}
     for m in RELEASE_CARD_RE.finditer(index_html):
         body = m.group("body")
         title_match = RELEASE_TITLE_RE.search(body)
-        meta_match = RELEASE_META_RE.search(body)
-        if not title_match or not meta_match:
+        desc_match = RELEASE_DESC_RE.search(body)
+        if not title_match or not desc_match:
             continue
         title = title_match.group(1).strip()
-        descriptions[title] = strip_tags(meta_match.group(1))
+        descriptions[title] = strip_tags(desc_match.group(1))
     return descriptions
 
 
