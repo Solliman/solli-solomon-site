@@ -259,7 +259,7 @@ footer{padding:28px 24px;}
 /* RIFLESSIONI & SCRITTI — card larghe a 2 colonne, come nel mockup D */
 #articles { border-top: 1px solid var(--border); background: var(--bg); max-width:1000px; margin:0 auto; }
 .articles-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px; background: var(--border); margin-bottom: 24px; }
-.article-card { background: var(--bg); cursor: pointer; transition: background 0.3s; }
+.article-card { display: block; background: var(--bg); cursor: pointer; text-decoration: none; color: inherit; transition: background 0.3s; }
 .article-card:hover { background: var(--surface); }
 .article-body { padding: 28px 34px 34px; }
 .article-date { font-size: 9px; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 10px; text-transform: uppercase; }

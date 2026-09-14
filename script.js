@@ -179,9 +179,14 @@ function renderArticles() {
     articlesGrid.innerHTML = '';
     const visible = activeArticles.slice(0, articleVisibleCount);
 
+    const isEnArticles = typeof SOL_ARTICLES_EN !== 'undefined';
     visible.forEach((art, idx) => {
-        const card = document.createElement('div');
+        // <a> con href reale alla pagina statica dell'articolo (crawlabile,
+        // apribile in nuova scheda) — il click normale resta intercettato
+        // per aprire il lettore in-pagina come prima, senza navigazione.
+        const card = document.createElement('a');
         card.className = 'article-card reveal visible';
+        card.href = art.slug ? `riflessioni/${isEnArticles ? 'en-' : ''}${art.slug}.html` : '#';
 
         const thumbHtml = art.img ? `
             <div class="article-card-thumb-wrap">
@@ -197,7 +202,7 @@ function renderArticles() {
                 <div class="article-author">by ${art.author}</div>
             </div>
         `;
-        card.addEventListener('click', () => openArticleReader(idx));
+        card.addEventListener('click', (e) => { e.preventDefault(); openArticleReader(idx); });
         articlesGrid.appendChild(card);
     });
 

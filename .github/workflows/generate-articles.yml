@@ -1,0 +1,39 @@
+name: 📝 Rigenera pagine Riflessioni + feed
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "articles_data.js"
+      - "articles_data_en.js"
+      - "workflow/generate_articles.py"
+  workflow_dispatch:        # Trigger manuale da GitHub, se serve
+
+jobs:
+  build-articles:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Genera pagine riflessioni/, feed-riflessioni.xml e sitemap.xml
+        run: python3 workflow/generate_articles.py
+
+      - name: Commit se qualcosa è cambiato
+        run: |
+          git config user.name "Solli Bot"
+          git config user.email "bot@sollisolomon.com"
+          git add riflessioni/ feed-riflessioni.xml sitemap.xml articles_data.js articles_data_en.js
+          git diff --quiet --cached || \
+          (git commit -m "📝 Aggiorna pagine Riflessioni + feed (auto)" && \
+           git push)
