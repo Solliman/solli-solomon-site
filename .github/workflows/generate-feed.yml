@@ -1,0 +1,38 @@
+name: 📡 Rigenera RSS Feed Discografia
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "index.html"
+      - "workflow/generate_feed.py"
+  workflow_dispatch:        # Trigger manuale da GitHub, se serve
+
+jobs:
+  build-feed:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Genera feed.xml da index.html
+        run: python3 workflow/generate_feed.py
+
+      - name: Commit feed.xml se cambiato
+        run: |
+          git config user.name "Solli Bot"
+          git config user.email "bot@sollisolomon.com"
+          git diff --quiet feed.xml || \
+          (git add feed.xml && \
+           git commit -m "📡 Aggiorna feed.xml (auto)" && \
+           git push)
