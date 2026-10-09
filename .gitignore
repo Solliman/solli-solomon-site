@@ -6,9 +6,23 @@ Sito Solli Solomon - NotebookLM_files/
 02 - promo/
 03 - scripts/
 04 - workflow/
+# nota: workflow/ (senza prefisso) è tracciata di proposito, contiene gli script delle GitHub Action
 
 # Private credentials and session files
 instagram_credentials.json
 instagram_session.json
 instagram_meta_config.json
 facebook_credentials.json
+
+# File di sistema macOS
+.DS_Store
+
+# Log, font di test, sorgenti pesanti non usati dal sito (restano sul disco)
+*.log
+test_cg.ttf
+articles_data.json
+articles_formatted.json
+articles_formatted_en.json
+pastor-cover.png
+vanita-cover.png
+wept-cover.png
