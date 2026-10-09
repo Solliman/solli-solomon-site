@@ -8,6 +8,12 @@ on:
       - "workflow/generate_feed.py"
   workflow_dispatch:        # Trigger manuale da GitHub, se serve
 
+# Le automazioni che fanno commit sul repo girano una alla volta: se partono
+# insieme sullo stesso push, il secondo "git push" verrebbe rifiutato.
+concurrency:
+  group: auto-commit-sito
+  cancel-in-progress: false
+
 jobs:
   build-feed:
     runs-on: ubuntu-latest
@@ -16,12 +22,12 @@ jobs:
 
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.11"
 
@@ -35,4 +41,5 @@ jobs:
           git diff --quiet feed.xml || \
           (git add feed.xml && \
            git commit -m "📡 Aggiorna feed.xml (auto)" && \
+           git pull --rebase origin main && \
            git push)
