@@ -39,7 +39,7 @@ import sys
 import unicodedata
 from datetime import datetime, timezone
 
-SITE_URL = "https://sollisolomon.pages.dev"
+SITE_URL = "https://sollisolomon.com"
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ARTICLES_DIR = os.path.join(REPO_ROOT, "riflessioni")
 FEED_PATH = os.path.join(REPO_ROOT, "feed-riflessioni.xml")

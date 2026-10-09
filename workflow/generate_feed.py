@@ -21,7 +21,7 @@ import re
 import sys
 from datetime import datetime, timezone
 
-SITE_URL = "https://sollisolomon.pages.dev"
+SITE_URL = "https://sollisolomon.com"
 REPO_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 INDEX_HTML_PATH = os.path.join(REPO_ROOT, "index.html")
 FEED_PATH = os.path.join(REPO_ROOT, "feed.xml")

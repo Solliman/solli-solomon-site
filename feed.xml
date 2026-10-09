@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Solli Solomon — Discografia</title>
-    <link>https://sollisolomon.pages.dev/</link>
-    <atom:link href="https://sollisolomon.pages.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <link>https://sollisolomon.com/</link>
+    <atom:link href="https://sollisolomon.com/feed.xml" rel="self" type="application/rss+xml"/>
     <description>Nuove uscite musicali di Solli Solomon — Christian Techno &amp; Electronic Music.</description>
     <language>it-it</language>
-    <lastBuildDate>Mon, 14 Sep 2026 17:20:34 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 09 Oct 2026 14:52:59 +0000</lastBuildDate>
     <item>
       <title>Wept</title>
       <link>https://sollisolomon.bandcamp.com/track/wept</link>
       <guid isPermaLink="true">https://sollisolomon.bandcamp.com/track/wept</guid>
       <description><![CDATA[Il nuovo singolo, ispirato a Giovanni 11:35. Disponibile su Spotify, Apple Music, Bandcamp e tutti gli store digitali.]]></description>
-      <enclosure url="https://sollisolomon.pages.dev/wept-cover.jpg" type="image/jpeg"/>
+      <enclosure url="https://sollisolomon.com/wept-cover.jpg" type="image/jpeg"/>
     </item>
     <item>
       <title>Vanità</title>
       <link>https://sollisolomon.bandcamp.com/track/vanit</link>
       <guid isPermaLink="true">https://sollisolomon.bandcamp.com/track/vanit</guid>
       <description><![CDATA[Ascolta "Vanità" di Solli Solomon.]]></description>
-      <enclosure url="https://sollisolomon.pages.dev/vanita-cover.jpg" type="image/jpeg"/>
+      <enclosure url="https://sollisolomon.com/vanita-cover.jpg" type="image/jpeg"/>
     </item>
     <item>
       <title>Pastor</title>
       <link>https://sollisolomon.bandcamp.com/track/pastor</link>
       <guid isPermaLink="true">https://sollisolomon.bandcamp.com/track/pastor</guid>
       <description><![CDATA[Ascolta "Pastor" di Solli Solomon.]]></description>
-      <enclosure url="https://sollisolomon.pages.dev/pastor-cover.jpg" type="image/jpeg"/>
+      <enclosure url="https://sollisolomon.com/pastor-cover.jpg" type="image/jpeg"/>
     </item>
     <item>
       <title>Pulsing Waves (Otus Medi rmx)</title>
