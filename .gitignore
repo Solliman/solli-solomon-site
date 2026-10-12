@@ -30,3 +30,7 @@ wept-cover.png
 # Note private per Claude e l'utente (non devono finire online)
 CLAUDE.md
 VADEMECUM - Nuova uscita.md
+
+# Wrangler locale (database D1 di prova, secret di sviluppo)
+.wrangler/
+.dev.vars

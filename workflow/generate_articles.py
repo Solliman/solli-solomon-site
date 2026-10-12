@@ -180,6 +180,7 @@ body {{ cursor: auto; }}
 <p>✍️ {by_label} <strong>{author}</strong> · {date}</p>
 <p><a href="../{home_page}#articles">{all_label}</a></p>
 </div>
+<script defer src="/site.js"></script>
 </body>
 </html>
 """

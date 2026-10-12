@@ -1,0 +1,10 @@
+# Configurazione Cloudflare Pages (letta anche da `wrangler pages dev`).
+name = "sollisolomon"
+pages_build_output_dir = "."
+compatibility_date = "2026-05-21"
+
+# Statistiche anonime: eventi salvati da functions/api/e.js, letti da functions/api/s.js
+[[d1_databases]]
+binding = "DB"
+database_name = "solli_events"
+database_id = "db16d778-f340-4e81-8d92-98906ee0306b"
