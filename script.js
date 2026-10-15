@@ -186,7 +186,7 @@ function renderArticles() {
         // per aprire il lettore in-pagina come prima, senza navigazione.
         const card = document.createElement('a');
         card.className = 'article-card reveal visible';
-        card.href = art.slug ? `riflessioni/${isEnArticles ? 'en-' : ''}${art.slug}.html` : '#';
+        card.href = art.slug ? `riflessioni/${isEnArticles ? 'en-' : ''}${art.slug}` : '#';
 
         const thumbHtml = art.img ? `
             <div class="article-card-thumb-wrap">

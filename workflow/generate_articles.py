@@ -46,11 +46,13 @@ FEED_PATH = os.path.join(REPO_ROOT, "feed-riflessioni.xml")
 SITEMAP_PATH = os.path.join(REPO_ROOT, "sitemap.xml")
 
 # Pagine statiche "fisse" del sito, sempre in cima alla sitemap.
+# Indirizzi senza ".html": Cloudflare Pages reindirizza (308) le versioni
+# con ".html", e sitemap/canonical non devono puntare a un reindirizzamento.
 STATIC_SITEMAP_ENTRIES = [
     {"loc": f"{SITE_URL}/", "lastmod": "2026-07-23", "priority": "1.0", "changefreq": None},
-    {"loc": f"{SITE_URL}/en.html", "lastmod": "2026-07-23", "priority": "0.8", "changefreq": "monthly"},
-    {"loc": f"{SITE_URL}/links.html", "lastmod": "2026-07-23", "priority": "0.5", "changefreq": "monthly"},
-    {"loc": f"{SITE_URL}/en-links.html", "lastmod": "2026-07-23", "priority": "0.5", "changefreq": "monthly"},
+    {"loc": f"{SITE_URL}/en", "lastmod": "2026-07-23", "priority": "0.8", "changefreq": "monthly"},
+    {"loc": f"{SITE_URL}/links", "lastmod": "2026-07-23", "priority": "0.5", "changefreq": "monthly"},
+    {"loc": f"{SITE_URL}/en-links", "lastmod": "2026-07-23", "priority": "0.5", "changefreq": "monthly"},
 ]
 
 
@@ -188,9 +190,9 @@ body {{ cursor: auto; }}
 
 def build_article_page(art, lang, alt_slug, home_page):
     is_en = lang == "en"
-    canonical_url = f"{SITE_URL}/riflessioni/{'en-' if is_en else ''}{art['slug']}.html"
-    alt_it_url = f"{SITE_URL}/riflessioni/{alt_slug}.html" if alt_slug else None
-    alt_en_url = f"{SITE_URL}/riflessioni/en-{alt_slug}.html" if alt_slug else None
+    canonical_url = f"{SITE_URL}/riflessioni/{'en-' if is_en else ''}{art['slug']}"
+    alt_it_url = f"{SITE_URL}/riflessioni/{alt_slug}" if alt_slug else None
+    alt_en_url = f"{SITE_URL}/riflessioni/en-{alt_slug}" if alt_slug else None
 
     hreflang_lines = []
     if alt_slug:
@@ -275,14 +277,14 @@ def build_sitemap(articles_it, articles_en):
     entries = list(STATIC_SITEMAP_ENTRIES)
     for art in articles_it:
         entries.append({
-            "loc": f"{SITE_URL}/riflessioni/{art['slug']}.html",
+            "loc": f"{SITE_URL}/riflessioni/{art['slug']}",
             "lastmod": art.get("raw_date", ""),
             "priority": "0.6",
             "changefreq": "yearly",
         })
     for art in articles_en:
         entries.append({
-            "loc": f"{SITE_URL}/riflessioni/en-{art['slug']}.html",
+            "loc": f"{SITE_URL}/riflessioni/en-{art['slug']}",
             "lastmod": art.get("raw_date", ""),
             "priority": "0.5",
             "changefreq": "yearly",
@@ -325,14 +327,14 @@ def main():
 
     for i, art in enumerate(articles_it):
         alt_slug = articles_en[i]["slug"] if paired else None
-        page = build_article_page(art, "it", alt_slug, home_page="index.html")
+        page = build_article_page(art, "it", alt_slug, home_page="")
         out_path = os.path.join(ARTICLES_DIR, f"{art['slug']}.html")
         with open(out_path, "w", encoding="utf-8") as f:
             f.write(page)
 
     for i, art in enumerate(articles_en):
         alt_slug = articles_it[i]["slug"] if paired else None
-        page = build_article_page(art, "en", alt_slug, home_page="en.html")
+        page = build_article_page(art, "en", alt_slug, home_page="en")
         out_path = os.path.join(ARTICLES_DIR, f"en-{art['slug']}.html")
         with open(out_path, "w", encoding="utf-8") as f:
             f.write(page)
