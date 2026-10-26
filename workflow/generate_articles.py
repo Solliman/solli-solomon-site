@@ -31,6 +31,7 @@ articles_data.js/articles_data_en.js (vedi
 .github/workflows/generate-articles.yml), ma è anche sicuro da eseguire a
 mano in locale.
 """
+import difflib
 import html
 import json
 import os
@@ -116,6 +117,20 @@ def excerpt(content_html, max_chars=200):
     return text
 
 
+def is_untranslated(art_it, art_en, threshold=0.5):
+    """True se la versione "inglese" ha in realtà lo stesso testo dell'italiana
+    (oggi molte riflessioni EN sono solo il testo IT con l'interfaccia in
+    inglese, o tradotto solo nelle prime righe). Google le tratta come
+    duplicati e sceglie da solo la pagina IT come canonica ("Pagina duplicata, Google ha scelto una pagina canonica
+    diversa"): meglio dirglielo noi. Quando un articolo viene tradotto davvero
+    la somiglianza crolla e la pagina EN torna indicizzabile da sola."""
+    # Confronto parola per parola: lettera per lettera anche una traduzione
+    # vera arriva a ~0.8 (stesse lettere comuni), a parole resta molto sotto.
+    a = strip_tags(art_it["content"]).lower().split()
+    b = strip_tags(art_en["content"]).lower().split()
+    return difflib.SequenceMatcher(None, a, b, autojunk=False).ratio() >= threshold
+
+
 def xml_escape(text):
     return html.escape(text or "", quote=True)
 
@@ -188,14 +203,19 @@ body {{ cursor: auto; }}
 """
 
 
-def build_article_page(art, lang, alt_slug, home_page):
+def build_article_page(art, lang, alt_slug, home_page, untranslated=False):
+    """untranslated: la coppia IT/EN ha lo stesso testo (vedi
+    is_untranslated). La pagina EN punta allora come canonica a quella IT, e
+    nessuna delle due dichiara hreflang (non sono due lingue diverse)."""
     is_en = lang == "en"
     canonical_url = f"{SITE_URL}/riflessioni/{'en-' if is_en else ''}{art['slug']}"
     alt_it_url = f"{SITE_URL}/riflessioni/{alt_slug}" if alt_slug else None
     alt_en_url = f"{SITE_URL}/riflessioni/en-{alt_slug}" if alt_slug else None
+    if untranslated and is_en:
+        canonical_url = alt_it_url
 
     hreflang_lines = []
-    if alt_slug:
+    if alt_slug and not untranslated:
         hreflang_lines.append(f'<link rel="alternate" hreflang="it" href="{alt_it_url if is_en else canonical_url}">')
         hreflang_lines.append(f'<link rel="alternate" hreflang="en" href="{canonical_url if is_en else alt_en_url}">')
     hreflang_tags = "\n".join(hreflang_lines)
@@ -273,7 +293,9 @@ def build_feed(articles_it):
 """
 
 
-def build_sitemap(articles_it, articles_en):
+def build_sitemap(articles_it, articles_en, skip_en=()):
+    """skip_en: indici degli articoli EN non tradotti, esclusi dalla sitemap
+    perché la loro canonica è la pagina IT."""
     entries = list(STATIC_SITEMAP_ENTRIES)
     for art in articles_it:
         entries.append({
@@ -282,7 +304,9 @@ def build_sitemap(articles_it, articles_en):
             "priority": "0.6",
             "changefreq": "yearly",
         })
-    for art in articles_en:
+    for i, art in enumerate(articles_en):
+        if i in skip_en:
+            continue
         entries.append({
             "loc": f"{SITE_URL}/riflessioni/en-{art['slug']}",
             "lastmod": art.get("raw_date", ""),
@@ -324,17 +348,21 @@ def main():
     os.makedirs(ARTICLES_DIR, exist_ok=True)
 
     paired = min(len(articles_it), len(articles_en)) == len(articles_it) == len(articles_en)
+    untranslated = {
+        i for i in range(len(articles_it))
+        if paired and is_untranslated(articles_it[i], articles_en[i])
+    }
 
     for i, art in enumerate(articles_it):
         alt_slug = articles_en[i]["slug"] if paired else None
-        page = build_article_page(art, "it", alt_slug, home_page="")
+        page = build_article_page(art, "it", alt_slug, home_page="", untranslated=i in untranslated)
         out_path = os.path.join(ARTICLES_DIR, f"{art['slug']}.html")
         with open(out_path, "w", encoding="utf-8") as f:
             f.write(page)
 
     for i, art in enumerate(articles_en):
         alt_slug = articles_it[i]["slug"] if paired else None
-        page = build_article_page(art, "en", alt_slug, home_page="en")
+        page = build_article_page(art, "en", alt_slug, home_page="en", untranslated=i in untranslated)
         out_path = os.path.join(ARTICLES_DIR, f"en-{art['slug']}.html")
         with open(out_path, "w", encoding="utf-8") as f:
             f.write(page)
@@ -343,12 +371,13 @@ def main():
         f.write(build_feed(articles_it))
 
     with open(SITEMAP_PATH, "w", encoding="utf-8") as f:
-        f.write(build_sitemap(articles_it, articles_en))
+        f.write(build_sitemap(articles_it, articles_en, skip_en=untranslated))
 
     total_pages = len(articles_it) + len(articles_en)
     print(f"Generate {total_pages} pagine ({len(articles_it)} IT + {len(articles_en)} EN) in {ARTICLES_DIR}")
+    print(f"  di cui {len(untranslated)} EN non tradotte: canonical verso la pagina IT, fuori dalla sitemap")
     print(f"feed-riflessioni.xml generato con {len(articles_it)} elementi -> {FEED_PATH}")
-    print(f"sitemap.xml rigenerato con {len(STATIC_SITEMAP_ENTRIES) + total_pages} URL -> {SITEMAP_PATH}")
+    print(f"sitemap.xml rigenerato con {len(STATIC_SITEMAP_ENTRIES) + total_pages - len(untranslated)} URL -> {SITEMAP_PATH}")
 
 
 if __name__ == "__main__":
