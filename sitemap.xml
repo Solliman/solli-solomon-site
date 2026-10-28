@@ -540,6 +540,12 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://sollisolomon.com/riflessioni/en-freedom-has-a-cost</loc>
+    <lastmod>2022-02-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://sollisolomon.com/riflessioni/en-detox-from-addiction</loc>
     <lastmod>2022-02-01</lastmod>
     <changefreq>yearly</changefreq>
@@ -614,6 +620,12 @@
   <url>
     <loc>https://sollisolomon.com/riflessioni/en-who-you-really-are</loc>
     <lastmod>2021-08-27</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://sollisolomon.com/riflessioni/en-a-comma-between-hope-and-future-reality-p1</loc>
+    <lastmod>2021-08-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
