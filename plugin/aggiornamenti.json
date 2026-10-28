@@ -1,0 +1,60 @@
+{
+ "aggiornato": "2026-10-28",
+ "plugin": {
+  "SW Wave": {
+   "versione": "1.9.1",
+   "zip": "https://sollisolomon.com/plugin/SW-Wave-1.9.1.zip",
+   "note": ""
+  },
+  "SW Voice": {
+   "versione": "2.5.1",
+   "zip": "https://sollisolomon.com/plugin/SW-Voice-2.5.1.zip",
+   "note": ""
+  },
+  "SW Arcadia": {
+   "versione": "1.4.0",
+   "zip": "https://sollisolomon.com/plugin/SW-Arcadia-1.4.0.zip",
+   "note": ""
+  },
+  "SW Arranger": {
+   "versione": "0.3.0",
+   "zip": "https://sollisolomon.com/plugin/SW-Arranger-0.3.0.zip",
+   "note": "Blocchi tuoi: trascina per spostare, duplica, copia e incolla, togli, lunghezza, tipo, aggiungi. ANNULLA. Tasto destro sulle celle: pezzo dello stem (Prendi da), volume, filtro. Uno stem intero messo su pieno dove era muto prende il suo pezzo più pieno (il breakdown non resta vuoto). Transizioni con SW Rise. Legenda delle forme e descrizione della cella passando sopra. I progetti della 0.2 si riap"
+  },
+  "SW FX": {
+   "versione": "2.1.0",
+   "zip": "https://sollisolomon.com/plugin/SW-FX-2.1.0.zip",
+   "note": "Nuova scheda BASSO VIVO (dal reel di Beatmaker Hacks): un tasto lo accende, i suoi comandi sono segnati BV in verde e in alto compare BASSO VIVO; larghezza a tempo con i bassi al centro, pan a ogni battuta, pompa, campana che corre da 200 Hz a 2,5 kHz. Spento, SW FX suona come prima. Preset Basso vivo e Basso vivo dolce (30 in tutto). Aggiornamenti dall'interno: quando sul sito c'è una versione nu"
+  },
+  "SW Rise": {
+   "versione": "1.0.2",
+   "zip": "https://sollisolomon.com/plugin/SW-Rise-1.0.2.zip",
+   "note": "Aggiornamenti dall'interno: quando sul sito c'è una versione nuova, in alto a sinistra compare ⬆ Aggiornamento; un clic mostra le novità, scarica il pacchetto nella cartella Download e apre l'installatore. I progetti restano come sono."
+  },
+  "SW Space": {
+   "versione": "1.0.2",
+   "zip": "https://sollisolomon.com/plugin/SW-Space-1.0.2.zip",
+   "note": "Aggiornamenti dall'interno: quando sul sito c'è una versione nuova, in alto a sinistra compare ⬆ Aggiornamento; un clic mostra le novità, scarica il pacchetto nella cartella Download e apre l'installatore. I progetti restano come sono."
+  },
+  "SW Acid": {
+   "versione": "1.0.2",
+   "zip": "https://sollisolomon.com/plugin/SW-Acid-1.0.2.zip",
+   "note": "Aggiornamenti dall'interno: quando sul sito c'è una versione nuova, in alto a sinistra compare ⬆ Aggiornamento; un clic mostra le novità, scarica il pacchetto nella cartella Download e apre l'installatore. I progetti restano come sono."
+  },
+  "SW Melody": {
+   "versione": "0.4.0",
+   "zip": "https://sollisolomon.com/plugin/SW-Melody-0.4.0.zip",
+   "note": "Chiusura per blocco nel brano (piena, morbida, sospesa, sorpresa) e DOMINANTE V maggiore, in aggiunta: spente, le idee restano quelle di prima. Trascini una regione MIDI o audio da Logic sulla finestra: ACCOMPAGNA (accordi e basso sotto la tua parte) e 2ª VOCE (terza sopra, terza sotto, sesta sotto). Aggiornamenti dall'interno: quando sul sito c'è una versione nuova, in alto a sinistra compare ⬆ A"
+  },
+  "SW Check": {
+   "versione": "1.1.1",
+   "zip": "https://sollisolomon.com/plugin/SW-Check-1.1.1.zip",
+   "note": "Aggiornamenti dall'interno: quando sul sito c'è una versione nuova, in alto a sinistra compare ⬆ Aggiornamento; un clic mostra le novità, scarica il pacchetto nella cartella Download e apre l'installatore. I progetti restano come sono."
+  },
+  "SW Kick": {
+   "versione": "1.0.2",
+   "zip": "https://sollisolomon.com/plugin/SW-Kick-1.0.2.zip",
+   "note": "Aggiornamenti dall'interno: quando sul sito c'è una versione nuova, in alto a sinistra compare ⬆ Aggiornamento; un clic mostra le novità, scarica il pacchetto nella cartella Download e apre l'installatore. I progetti restano come sono."
+  }
+ }
+}
