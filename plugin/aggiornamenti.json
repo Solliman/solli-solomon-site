@@ -1,60 +1,95 @@
 {
- "aggiornato": "2026-10-31",
+ "aggiornato": "2026-11-08",
  "plugin": {
   "SW Wave": {
-   "versione": "2.2.0",
-   "zip": "https://sollisolomon.com/plugin/SW-Wave-2.2.0.zip",
-   "note": "Manopole degli strumenti con la corsa intera: TONE da morbido a brillante e CHAR da corto a lungo su E.Piano, Piano, Organo (click e percussione), Campana, Pizzicato, Marimba; WIDTH apre le note degli strumenti nello stereo; DETUNE o WIDTH con UNISON a 1 portano UNISON a 3. Misura: TONE e CHAR ora cambiano il suono anche sopra il valore di serie (prima quasi niente). I progetti salvati prima suona"
+   "versione": "2.8.0",
+   "zip": "https://sollisolomon.com/plugin/SW-Wave-2.8.0.zip",
+   "note": "Prima di aggiornare finisci i brani aperti: alcuni comandi ora suonano diversi. I 24 generi di SW Arcadia in melodia, arpeggio, pattern degli accordi e progressioni. Clic in mezzo al riquadro per aprire la lista. Stili di prima e progetti di prima uguali."
   },
   "SW Voice": {
-   "versione": "2.6.0",
-   "zip": "https://sollisolomon.com/plugin/SW-Voice-2.6.0.zip",
-   "note": "Menu Controller: nessun aggancio automatico, SW Voice risponde solo allo strumento MIDI scelto nel menu (con il suo profilo). I progetti restano come sono."
+   "versione": "2.9.0",
+   "zip": "https://sollisolomon.com/plugin/SW-Voice-2.9.0.zip",
+   "note": "Uscita mono di serie e manopola STEREO negli effetti: si apre solo sopra i 250 Hz. I progetti di prima si riaprono a STEREO 100, uguali a prima."
   },
   "SW Arcadia": {
-   "versione": "1.5.0",
-   "zip": "https://sollisolomon.com/plugin/SW-Arcadia-1.5.0.zip",
-   "note": "RITMI in alto: 82 ritmi in 24 generi (12 House, 10 Tech House, 8 Progressive Techno, 6 Techno e molti altri, anche Reggaeton, Afrobeats, Amapiano, UK Drill, Disco, Jersey Club, Funk Brasil), scorribili con ‹ › mentre suona, sulle tracce 1-8, con ↩ Com'era. CAMPIONE in alto: trascini un campione da Logic o dal Finder su una traccia scelta e con ↧ Metti suona la melodia di un'altra traccia. SOLO (S)"
+   "versione": "1.11.0",
+   "zip": "https://sollisolomon.com/plugin/SW-Arcadia-1.11.0.zip",
+   "note": "MELODIE E ACCORDI in fondo alla finestra: basso, melodia e accordi di 4 battute nei 24 generi di RITMI, gli stessi di SW Wave. Le note restano modificabili. I progetti di prima suonano uguali."
   },
   "SW Arranger": {
-   "versione": "0.3.0",
-   "zip": "https://sollisolomon.com/plugin/SW-Arranger-0.3.0.zip",
-   "note": "Blocchi tuoi: trascina per spostare, duplica, copia e incolla, togli, lunghezza, tipo, aggiungi. ANNULLA. Tasto destro sulle celle: pezzo dello stem (Prendi da), volume, filtro. Uno stem intero messo su pieno dove era muto prende il suo pezzo più pieno (il breakdown non resta vuoto). Transizioni con SW Rise. Legenda delle forme e descrizione della cella passando sopra. I progetti della 0.2 si riap"
+   "versione": "0.5.0",
+   "zip": "https://sollisolomon.com/plugin/SW-Arranger-0.5.0.zip",
+   "note": "Tre proposte da confrontare (Compatto, Crescita, Contrasto), scelta delle frasi, sei costruzioni valutate, protezione dei blocchi e delle frasi vocali. Di serie resta Come prima (il generatore della 0.4): le proposte si scelgono con i loro tasti. Nelle proposte VARIA tiene la struttura e prova sei varianti nuove dentro (prima non cambiava niente). I progetti precedenti si riaprono sul generatore o"
   },
   "SW FX": {
-   "versione": "2.2.0",
-   "zip": "https://sollisolomon.com/plugin/SW-FX-2.2.0.zip",
-   "note": "VITA sui grani e sul risonatore (come SW Wave 2.1) e MORPH senza scene verso una variante del suono. Misura sul brano: MORPH da 0 a 17 dB, VITA dei grani 6,5 dB di timbro e 5,8 di movimento, VITA del risonatore 3,5 dB. I progetti e i 30 preset di prima suonano identici (VITA a 0)."
+   "versione": "2.3.0",
+   "zip": "https://sollisolomon.com/plugin/SW-FX-2.3.0.zip",
+   "note": "Manopola APRI nell'uscita: allarga un audio stretto o mono sopra i 250 Hz, e sommando i canali il suono resta identico. A 0 non fa niente: i progetti di prima restano uguali."
   },
   "SW Rise": {
-   "versione": "1.0.2",
-   "zip": "https://sollisolomon.com/plugin/SW-Rise-1.0.2.zip",
-   "note": "Aggiornamenti dall'interno: quando sul sito c'è una versione nuova, in alto a sinistra compare ⬆ Aggiornamento; un clic mostra le novità, scarica il pacchetto nella cartella Download e apre l'installatore. I progetti restano come sono."
+   "versione": "1.0.3",
+   "zip": "https://sollisolomon.com/plugin/SW-Rise-1.0.3.zip",
+   "note": "Livello da silenzio a +6 dB."
   },
   "SW Space": {
-   "versione": "1.0.2",
-   "zip": "https://sollisolomon.com/plugin/SW-Space-1.0.2.zip",
-   "note": "Aggiornamenti dall'interno: quando sul sito c'è una versione nuova, in alto a sinistra compare ⬆ Aggiornamento; un clic mostra le novità, scarica il pacchetto nella cartella Download e apre l'installatore. I progetti restano come sono."
+   "versione": "1.0.3",
+   "zip": "https://sollisolomon.com/plugin/SW-Space-1.0.3.zip",
+   "note": "Livello da silenzio a +6 dB."
   },
   "SW Acid": {
-   "versione": "1.0.2",
-   "zip": "https://sollisolomon.com/plugin/SW-Acid-1.0.2.zip",
-   "note": "Aggiornamenti dall'interno: quando sul sito c'è una versione nuova, in alto a sinistra compare ⬆ Aggiornamento; un clic mostra le novità, scarica il pacchetto nella cartella Download e apre l'installatore. I progetti restano come sono."
+   "versione": "1.3.0",
+   "zip": "https://sollisolomon.com/plugin/SW-Acid-1.3.0.zip",
+   "note": "Uscita mono di serie e manopola STEREO: il delay si apre solo sopra i 250 Hz. I progetti di prima si riaprono uguali."
   },
   "SW Melody": {
-   "versione": "0.4.1",
-   "zip": "https://sollisolomon.com/plugin/SW-Melody-0.4.1.zip",
-   "note": "IMPARA DALLA TRACCIA corretto: accordi con settime e rivolti (il basso è la nota più grave), minore riconosciuto (Lam Fa Do Sol in La minore: prima usciva Do maggiore perché l'accordo di Sol non contava come della tonalità), IMPARA anche a Logic fermo e con un accordo già tenuto. Prova nuova con 9 casi veri (arpeggi, stab + basso + melodia sulla stessa traccia, giri che partono a metà brano)."
+   "versione": "0.6.0",
+   "zip": "https://sollisolomon.com/plugin/SW-Melody-0.6.0.zip",
+   "note": "SEGUI SW LINK in alto. La seconda Melody fa l'accompagnamento; con la mappa di SW Arranger suona quando deve e nel finale la melodia sale. I pad 1-8 fanno partire le idee della mensola."
   },
   "SW Check": {
-   "versione": "1.2.0",
-   "zip": "https://sollisolomon.com/plugin/SW-Check-1.2.0.zip",
-   "note": "DAL VIVO: con Logic in play le barre seguono gli ultimi 2 secondi, così mentre giri un EQ vedi subito il cambiamento; la linea bianca resta la forma di tutto il brano. Ogni consiglio su una frequenza (per esempio 350 Hz) è segnato sulla sua barra con il numero, e in alto la riga “era → ora” con ✓ quando è a posto. SEGNA PRIMA lascia delle tacche grigie per confrontare prima e dopo."
+   "versione": "2.4.2",
+   "zip": "https://sollisolomon.com/plugin/SW-Check-2.4.2.zip",
+   "note": "Voto, spie e lista BUS compaiono dopo il primo minuto d'ascolto: niente verde e poi rosso subito dopo AZZERA."
   },
   "SW Kick": {
+   "versione": "1.4.1",
+   "zip": "https://sollisolomon.com/plugin/SW-Kick-1.4.1.zip",
+   "note": "Prima di aggiornare finisci i brani aperti: alcuni comandi ora suonano diversi. Solo uscita mono: in Logic non c'è più la scelta tra mono e stereo. Il suono non cambia. Se un progetto ha SW Kick su un canale stereo, controlla che si apra bene."
+  },
+  "SW Bass": {
+   "versione": "1.3.1",
+   "zip": "https://sollisolomon.com/plugin/SW-Bass-1.3.1.zip",
+   "note": "Solo uscita mono: in Logic non c'è più la scelta tra mono e stereo. Basso Vivo perde LARGHEZZA e LATI, che in mono non avevano più senso. Se un progetto ha SW Bass su un canale stereo, controlla che si apra bene."
+  },
+  "SW Link": {
    "versione": "1.2.0",
-   "zip": "https://sollisolomon.com/plugin/SW-Kick-1.2.0.zip",
-   "note": "COMP e uscita professionale senza crepe; 4 preset Pro (909 Pro, Techno Pro, 808 Pro, House Pro) tarati misurando kick di librerie professionali (Unity Records, FF True Love): corpo 80-200 Hz da -3,5 a -7,5 dB sotto il sub (prima fino a -26), picco -1,2 dBFS, crest 3-6 dB. Una istanza nuova parte da 909 Pro. VELOCITY si applica dopo compressore e uscita (da 127 a 20: -11 dB, prima -0,8) e il colpo "
+   "zip": "https://sollisolomon.com/plugin/SW-Link-1.2.0.zip",
+   "note": "Parti: la seconda istanza dello stesso plugin fa un'altra parte. Mappa del brano: la scrive SW Arranger e si vede nei plugin collegati."
+  },
+  "SW Equilibra": {
+   "versione": "1.1.1",
+   "zip": "https://sollisolomon.com/plugin/SW-Equilibra-1.1.1.zip",
+   "note": ""
+  },
+  "SW Mix Bus": {
+   "versione": "1.2.2",
+   "zip": "https://sollisolomon.com/plugin/SW-Mix-Bus-1.2.2.zip",
+   "note": "Nei preset entrano anche club e telefono, calcolati dalla somma dei bus prima del Takumi: riscrivere i preset non somma le correzioni."
+  },
+  "SW Mix Track": {
+   "versione": "1.2.2",
+   "zip": "https://sollisolomon.com/plugin/SW-Mix-Track-1.2.2.zip",
+   "note": "Nei preset entrano anche club e telefono, calcolati dalla somma dei bus prima del Takumi: riscrivere i preset non somma le correzioni."
+  },
+  "SW Rise Strumento": {
+   "versione": "2.0.1",
+   "zip": "https://sollisolomon.com/plugin/SW-Rise-Strumento-2.0.1.zip",
+   "note": ""
+  },
+  "SEI": {
+   "versione": "1.0.0",
+   "zip": "https://sollisolomon.com/plugin/SEI-1.0.0.zip",
+   "note": ""
   }
  }
 }
