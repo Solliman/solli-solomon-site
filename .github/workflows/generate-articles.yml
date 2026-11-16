@@ -26,6 +26,7 @@ jobs:
         uses: actions/checkout@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 2
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -44,3 +45,22 @@ jobs:
           (git commit -m "📝 Aggiorna pagine Riflessioni + feed (auto)" && \
            git pull --rebase origin main && \
            git push)
+
+      # Avvisa Bing (IndexNow) delle pagine riflessioni nuove o cambiate, dopo il deploy di Cloudflare.
+      - name: Avvisa Bing con IndexNow
+        continue-on-error: true
+        run: |
+          sleep 120
+          python3 - <<'PY'
+          import json, subprocess, urllib.request
+          righe = subprocess.run(["git", "diff", "--name-only", "HEAD~1", "HEAD", "--", "riflessioni/"],
+                                 capture_output=True, text=True).stdout.split()
+          urls = ["https://sollisolomon.com/" + r[:-5].removesuffix("index") for r in righe if r.endswith(".html")]
+          if urls:
+              chiave = "5abcd6d01e0452a16fd9ca12424dcf96"
+              corpo = json.dumps({"host": "sollisolomon.com", "key": chiave,
+                                  "keyLocation": f"https://sollisolomon.com/{chiave}.txt", "urlList": urls}).encode()
+              r = urllib.request.urlopen(urllib.request.Request("https://api.indexnow.org/indexnow", corpo,
+                                         {"Content-Type": "application/json; charset=utf-8"}))
+              print(len(urls), "pagine inviate a IndexNow:", r.status)
+          PY
