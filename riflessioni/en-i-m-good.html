@@ -61,12 +61,19 @@ body { cursor: auto; }
     font-size:11px; letter-spacing:0.1em; color:var(--muted);
 }
 .article-page-footer a { color:var(--accent); text-decoration:none; }
+.article-related { max-width:720px; margin:0 auto; padding:0 24px 40px; }
+.article-related h2 { font-family:'DM Mono',monospace; font-size:11px; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted); font-weight:400; margin:0 0 12px; }
+.article-related ul { list-style:none; padding:0; margin:0; }
+.article-related li { border-top:1px solid var(--border); }
+.article-related a { display:flex; justify-content:space-between; gap:16px; padding:12px 0; color:var(--text); text-decoration:none; font-family:'Cormorant Garamond',serif; font-size:20px; }
+.article-related a:hover { color:var(--accent); }
+.article-related a span { font-family:'DM Mono',monospace; font-size:11px; color:var(--muted); white-space:nowrap; align-self:center; }
 </style>
 </head>
 <body>
 <header class="article-page-header">
 <a href="../en" class="logo">Solli Solomon</a>
-<a href="../en#articles" class="article-page-back">← Back to reflections</a>
+<a href="/riflessioni/en-index" class="article-page-back">← Back to reflections</a>
 </header>
 <main class="article-reader-content">
 <div class="article-reader-date">27 May 2022 · Written by Star Bstreet</div>
@@ -89,9 +96,19 @@ body { cursor: auto; }
   </a>
 </div><br /></div><div><br /></div><div><br /></div><div><br /></div><div><br /></div><div><br /></div><div><br /></div><div><br /></div><div><br /></div><div><br /></div><div><br /></div><div><br /></div><div><br /></div><div><br /></div></div>
 </main>
+<nav class="article-related" aria-label="More reflections">
+<h2>More reflections</h2>
+<ul>
+<li><a href="/riflessioni/en-from-dust-to-dust">From dust to dust<span>30 June 2022</span></a></li>
+<li><a href="/riflessioni/en-the-loneliness-of-number-ones">The loneliness of number ones<span>20 May 2022</span></a></li>
+<li><a href="/riflessioni/en-la-musica-cambia-musical-single">La Musica Cambia - musical single<span>23 September 2022</span></a></li>
+<li><a href="/riflessioni/en-ink-splashes-from-the-inkwell">Ink splashes from the inkwell<span>13 May 2022</span></a></li>
+<li><a href="/riflessioni/en-chains-of-glory">Chains of Glory<span>23 September 2022</span></a></li>
+</ul>
+</nav>
 <div class="article-page-footer">
 <p>✍️ Written by <strong>Star Bstreet</strong> · 27 May 2022</p>
-<p><a href="../en#articles">See all reflections →</a></p>
+<p><a href="/riflessioni/en-index">See all reflections →</a></p>
 </div>
 <script defer src="/site.js"></script>
 </body>
