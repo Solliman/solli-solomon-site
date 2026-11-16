@@ -52,6 +52,8 @@ SITEMAP_PATH = os.path.join(REPO_ROOT, "sitemap.xml")
 STATIC_SITEMAP_ENTRIES = [
     {"loc": f"{SITE_URL}/", "lastmod": "2026-07-23", "priority": "1.0", "changefreq": None},
     {"loc": f"{SITE_URL}/en", "lastmod": "2026-07-23", "priority": "0.8", "changefreq": "monthly"},
+    {"loc": f"{SITE_URL}/techno-cristiana", "lastmod": "2026-11-16", "priority": "0.9", "changefreq": "monthly"},
+    {"loc": f"{SITE_URL}/chi-sono", "lastmod": "2026-11-16", "priority": "0.8", "changefreq": "monthly"},
     {"loc": f"{SITE_URL}/links", "lastmod": "2026-07-23", "priority": "0.5", "changefreq": "monthly"},
     {"loc": f"{SITE_URL}/en-links", "lastmod": "2026-07-23", "priority": "0.5", "changefreq": "monthly"},
 ]
