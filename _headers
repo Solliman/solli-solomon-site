@@ -1,0 +1,8 @@
+# Protezioni standard per tutte le pagine (controllo di sicurezza del 16/11/2026).
+# Niente Content-Security-Policy per ora: il sito usa Google Tag Manager, font e player esterni, va scritta e provata a parte.
+/*
+  Strict-Transport-Security: max-age=31536000; includeSubDomains
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=()
