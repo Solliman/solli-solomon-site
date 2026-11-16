@@ -230,16 +230,8 @@ if (btnFewerArticles) {
     });
 }
 
-// "TUTTI GLI ARTICOLI" nell'header di sezione — carica in un colpo solo tutte le riflessioni
-const btnAllArticles = document.getElementById('btn-all-articles');
-if (btnAllArticles) {
-    btnAllArticles.addEventListener('click', (e) => {
-        e.preventDefault();
-        const activeArticles = getActiveArticles();
-        articleVisibleCount = activeArticles.length;
-        renderArticles();
-    });
-}
+// "TUTTI GLI ARTICOLI" nell'header di sezione: è un link vero alla pagina /riflessioni/ (audit SEO 16/11/2026),
+// così anche Google trova l'elenco completo.
 
 // APRE IL READER MODAL
 function openArticleReader(index) {
