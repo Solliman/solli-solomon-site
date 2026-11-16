@@ -131,6 +131,21 @@ def is_untranslated(art_it, art_en, threshold=0.5):
     return difflib.SequenceMatcher(None, a, b, autojunk=False).ratio() >= threshold
 
 
+def tidy_images(content_html, title):
+    """Immagini di Blogger: alt col titolo dove manca e caricamento pigro (rapporto SEO 16/11/2026)."""
+    alt = html.escape(title, quote=True)
+
+    def fix(m):
+        tag = m.group(0)
+        if not re.search(r"\balt=", tag):
+            tag = tag.replace("<img", f'<img alt="{alt}"', 1)
+        if "loading=" not in tag:
+            tag = tag.replace("<img", '<img loading="lazy" decoding="async"', 1)
+        return tag
+
+    return re.sub(r"<img\b[^>]*>", fix, content_html)
+
+
 def xml_escape(text):
     return html.escape(text or "", quote=True)
 
@@ -278,7 +293,7 @@ def build_article_page(art, lang, alt_slug, home_page, untranslated=False, relat
         date=xml_escape(art.get("date", "")),
         by_label="Written by" if is_en else "Scritto da",
         author=xml_escape(art.get("author", "Solli Solomon")),
-        content=art["content"],
+        content=tidy_images(art["content"], art["title"]),
         all_label="See all reflections →" if is_en else "Tutte le riflessioni →",
         index_url="/riflessioni/en-index" if is_en else "/riflessioni/",
         related_label="More reflections" if is_en else "Altre riflessioni",
